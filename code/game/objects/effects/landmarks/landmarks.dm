@@ -567,7 +567,26 @@
 /obj/effect/landmark/zombie/infinite
 	infinite_spawns = TRUE
 
-/// Marks the bottom left of the testing zone.
+//Human AI Spawn
+/obj/effect/landmark/human_ai_spawn
+	name = "Human AI Spawn"
+	desc = "The spot a human AI spawns in. Players in-game can't see this."
+	invisibility_value = INVISIBILITY_OBSERVER
+	var/datum/human_ai_brain/ai_brain
+	var/mob/living/carbon/human/ai_human
+
+/obj/effect/landmark/human_ai_spawn/Initialize(mapload, ...)
+	. = ..()
+	GLOB.human_ai_landmarks += src
+	var/mob/living/carbon/human/ai_human = new /mob/living/carbon/human
+	ai_human = new /mob/living/carbon/human
+	ai_brain = new(ai_human)
+	GLOB.ai_humans += ai_human
+	ai_human.mob_flags |= AI_CONTROLLED
+	ai_human.AddComponent(/datum/component/human_ai)
+	arm_equipment(ai_human, /datum/equipment_preset/rebel/handgunner)
+	ai_human.loc = src.loc
+
 /// In landmarks.dm and not unit_test.dm so it is always active in the mapping tools.
 /obj/effect/landmark/unit_test_bottom_left
 	name = "unit test zone bottom left"
