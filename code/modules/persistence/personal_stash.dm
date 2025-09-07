@@ -12,58 +12,139 @@
 	var/json_file
 	var/unique_id
 	var/list/stored_items = list()
+	var/logged_in = FALSE
 
-// ↓ only the crap we care about saving. The code should be versitile enough to be able to just add things on
+	var/max_storage = 100
+
+// ↓ only the crap we care about saving. The code should be versitile enough to be able to just add most things on
 	var/list/allowed_vars = list(
-	"contents", "name", "desc", "accessories", "ammo", "attachments", "current_mag", "pockets", "in_chamber", "current_rounds", "default_ammo"
+	"contents", "name", "desc", "accessories", "attachments", "current_mag", "pockets", "current_rounds", "default_ammo",
+	"uses_left", "amount", "hold", "target", "max_storage_space", "holstered_guns", "loaded_grenades", "stored_item"
+	)
+// vars to always save for jank technical reasons
+	var/list/important_vars = list(
+	"current_mag", "contents"
 	)
 
-// /obj/structure/personal_stash/Initialize(mapload, ...)
-// 	. = ..()
+/////////////
+//UI SYSTEM//
+/////////////
+
+/obj/structure/personal_stash/Initialize(mapload)
+	. = ..()
+	empty_list()
+
+/obj/structure/personal_stash/proc/empty_list()
+	var/list[max_storage][0]
+	stored_items = list
 
 /obj/structure/personal_stash/attack_hand(mob/user)
-// 	tgui_interact(user)
-	load_stash(user)
+ 	tgui_interact(user)
+
+
+/obj/structure/personal_stash/tgui_interact(mob/user, datum/tgui/ui)
+	ui = SStgui.try_update_ui(user, src, ui)
+	if(!ui)
+		ui = new(user, src, "ItemStash")
+		ui.open()
+
+/obj/structure/personal_stash/ui_data(mob/user)
+	var/list/data = list()
+
+	data["logged_in"] = logged_in
+	data["contents"] = stored_items
+
+	return data
+
+/obj/structure/personal_stash/ui_act(action, params, datum/tgui/ui)
+	. = ..()
+	if(.)
+		return
+
+	switch(action)
+		if("ItemClick")
+			var/ui_index = params["SlotKey"]
+			if(stored_items[ui_index]["item"])
+				stash_remove_item(ui_index)
+				return TRUE
+
+			if(usr.get_held_item())
+				var/obj/item/I = usr.get_held_item()
+				stash_insert_item(I, ui_index, usr)
+				return TRUE
+
+		if("Login")
+			logged_in = TRUE
+			load_stash(usr)
+			load_storage_ui()
+			return TRUE
+
+		if("Logout")
+			logged_in = FALSE
+			unload_stash()
+			return TRUE
+
+/obj/structure/personal_stash/attackby(obj/item/I, mob/living/user)
+	if(!stash_insert_item(I, user = user))
+		return ..()
+	to_chat(user, SPAN_NOTICE("you stash \the [I.name] into \the [src.name]"))
+
+
+/obj/structure/personal_stash/proc/stash_insert_item(obj/item/item, index, mob/user)
+	if(!logged_in)
+		return FALSE
+	if(contents.len >= max_storage)
+		return FALSE
+	if(!index)
+		index = get_free_index()
+		if(!index)
+			to_chat(usr, SPAN_NOTICE("No empty slots left in [src.name]"))
+			return FALSE
+
+	if(user)
+		user.drop_held_item(item, src)
+	item.forceMove(src)
+
+	stored_items[index] = list()
+
+	stored_items[index]["item"] = item
+	stored_items[index]["name"] = item.name
+	stored_items[index]["icon"] = item::icon
+	stored_items[index]["icon_state"] = item::icon_state
+	stored_items[index]["index"] = index
+
+	return TRUE
+
+/obj/structure/personal_stash/proc/stash_remove_item(ui_index)
+	var/obj/item/removed_item = stored_items[ui_index]["item"]
+	usr.put_in_hands(removed_item)
+	var/list/L = list()
+	L = stored_items[ui_index]
+	L.Cut()
+
+/obj/structure/personal_stash/proc/get_free_index()
+	for(var/index in 1 to max_storage)
+		var/list/L = stored_items[index]
+		if(!L.len)
+			return index
+
+
+/obj/structure/personal_stash/proc/load_storage_ui()
+	for(var/I in 1 to contents.len)
+		stash_insert_item(contents[I], I)
 
 
 
-
-
-// /obj/structure/personal_stash/tgui_interact(mob/user, datum/tgui/ui)
-// 	ui = SStgui.try_update_ui(user, src, ui)
-// 	if(!ui)
-// 		ui = new(user, src, "ItemStash", "Personal Stash")
-// 		ui.open()
-
-// /obj/structure/personal_stash/ui_data(mob/user)
-// 	var/list/data = list()
-
-// 	data["contents"] = contents
-// 	return data
-
-// /obj/structure/personal_stash/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
-// 	. = ..()
-// 	if(.)
-// 		return
-
-// 	var/mob/living/carbon/human/user = ui.user
-
-// 	switch(action)
-// 		if("login")
-// 			load_stash(user)
-// 		if("logout")
-// 			unload_stash()
-// 		if("item_click")
+///////////////
+//SAVE SYSTEM//
+///////////////
 
 /obj/structure/personal_stash/proc/load_stash(mob/user)
+
 	unique_id = user.ckey
-	// var/savefile/stash = new("data/player_saves/[copytext(unique_id,1,2)]/[unique_id]/stash.sav")
-	stored_items.Cut()
 
 	json_file = file("data/player_saves/[copytext(unique_id,1,2)]/[unique_id]/stash.json")
 
-
-	//message_admins("bro")
 	if(!fexists(json_file))
 		return
 
@@ -71,69 +152,90 @@
 	var/list/json = json_decode(json_file)
 
 	for(var/item_index in 1 to json.len)
-		//message_admins("[json.len] [item_index]")
 
 		var/list/loaded_item = json[json[item_index]]
 
-		var/I = recreate_item(loaded_item, loc)
+		var/I = recreate_item(loaded_item, src)
 		if(istype(I, /obj))
 			var/obj/Item = I
 			Item.update_icon()
 
+
+
 /obj/structure/personal_stash/proc/recreate_item(list/item_template, atom/location)
-	var/datum/loaded_item = text2path(item_template[item_template[1]])
+	var/obj/loaded_item = text2path(item_template[item_template[1]])
 	loaded_item = new loaded_item(location)
 
 	var/list/vars2load = list()
 	vars2load = (allowed_vars & loaded_item.vars)
 
 	for(var/key in vars2load)
+
 		if(islist(item_template[key]))
-			loaded_item.vars[key] = list() //wipes the list on the freshly initialized object
+
+			if(key == "attachments")
+				var/obj/item/weapon/gun/gun = loaded_item
+				for(var/I in 1 to gun.attachments.len)
+					var/obj/item/attachable/attachment = gun.attachments[gun.attachments[I]]
+					attachment.Detach(null, gun, drop_attachment = FALSE)
+			else
+				loaded_item.vars[key] = list() //wipes the list on the freshly initialized object
+
 
 			var/list/list_var_template = item_template[key]
 			if(!list_var_template.len)
 				continue
 
 			for(var/index in 1 to list_var_template.len)
-				message_admins("[list_var_template[index]] naw [list_var_template[list_var_template[index]]]")
 				var/reconstructed_item	= list_var_template[list_var_template[index]]
-				if(key == "contents") //we don't care about exactly recreating items anywhere but in the contents (attachments are in contents AND their own var)
-					recreate_item(reconstructed_item, loaded_item)
-				else if(istext(list_var_template[index]) && text2path(list_var_template[list_var_template[index]]))
-					message_admins("locating [list_var_template[list_var_template[index]]]")
-					var/L = locate(text2path(list_var_template[list_var_template[index]])) in loaded_item
-					message_admins("found [L]")
-					message_admins("saving to [loaded_item.vars[key][list_var_template[index]]]")
-					loaded_item.vars[key][list_var_template[index]] = L
-				else
-					loaded_item.vars[key] = list_var_template[list_var_template[index]]
 
-		else
+				switch(key)
+					if("contents") //we don't care about exactly recreating items anywhere but in the contents (attachments are in contents AND their own var)
+						recreate_item(reconstructed_item, loaded_item)
 
-			if(item_template[key])
+					if("accessories")
+						var/obj/item/clothing/accessory = locate_item(loaded_item, text2path(list_var_template[list_var_template[index]]))
+						var/obj/item/clothing/clothing = loaded_item
+						clothing.attach_accessory(null, accessory, TRUE)
 
-				if(text2path(item_template[key]))
+					if("attachments")
+						var/obj/item/attachable/attachment = locate_item(loaded_item, text2path(list_var_template[list_var_template[index]]))
+						var/obj/item/weapon/gun/gun = loaded_item
+						attachment.Attach(loaded_item)
+						gun.update_attachables()
+					if("holstered_guns")
+						var/obj/item/weapon/gun/holstered = locate_item(loaded_item, text2path(list_var_template[list_var_template[index]]))
+						var/obj/item/storage/belt/gun/belt = loaded_item
+						belt.vars[key] += holstered
+						belt.holster_slots["1"]["gun"] = holstered
 
-					var/L = locate(text2path(item_template[key])) in loaded_item
+					else
+						if(text2path(list_var_template[list_var_template[index]]))
+							loaded_item.vars[key] += locate_item(loaded_item, text2path(list_var_template[list_var_template[index]]))
+							continue
+						loaded_item.vars[key] = list_var_template[list_var_template[index]]
 
-					loaded_item.vars[key] = L
+		else if(key == "current_mag")
+			if(!isnull(item_template[key]) || !(loaded_item.vars[key] = locate_item(loaded_item, text2path(item_template[key]))))
+				loaded_item.vars[key] = null
 
-				else
-					loaded_item.vars[key] = item_template[key]
+		else if(key == "stored_item")
+			if(!(loaded_item.vars[key] = locate_item(loaded_item, text2path(item_template[key]))))
+				loaded_item.vars[key] = null
+			var/obj/item/weapon/gun/gun = loaded_item
+			gun.replace_ammo(null, gun.current_mag)
 
-		update_icon(loaded_item)
+		else if(!isnull(item_template[key]))
+			if(text2path(item_template[key]))
+				message_admins("locating [item_template[key]]")
+				var/L = locate_item(loaded_item, text2path(item_template[key]))
+				message_admins("found [L]")
+				message_admins("assigning [L] to [loaded_item.vars[key]]")
+				loaded_item.vars[key] = L
+			else
+				loaded_item.vars[key] = item_template[key]
 
-		return loaded_item
-
-
-/obj/structure/personal_stash/attackby(obj/item/W, mob/user)
-	stored_items += W
-	user.drop_held_item(W)
-	W.forceMove(src)
-	unique_id = user.ckey
-	unload_stash()
-
+	return loaded_item
 
 /obj/structure/personal_stash/proc/unload_stash()
 	if(!unique_id)
@@ -145,13 +247,16 @@
 
 	var/list/data2save = list()
 
-	for(var/i in 1 to stored_items.len)
-		data2save["[stored_items[i]]_[i]"] = get_vars(stored_items[i])
+	for(var/i in 1 to contents.len)
+		data2save["[contents[i]]_[i]"] = get_vars(contents[i])
 	fdel(json_file)
 	WRITE_FILE(json_file, json_encode(data2save))
+	clear_contents()
 
-
-
+/obj/structure/personal_stash/proc/clear_contents()
+	for(var/item in contents)
+		qdel(item)
+	empty_list()
 
 /obj/structure/personal_stash/proc/get_vars(obj/item/item, iteration)
 	if(!item.vars)
@@ -167,25 +272,12 @@
 
 	for(var/V in vars2save)
 		if(islist(item.vars[V]))
-
-			if(!iteration)
-				iteration++ //so we don't iterate infinitely for weird edge cases
-
 			var/list/list_var = item.vars[V]
-
-			var/list/contents_list = list()
-			for(var/index in 1 to list_var.len)
-				if(iteration <= 8)
-					if(istype(list_var[index], /datum))
-						contents_list["[V]_[index]"] = get_vars(list_var[index], iteration)
-					else if(istext(list_var[index]) && istype(list_var[list_var[index]], /datum))
-						var/datum/T = list_var[list_var[index]]
-						contents_list["[list_var[index]]"] = T.type
-
-			item_entry["[V]"] = contents_list
+			item_entry["[V]"] = save_list(list_var, iteration, V)
+			iteration++
 
 		else
-			if(item.vars[V] != control.vars[V])
+			if(important_vars.Find(V) || item.vars[V] != control.vars[V])
 				if(istype(item.vars[V], /datum))
 					var/datum/T = item.vars[V]
 					item_entry["[V]"] = T.type
@@ -195,73 +287,38 @@
 	qdel(control)
 	return item_entry
 
+/obj/structure/personal_stash/proc/save_list(list/list2save, iteration, var_name)
+	var/list/contents_list = list()
 
+	if(iteration > 8)
+		message_admins("[var_name] exceeded iteration limits")
+		return
+	iteration++
 
+	for(var/index in 1 to list2save.len)
 
-	// for(var/v in item.vars)
-	// 	if(istype(item.vars[v], /obj/item/storage/internal))
-	// 		message_admins("[item] has internal storage as [v]")
+		if(important_vars.Find(var_name))
+			contents_list["[var_name]_[index]"] = get_vars(list2save[index], iteration)
 
-	// 		item_entry["[v]"] = item.vars[v]
+		else if(istype(list2save[index], /datum))
+			var/datum/T = list2save[index]
+			contents_list["[var_name]_[index]"] = T.type
 
+		else if(istext(list2save[index]))
+			if(istype(list2save[list2save[index]], /datum))
+				var/datum/T = list2save[list2save[index]]
+				contents_list["[list2save[index]]"] = T.type
+			else if(list2save[list2save[index]])
+				contents_list["[list2save[index]]"] = save_list(list2save[list2save[index]], iteration, var_name)
 
-	// 	if(islist(item.vars[v]))
-	// 		if(item.vars[v] ~! control.vars[v])
-	// 			message_admins("LIST [v] is changd from [control.vars[v]] to [item.vars[v]]")
+		else if(islist(list2save[index]))
+			contents_list["[list2save[index]]"] = save_list(list2save[index], iteration, var_name)
 
-	// 			item_entry["[v]"] = item.vars[v]
+	return contents_list
 
-	// 	else
-	// 		if(item.vars[v] != control.vars[v])
-	// 			message_admins("[v] is changd from [control.vars[v]] to [item.vars[v]]")
+/obj/structure/personal_stash/proc/locate_item(obj/container, path)
 
-	// 			item_entry["[v]"] = item.vars[v]
-
-
-	// qdel(control)
-
-	// if(item.contents.len && iteration <= 8)
-	// 	message_admins("iteration [iteration++]")
-
-	// 	if(!iteration)
-	// 		iteration++ //so we don't iterate infinitely for weird edge cases
-
-	// 	for(var/i in 1 to item.contents.len)
-
-	// 		item_entry["contents[i]"] = item.contents[i].type	//saves variable name
-
-	// 		get_vars(item.contents[i], iteration)
-
-	// return item_entry
-
-//obj/item/storage/internal
-
-
-
-
-
-// /obj/machinery/smartfridge/black_box/proc/WriteMemory()
-// 	var/json_file = file("data/npc_saves/Blackbox.json")
-// 	stored_items = list()
-// 	for(var/obj/O in (contents-component_parts))
-// 		stored_items += O.type
-// 	var/list/file_data = list()
-// 	file_data["data"] = stored_items
-// 	fdel(json_file)
-// 	WRITE_FILE(json_file, json_encode(file_data))
-
-// /obj/machinery/smartfridge/black_box/proc/ReadMemory()
-// 	if(fexists("data/npc_saves/Blackbox.sav")) //legacy compatability to convert old format to new
-// 		var/savefile/S = new /savefile("data/npc_saves/Blackbox.sav")
-// 		S["stored_items"] >> stored_items
-// 		fdel("data/npc_saves/Blackbox.sav")
-// 	else
-// 		var/json_file = file("data/npc_saves/Blackbox.json")
-// 		if(!fexists(json_file))
-// 			return
-// 		var/list/json = json_decode(rustg_file_read(json_file))
-// 		stored_items = json["data"]
-// 	if(isnull(stored_items))
-// 		stored_items = list()
-// 	for(var/item in stored_items)
-// 		create_item(item)
+	for(var/index in 1 to container.contents.len)
+		var/obj/item = container.contents[index]
+		if(item.type == path)
+			return item

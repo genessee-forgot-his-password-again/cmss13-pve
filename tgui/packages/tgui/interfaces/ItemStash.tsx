@@ -1,9 +1,12 @@
+import { useState } from 'react';
+
 import { useBackend } from '../backend';
 import { Box, DmIcon, Flex, Icon } from '../components';
 import { Window } from '../layouts';
 
-type WallClosetData = {
-  color: number;
+
+type ItemStashData = {
+  logged_in: boolean;
   contents: StoredItems[];
 };
 
@@ -12,71 +15,69 @@ type StoredItems = {
   icon_state: string;
   image: string;
   name: string;
-  show: boolean;
 };
 
-export const WallCloset = () => {
-  const { data } = useBackend<WallClosetData>();
-  const contents = data.contents;
+export const ItemStash = () => {
+  const { data } = useBackend<ItemStashData>();
+  const { act } = useBackend();
+  const { contents } = data;
   return (
     <Window theme="generic" width={372} height={504}>
-      <Window.Content backgroundColor={data.color}>
-        <Box width="360px" height="460px" position="fixed">
-          <Flex direction="column" height="100%" width="100%">
-            <Flex.Item grow>
-              <Box className="WallCloset_Background" />
-              <Box className="WallCloset_BackgroundShelf" />
-            </Flex.Item>
-            <Flex.Item grow>
-              <Box className="WallCloset_Background" />
-              <Box className="WallCloset_BackgroundShelf" />
-            </Flex.Item>
-            <Flex.Item grow>
-              <Box className="WallCloset_Background" />
-              <Box className="WallCloset_BackgroundShelf" />
-            </Flex.Item>
-            <Flex.Item grow>
-              <Box className="WallCloset_Background" />
-              <Box className="WallCloset_BackgroundShelf" />
-            </Flex.Item>
-            <Flex.Item grow>
-              <Box className="WallCloset_Background" />
-              <Box className="WallCloset_BackgroundShelf" />
-            </Flex.Item>
-          </Flex>
+      <Window.Content>
+        <Box>
+          {data.logged_in ? (
+            <Flex className="ItemStash_Debug">
+              <Flex wrap width="360px" className="ItemStash_Debug">
+
+                  {contents.map((item, index) => (
+                    <Cell
+                      name={item.name}
+                      key={index}
+                      icon={item.icon}
+                      icon_state={item.icon_state}
+                      index={index}
+                    />
+                    ))
+                  }
+
+              </Flex>
+              <Box
+                className="ItemStash_Logout"
+                onClick={() => act('Logout')}
+              >
+                Logout
+                {data.logged_in}
+              </Box>
+
+            </Flex>
+            ) : (
+              <Box
+                className="ItemStash_Login"
+                onClick={() => act('Login')}
+              >
+                Login
+              </Box>
+            )
+          }
         </Box>
-        <Flex wrap width="360px">
-          {contents.map((item, index) => (
-            <Cell
-              show={item.show}
-              index={index}
-              key={index}
-              icon={item.icon}
-              icon_state={item.icon_state}
-              name={item.name}
-              image={item.image}
-            />
-          ))}
-        </Flex>
       </Window.Content>
     </Window>
   );
 };
 
 const Cell = (props) => {
-  const { act } = useBackend<WallClosetData>();
+  const { act } = useBackend<ItemStashData>();
   return (
-    <Flex.Item className="WallCloset_FlexItem" width="80px" height="80px">
-      <Box className="WallCloset_Box" position="relative">
-        <Box className="WallCloset_Box">
-          {props.show && (
-            <Box className="WallCloset_Box">
-              {!props.image ? (
+    <Flex.Item className="ItemStash_FlexItem" width="80px" height="80px">
+      <Box className="ItemStash_Box" position="relative">
+        <Box className="ItemStash_Box">
+          {props.icon && (
+            <Box className="ItemStash_Box">
                 <DmIcon
                   mb={-2}
                   icon={props.icon}
                   icon_state={props.icon_state}
-                  fallback={<Icon mr={1} name="spinner" spin fontSize="30px" />}
+                  fallback={<Icon mt={1} ml={1} name="spinner" spin fontSize="70px" />}
                   height="100%"
                   width="100%"
                   backgroundColor="red"
@@ -84,23 +85,10 @@ const Cell = (props) => {
                     imageRendering: 'pixelated',
                   }}
                 />
-              ) : (
-                <Box
-                  as="img"
-                  src={props.image}
-                  width="100%"
-                  height="100%"
-                  style={{
-                    textAlign: 'center',
-                    verticalAlign: 'middle',
-                    imageRendering: 'pixelated',
-                  }}
-                />
-              )}
             </Box>
           )}
           <Box
-            className="WallCloset_Slot"
+            className="ItemStash_Slot"
             onClick={() => act('ItemClick', { SlotKey: props.index + 1 })}
           >
             {props.name}

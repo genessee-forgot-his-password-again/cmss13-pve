@@ -1,0 +1,75 @@
+@use '../base.scss';
+@use '../colors.scss';
+@use '../functions.scss';
+
+.ItemStash_FlexItem {
+  margin: 2px 5px 10px 5px;
+}
+
+.ItemStash_Debug {
+  border-width: 1px;
+  border-style: dashed;
+  border-color: black;
+}
+
+.ItemStash_Slot {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  background-color: white;
+  opacity: 0;
+  border-radius: 5%;
+  top: 0;
+  left: 0;
+  text-align: center;
+  text-transform: capitalize;
+  font-family: monospace;
+  color: black;
+  border-width: 1px;
+  border-style: dashed;
+  border-color: black;
+}
+
+.ItemStash_Login {
+  height: 50%;
+  width: 50%;
+  position: absolute;
+  background-color: white;
+  border-radius: 5%;
+  border-top: 2px outset gray;
+  border-bottom: 2px outset darkgray;
+  top: 0;
+  left: 0;
+  text-align: center;
+  text-transform: capitalize;
+  font-family: monospace;
+  color: red;
+}
+
+.ItemStash_Slot:hover {
+  opacity: 0.3;
+}
+
+.ItemStash_Box {
+  height: 100%;
+  width: 100%;
+}
+
+.ItemStash_Background {
+  border-bottom: 50px inset darkgrey;
+  border-left: 50px inset darkgrey;
+  border-right: 50px inset gray;
+  background-color: dimgray;
+  height: 90%;
+  width: 100%;
+  opacity: 0.8;
+}
+
+.ItemStash_BackgroundShelf {
+  background-color: dimgray;
+  border-top: 2px outset gray;
+  border-bottom: 2px outset darkgray;
+  height: 10%;
+  width: 100%;
+  opacity: 0.8;
+}
