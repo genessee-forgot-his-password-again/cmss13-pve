@@ -19,7 +19,8 @@
 // ↓ only the crap we care about saving. The code should be versitile enough to be able to just add most things on
 	var/list/allowed_vars = list(
 	"contents", "name", "desc", "accessories", "attachments", "current_mag", "pockets", "current_rounds", "default_ammo",
-	"uses_left", "amount", "hold", "target", "max_storage_space", "holstered_guns", "loaded_grenades", "stored_item"
+	"uses_left", "amount", "hold", "target", "max_storage_space", "holstered_guns", "loaded_grenades", "stored_item", "black_market_value", "worth",
+	"storage_slots"
 	)
 // vars to always save for jank technical reasons
 	var/list/important_vars = list(
@@ -51,6 +52,8 @@
 /obj/structure/personal_stash/ui_data(mob/user)
 	var/list/data = list()
 
+	if(unique_id)
+		data["unique_id"] = unique_id
 	data["logged_in"] = logged_in
 	data["contents"] = stored_items
 
@@ -68,16 +71,16 @@
 				stash_remove_item(ui_index)
 				return TRUE
 
-			if(usr.get_held_item())
-				var/obj/item/I = usr.get_held_item()
+			if(usr.get_active_hand())
+				var/obj/item/I = usr.get_active_hand()
 				stash_insert_item(I, ui_index, usr)
 				return TRUE
 
 		if("Login")
-			logged_in = TRUE
-			load_stash(usr)
-			load_storage_ui()
-			return TRUE
+			if(load_stash(usr))
+				logged_in = TRUE
+				load_storage_ui()
+				return TRUE
 
 		if("Logout")
 			logged_in = FALSE
@@ -98,7 +101,7 @@
 	if(!index)
 		index = get_free_index()
 		if(!index)
-			to_chat(usr, SPAN_NOTICE("No empty slots left in [src.name]"))
+			to_chat(usr, SPAN_WARNING("No empty slots left in [src.name]"))
 			return FALSE
 
 	if(user)
@@ -117,7 +120,8 @@
 
 /obj/structure/personal_stash/proc/stash_remove_item(ui_index)
 	var/obj/item/removed_item = stored_items[ui_index]["item"]
-	usr.put_in_hands(removed_item)
+	if(!usr.equip_to_appropriate_slot(removed_item))
+		usr.put_in_hands(removed_item)
 	var/list/L = list()
 	L = stored_items[ui_index]
 	L.Cut()
@@ -130,10 +134,8 @@
 
 
 /obj/structure/personal_stash/proc/load_storage_ui()
-	for(var/I in 1 to contents.len)
-		stash_insert_item(contents[I], I)
-
-
+	for(var/I in contents)
+		stash_insert_item(I)
 
 ///////////////
 //SAVE SYSTEM//
@@ -143,23 +145,28 @@
 
 	unique_id = user.ckey
 
+	if(GLOB.accessed_stashes.Find(unique_id))
+		to_chat(usr, SPAN_WARNING("You already have a stash open!"))
+		unique_id = null
+		return
+	GLOB.accessed_stashes += unique_id
+
 	json_file = file("data/player_saves/[copytext(unique_id,1,2)]/[unique_id]/stash.json")
 
-	if(!fexists(json_file))
-		return
+	if(fexists(json_file))
+		json_file = file2text(json_file)
+		var/list/json = json_decode(json_file)
 
-	json_file = file2text(json_file)
-	var/list/json = json_decode(json_file)
+		for(var/item_index in 1 to json.len)
 
-	for(var/item_index in 1 to json.len)
+			var/list/loaded_item = json[json[item_index]]
 
-		var/list/loaded_item = json[json[item_index]]
+			var/I = recreate_item(loaded_item, src)
+			if(istype(I, /obj))
+				var/obj/Item = I
+				Item.update_icon()
 
-		var/I = recreate_item(loaded_item, src)
-		if(istype(I, /obj))
-			var/obj/Item = I
-			Item.update_icon()
-
+	return TRUE
 
 
 /obj/structure/personal_stash/proc/recreate_item(list/item_template, atom/location)
@@ -216,7 +223,7 @@
 						loaded_item.vars[key] = list_var_template[list_var_template[index]]
 
 		else if(key == "current_mag")
-			if(!isnull(item_template[key]) || !(loaded_item.vars[key] = locate_item(loaded_item, text2path(item_template[key]))))
+			if(isnull(item_template[key]) || !(loaded_item.vars[key] = locate_item(loaded_item, text2path(item_template[key]))))
 				loaded_item.vars[key] = null
 
 		else if(key == "stored_item")
@@ -227,10 +234,7 @@
 
 		else if(!isnull(item_template[key]))
 			if(text2path(item_template[key]))
-				message_admins("locating [item_template[key]]")
 				var/L = locate_item(loaded_item, text2path(item_template[key]))
-				message_admins("found [L]")
-				message_admins("assigning [L] to [loaded_item.vars[key]]")
 				loaded_item.vars[key] = L
 			else
 				loaded_item.vars[key] = item_template[key]
@@ -241,6 +245,8 @@
 	if(!unique_id)
 		return
 
+	GLOB.accessed_stashes -= unique_id
+
 	json_file = file("data/player_saves/[copytext(unique_id,1,2)]/[unique_id]/stash.json")
 
 	unique_id = null
@@ -249,14 +255,17 @@
 
 	for(var/i in 1 to contents.len)
 		data2save["[contents[i]]_[i]"] = get_vars(contents[i])
-	fdel(json_file)
-	WRITE_FILE(json_file, json_encode(data2save))
+	update_file(data2save)
 	clear_contents()
 
 /obj/structure/personal_stash/proc/clear_contents()
 	for(var/item in contents)
 		qdel(item)
 	empty_list()
+
+/obj/structure/personal_stash/proc/update_file(data)
+	fdel(json_file)
+	WRITE_FILE(json_file, json_encode(data))
 
 /obj/structure/personal_stash/proc/get_vars(obj/item/item, iteration)
 	if(!item.vars)

@@ -1,5 +1,3 @@
-import { useState } from 'react';
-
 import { useBackend } from '../backend';
 import { Box, DmIcon, Flex, Icon } from '../components';
 import { Window } from '../layouts';
@@ -22,12 +20,12 @@ export const ItemStash = () => {
   const { act } = useBackend();
   const { contents } = data;
   return (
-    <Window theme="generic" width={372} height={504}>
+    <Window theme="generi" width={650} height={500}>
       <Window.Content>
-        <Box>
+        <Flex width="100%" className="ItemStash_Debug">
           {data.logged_in ? (
             <Flex className="ItemStash_Debug">
-              <Flex wrap width="360px" className="ItemStash_Debug">
+              <Flex wrap width="455px" className="ItemStash_Debug">
 
                   {contents.map((item, index) => (
                     <Cell
@@ -42,6 +40,7 @@ export const ItemStash = () => {
 
               </Flex>
               <Box
+                width="190px"
                 className="ItemStash_Logout"
                 onClick={() => act('Logout')}
               >
@@ -59,7 +58,7 @@ export const ItemStash = () => {
               </Box>
             )
           }
-        </Box>
+        </Flex>
       </Window.Content>
     </Window>
   );
