@@ -344,7 +344,7 @@
 	transverse  =  3
 	long    =  0
 
-// TORNADO
+// TRIPOLI
 /obj/effect/attach_point/weapon/tripoli
 	ship_tag = DROPSHIP_TRIPOLI
 	base_category = DROPSHIP_WEAPON
@@ -385,6 +385,28 @@
 	firing_arc_min = -3
 	firing_arc_max =  3
 	transverse  =  3
+	long    =  0
+
+// GIBRALTAR
+/obj/effect/attach_point/weapon/gibraltar
+	ship_tag = DROPSHIP_GIBRALTAR
+
+/obj/effect/attach_point/weapon/gibraltar/left_fore
+	name = "port fore weapon attach point"
+	attach_id = 2
+	dir = NORTH
+	firing_arc_min = -6
+	firing_arc_max =  0
+	transverse  =  0
+	long    =  0
+
+/obj/effect/attach_point/weapon/gibraltar/right_fore
+	name = "starboard fore weapon attach point"
+	attach_id = 3
+	dir = NORTH
+	firing_arc_min =  0
+	firing_arc_max =  6
+	transverse  =  0
 	long    =  0
 
 //attach points
@@ -429,6 +451,15 @@
 /obj/effect/attach_point/crew_weapon/tripoli
 	ship_tag = DROPSHIP_TRIPOLI
 
+/obj/effect/attach_point/crew_weapon/shitfuck
+	ship_tag = DROPSHIP_SHITFUCK
+
+/obj/effect/attach_point/crew_weapon/gibraltar
+	ship_tag = DROPSHIP_GIBRALTAR
+
+/obj/effect/attach_point/crew_weapon/gibraltar/floor
+	plane = FLOOR_PLANE
+
 /obj/effect/attach_point/electronics
 	name = "electronic system attach point"
 	base_category = DROPSHIP_ELECTRONICS
@@ -461,6 +492,9 @@
 
 /obj/effect/attach_point/electronics/tripoli
 	ship_tag = DROPSHIP_TRIPOLI
+
+/obj/effect/attach_point/electronics/gibraltar
+	ship_tag = DROPSHIP_GIBRALTAR
 
 /obj/effect/attach_point/fuel
 	name = "engine system attach point"
@@ -496,6 +530,9 @@
 /obj/effect/attach_point/fuel/tripoli
 	ship_tag = DROPSHIP_TRIPOLI
 
+/obj/effect/attach_point/fuel/shitfuck
+	ship_tag = DROPSHIP_SHITFUCK
+
 /obj/effect/attach_point/computer
 	base_category = DROPSHIP_COMPUTER
 
@@ -524,4 +561,7 @@
 	ship_tag = DROPSHIP_TYPHOON
 
 /obj/effect/attach_point/computer/tripoli
-	ship_tag = DROPSHIP_TYPHOON
+	ship_tag = DROPSHIP_TRIPOLI
+
+/obj/effect/attach_point/computer/gibraltar
+	ship_tag = DROPSHIP_GIBRALTAR

@@ -63,7 +63,7 @@ GLOBAL_LIST_INIT(cm_vending_gear_leader, list(
 		list("MEDICAL SUPPLIES", 0, null, null, null),
 		list("Burn Kit", 2, /obj/item/stack/medical/advanced/ointment, null, VENDOR_ITEM_REGULAR),
 		list("Trauma Kit", 2, /obj/item/stack/medical/advanced/bruise_pack, null, VENDOR_ITEM_REGULAR),
-		list("Advanced Firstaid Kit", 12, /obj/item/storage/firstaid/adv, null, VENDOR_ITEM_REGULAR),
+		list("Advanced Firstaid Kit", 12, /obj/item/storage/firstaid/softpack/adv, null, VENDOR_ITEM_REGULAR),
 		list("Medical Splints", 1, /obj/item/stack/medical/splint, null, VENDOR_ITEM_REGULAR),
 
 		list("Injector (Bicaridine)", 1, /obj/item/reagent_container/hypospray/autoinjector/bicaridine, null, VENDOR_ITEM_REGULAR),
@@ -114,8 +114,8 @@ GLOBAL_LIST_INIT(cm_vending_gear_leader, list(
 	desc = "An automated gear rack for Squad Leaders."
 	icon_state = "sl_gear"
 	show_points = TRUE
-	vendor_role = list(JOB_SQUAD_LEADER)
-	req_access = list(ACCESS_MARINE_LEADER)
+	req_access = list()
+	vendor_role = list()
 
 /obj/structure/machinery/cm_vending/gear/leader/get_listed_products(mob/user)
 	return GLOB.cm_vending_gear_leader
@@ -176,30 +176,26 @@ GLOBAL_LIST_INIT(cm_vending_clothing_leader, list(
 /obj/structure/machinery/cm_vending/clothing/leader
 	name = "\improper ColMarTech Squad Leader Equipment Rack"
 	desc = "An automated rack hooked up to a colossal storage of Squad Leader standard-issue equipment."
-	req_access = list(ACCESS_MARINE_LEADER)
-	vendor_role = list(JOB_SQUAD_LEADER)
+	req_access = list()
+	vendor_role = list()
 
 /obj/structure/machinery/cm_vending/clothing/leader/get_listed_products(mob/user)
 	return GLOB.cm_vending_clothing_leader
 
 /obj/structure/machinery/cm_vending/clothing/leader/alpha
-	squad_tag = SQUAD_MARINE_1
-	req_access = list(ACCESS_MARINE_LEADER, ACCESS_MARINE_ALPHA)
+	req_access = list()
 	headset_type = /obj/item/device/radio/headset/almayer/marine/alpha/lead
 
 /obj/structure/machinery/cm_vending/clothing/leader/bravo
-	squad_tag = SQUAD_MARINE_2
-	req_access = list(ACCESS_MARINE_LEADER, ACCESS_MARINE_BRAVO)
+	req_access = list()
 	headset_type = /obj/item/device/radio/headset/almayer/marine/bravo/lead
 
 /obj/structure/machinery/cm_vending/clothing/leader/charlie
-	squad_tag = SQUAD_MARINE_3
-	req_access = list(ACCESS_MARINE_LEADER, ACCESS_MARINE_CHARLIE)
+	req_access = list()
 	headset_type = /obj/item/device/radio/headset/almayer/marine/charlie/lead
 
 /obj/structure/machinery/cm_vending/clothing/leader/delta
-	squad_tag = SQUAD_MARINE_4
-	req_access = list(ACCESS_MARINE_LEADER, ACCESS_MARINE_DELTA)
+	req_access = list()
 	headset_type = /obj/item/device/radio/headset/almayer/marine/delta/lead
 
 //------------ESSENTIAL SETS---------------

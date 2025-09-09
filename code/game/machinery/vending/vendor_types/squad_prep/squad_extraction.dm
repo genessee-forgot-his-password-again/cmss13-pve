@@ -16,9 +16,6 @@ GLOBAL_LIST_INIT(cm_vending_extraction, list(
 		list("Militia Hauberk & Militia Helmet", 0, list(/obj/item/clothing/suit/storage/militia, /obj/item/clothing/head/militia/bucket), MARINE_CAN_BUY_UNIFORM, VENDOR_ITEM_REGULAR),
 		list("Shoulder-Mounted Lamp Harness", 0, list(/obj/item/clothing/suit/marine/lamp), MARINE_CAN_BUY_UNIFORM, VENDOR_ITEM_REGULAR),
 
-		list("HEADSET (CHOOSE 1)", 0, null, null, null),
-		list("M5 Camera Headset", 0, /obj/item/device/overwatch_camera, MARINE_CAN_BUY_HELMET, VENDOR_ITEM_MANDATORY),
-
 		list("BACKPACK (CHOOSE 1)", 0, null, null, null),
 		list("Satchel", 0, /obj/item/storage/backpack/marine/satchel, MARINE_CAN_BUY_BACKPACK, VENDOR_ITEM_RECOMMENDED),
 		list("Chest Rig", 0, /obj/item/storage/backpack/marine/satchel/chestrig, MARINE_CAN_BUY_BACKPACK, VENDOR_ITEM_REGULAR),
@@ -43,8 +40,8 @@ GLOBAL_LIST_INIT(cm_vending_extraction, list(
 	desc = "An automated rack hooked up to an autofab of cheap, low-quality equipment."
 	icon_state = "clothing"
 	req_access = list()
-//	vendor_role = list(JOB_SQUAD_MEDIC, JOB_SQUAD_LEADER, JOB_SQUAD_SMARTGUN, JOB_SQUAD_ENGI, JOB_SQUAD_TEAM_LEADER, JOB_SQUAD_MARINE)
 	vendor_role = list()
+//	vendor_role = list(JOB_SQUAD_MEDIC, JOB_SQUAD_LEADER, JOB_SQUAD_SMARTGUN, JOB_SQUAD_ENGI, JOB_SQUAD_TEAM_LEADER, JOB_SQUAD_MARINE)
 
 /obj/structure/machinery/cm_vending/gear/extraction/get_listed_products(mob/user)
 	return GLOB.cm_vending_extraction

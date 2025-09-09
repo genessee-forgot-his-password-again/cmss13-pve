@@ -60,6 +60,13 @@
 	total_positions = 4
 	spawn_positions = 4
 
+/datum/job/marine/standard/ai/extraction
+	total_positions = 7
+	spawn_positions = 7
+	gear_preset = /datum/equipment_preset/uscm/pfc/extraction
+	gear_preset_secondary = /datum/equipment_preset/uscm/pfc/extraction
+	gear_preset_tertiary = /datum/equipment_preset/uscm/pfc/extraction
+
 /datum/job/marine/standard/ai/set_spawn_positions(count)
 	return spawn_positions
 
@@ -122,6 +129,18 @@
 	squad = SQUAD_PMCPLT
 	job = /datum/job/marine/standard/ai/pmc
 
+/datum/job/marine/standard/ai/pmc/small
+	title = JOB_PMCPLAT_SMALL_STANDARD
+	gear_preset = /datum/equipment_preset/uscm/pmc
+	job_options = null
+	total_positions = 3
+	spawn_positions = 3
+
+/obj/effect/landmark/start/marine/pmc/small
+	name = JOB_PMCPLAT_SMALL_STANDARD
+	squad = SQUAD_PMCPLT_SMALL
+	job = /datum/job/marine/standard/ai/pmc/small
+
 /obj/effect/landmark/start/marine/forecon
 	name = JOB_SQUAD_MARINE_FORECON
 	squad = SQUAD_LRRP
@@ -131,6 +150,20 @@
 	name = JOB_SQUAD_RTO
 	squad = SQUAD_LRRP
 	job = /datum/job/marine/standard/ai/rto
+
+/datum/job/marine/standard/ai/rmc
+	title = JOB_TWE_RMC_RIFLEMAN
+	total_positions = 2
+	spawn_positions = 2
+	gear_preset = /datum/equipment_preset/uscm/rmc
+	job_options = null
+	supervisors = "the section leader and troop commander"
+	entry_message_body = "You are a highly trained member of the Royal Marines Commando. Whilst you may not have a primary specialisation, that offers you a greater degree of flexibility in additional equipment you can bring to the field.<br><b>You remember that you've stored your personal gear and uniform in the locker rooms.</b>"
+
+/obj/effect/landmark/start/marine/rmc
+	name = JOB_TWE_RMC_RIFLEMAN
+	squad = SQUAD_RMC
+	job = /datum/job/marine/standard/ai/rmc
 
 #undef CPL_VARIANT
 #undef LCPL_VARIANT
