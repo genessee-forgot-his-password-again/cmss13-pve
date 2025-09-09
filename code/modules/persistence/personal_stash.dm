@@ -69,6 +69,7 @@
 			var/ui_index = params["SlotKey"]
 			if(stored_items[ui_index]["item"])
 				stash_remove_item(ui_index)
+				playsound(src.loc, 'sound/handling/click_2.ogg', 10, 1)
 				return TRUE
 
 			if(usr.get_active_hand())
@@ -79,11 +80,13 @@
 		if("Login")
 			if(load_stash(usr))
 				logged_in = TRUE
+				playsound(src.loc, 'sound/machines/terminal_button01.ogg', 25, 1)
 				load_storage_ui()
 				return TRUE
 
 		if("Logout")
 			logged_in = FALSE
+			playsound(src.loc, 'sound/machines/terminal_button01.ogg', 25, 1)
 			unload_stash()
 			return TRUE
 
