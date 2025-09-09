@@ -63,7 +63,7 @@ export const ItemStash = () => {
                   <Box className="ItemStash_ItemWindow">
                     <Box className="ItemStash_Screen" >
                     {!data.logged_in ? (
-                      <Box> awaiting login...</Box>
+                      <Box> Awaiting login...</Box>
                     ):(
                       <Box>Welcome: {data.unique_id}</Box>
                     )}

@@ -1146,6 +1146,18 @@
 	},
 /turf/open/floor/almayer/plate,
 /area/golden_arrow/hangar)
+"acV" = (
+/obj/effect/landmark/start/bridge,
+/obj/effect/landmark/late_join/alpha,
+/obj/effect/landmark/late_join,
+/obj/structure/prop/invuln/overhead_pipe{
+	icon = 'icons/obj/structures/props/almayer_props.dmi';
+	icon_state = "wallpipe_2";
+	pixel_y = 8;
+	dir = 8
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/golden_arrow/cryo_cells)
 "acX" = (
 /obj/structure/sign/safety/galley{
 	pixel_y = 28
@@ -3462,7 +3474,6 @@
 /turf/open/floor/almayer/plating_striped/north,
 /area/golden_arrow/engineering)
 "akO" = (
-/obj/structure/personal_stash,
 /turf/open/floor/almayer/edge/smooth/west,
 /area/golden_arrow/cryo_cells)
 "akR" = (
@@ -5774,6 +5785,9 @@
 /turf/open/floor/almayer,
 /area/golden_arrow/motor_pool)
 "asK" = (
+/obj/effect/landmark/start/marine/leader/alpha,
+/obj/effect/landmark/late_join/alpha,
+/obj/effect/landmark/late_join,
 /turf/open/floor/plating/plating_catwalk,
 /area/golden_arrow/cryo_cells)
 "asL" = (
@@ -7138,6 +7152,12 @@
 	},
 /turf/open/floor/almayer,
 /area/golden_arrow/cryo_cells)
+"axL" = (
+/obj/effect/landmark/start/marine/smartgunner/alpha,
+/obj/effect/landmark/late_join/alpha,
+/obj/effect/landmark/late_join,
+/turf/open/floor/plating/plating_catwalk,
+/area/golden_arrow/cryo_cells)
 "axM" = (
 /obj/structure/machinery/light/double/blue/golden_arrow{
 	light_power = 0.7
@@ -7149,7 +7169,6 @@
 /obj/structure/disposalpipe/segment{
 	dir = 1
 	},
-/obj/effect/landmark/late_join,
 /turf/open/floor/almayer,
 /area/golden_arrow/cryo_cells)
 "axO" = (
@@ -7678,6 +7697,12 @@
 	},
 /turf/open/floor/almayer,
 /area/golden_arrow/lower_cargo)
+"azh" = (
+/obj/effect/landmark/start/marine/alpha,
+/obj/effect/landmark/late_join/alpha,
+/obj/effect/landmark/late_join,
+/turf/open/floor/plating/plating_catwalk,
+/area/golden_arrow/cryo_cells)
 "azi" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 8
@@ -9505,6 +9530,12 @@
 	},
 /turf/open/floor/almayer/plate,
 /area/golden_arrow/hangar)
+"aEI" = (
+/obj/effect/landmark/start/marine/medic/alpha,
+/obj/effect/landmark/late_join/alpha,
+/obj/effect/landmark/late_join,
+/turf/open/floor/plating/plating_catwalk,
+/area/golden_arrow/cryo_cells)
 "aEK" = (
 /turf/open/floor/almayer/empty/golden_arrow,
 /area/golden_arrow/cargo_shuttle/upper)
@@ -9689,6 +9720,12 @@
 	},
 /turf/open/floor/almayer,
 /area/golden_arrow/motor_pool)
+"aFy" = (
+/obj/effect/landmark/start/marine/tl/alpha,
+/obj/effect/landmark/late_join/alpha,
+/obj/effect/landmark/late_join,
+/turf/open/floor/plating/plating_catwalk,
+/area/golden_arrow/cryo_cells)
 "aFz" = (
 /turf/open/floor/almayer/uscm/directional/up_down/west,
 /area/golden_arrow/hangar)
@@ -10524,6 +10561,10 @@
 	pixel_y = 9;
 	pixel_x = -9;
 	layer = 3.01
+	},
+/obj/item/storage/firstaid/softpack{
+	pixel_y = -5;
+	pixel_x = -11
 	},
 /turf/open/floor/almayer/plate,
 /area/golden_arrow/medical)
@@ -12765,6 +12806,9 @@
 /turf/open/floor/almayer/plate,
 /area/golden_arrow/hangar)
 "aQQ" = (
+/obj/effect/landmark/start/marine/medic/alpha,
+/obj/effect/landmark/late_join/alpha,
+/obj/effect/landmark/late_join,
 /obj/structure/prop/invuln/overhead_pipe{
 	icon = 'icons/obj/structures/props/almayer_props.dmi';
 	icon_state = "wallpipe_2";
@@ -17353,6 +17397,11 @@
 "hRK" = (
 /turf/open/floor/almayer/plate,
 /area/golden_arrow/medical)
+"hSW" = (
+/obj/effect/landmark/start/marine/leader/alpha,
+/obj/effect/landmark/late_join/alpha,
+/turf/open/floor/plating/plating_catwalk,
+/area/golden_arrow/cryo_cells)
 "hUp" = (
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/almayer,
@@ -21246,6 +21295,12 @@
 /obj/structure/machinery/recharge_station,
 /turf/open/floor/almayer/test_floor5,
 /area/golden_arrow/synthcloset)
+"wSf" = (
+/obj/effect/landmark/start/bridge,
+/obj/effect/landmark/late_join/alpha,
+/obj/effect/landmark/late_join,
+/turf/open/floor/plating/plating_catwalk,
+/area/golden_arrow/cryo_cells)
 "wYO" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "SW-out";
@@ -24761,23 +24816,23 @@ aWh
 aEZ
 asK
 aQQ
-asK
+wSf
 asK
 aAU
-asK
-asK
-aQQ
+hSW
+aEI
+acV
 asK
 aPL
-asK
-asK
-asK
-asK
+aFy
+axL
+azh
+azh
 abh
-asK
-asK
-asK
-asK
+aFy
+axL
+azh
+azh
 aUY
 aWh
 aEG

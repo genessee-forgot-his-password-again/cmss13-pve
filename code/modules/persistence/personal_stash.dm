@@ -20,7 +20,7 @@
 	var/list/allowed_vars = list(
 	"contents", "name", "desc", "accessories", "attachments", "current_mag", "pockets", "current_rounds", "default_ammo",
 	"uses_left", "amount", "hold", "target", "max_storage_space", "holstered_guns", "loaded_grenades", "stored_item", "black_market_value", "worth",
-	"storage_slots"
+	"storage_slots", "caliber", "gun_type", "bullet_amount"
 	)
 // vars to always save for jank technical reasons
 	var/list/important_vars = list(
@@ -123,6 +123,7 @@
 
 /obj/structure/personal_stash/proc/stash_remove_item(ui_index)
 	var/obj/item/removed_item = stored_items[ui_index]["item"]
+	removed_item.update_icon()
 	if(!usr.equip_to_appropriate_slot(removed_item))
 		usr.put_in_hands(removed_item)
 	var/list/L = list()
