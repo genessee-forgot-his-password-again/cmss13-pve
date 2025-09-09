@@ -99,7 +99,7 @@
 /obj/structure/personal_stash/proc/stash_insert_item(obj/item/item, index, mob/user)
 	if(!logged_in)
 		return FALSE
-	if(contents.len >= max_storage)
+	if(contents.len > max_storage)
 		return FALSE
 	if(!index)
 		index = get_free_index()
@@ -161,13 +161,8 @@
 		var/list/json = json_decode(json_file)
 
 		for(var/item_index in 1 to json.len)
-
 			var/list/loaded_item = json[json[item_index]]
-
-			var/I = recreate_item(loaded_item, src)
-			if(istype(I, /obj))
-				var/obj/Item = I
-				Item.update_icon()
+			recreate_item(loaded_item, src)
 
 	return TRUE
 
@@ -213,6 +208,7 @@
 						var/obj/item/weapon/gun/gun = loaded_item
 						attachment.Attach(loaded_item)
 						gun.update_attachables()
+
 					if("holstered_guns")
 						var/obj/item/weapon/gun/holstered = locate_item(loaded_item, text2path(list_var_template[list_var_template[index]]))
 						var/obj/item/storage/belt/gun/belt = loaded_item
@@ -228,12 +224,14 @@
 		else if(key == "current_mag")
 			if(isnull(item_template[key]) || !(loaded_item.vars[key] = locate_item(loaded_item, text2path(item_template[key]))))
 				loaded_item.vars[key] = null
+			var/obj/item/weapon/gun/gun = loaded_item
+			gun.replace_ammo(null, gun.current_mag)
+
 
 		else if(key == "stored_item")
 			if(!(loaded_item.vars[key] = locate_item(loaded_item, text2path(item_template[key]))))
 				loaded_item.vars[key] = null
-			var/obj/item/weapon/gun/gun = loaded_item
-			gun.replace_ammo(null, gun.current_mag)
+
 
 		else if(!isnull(item_template[key]))
 			if(text2path(item_template[key]))
