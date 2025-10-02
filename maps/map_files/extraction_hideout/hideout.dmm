@@ -61,13 +61,13 @@
 /turf/open/floor/plating/almayer,
 /area/galleyburned/memorial)
 "aV" = (
-/obj/structure/inventory_machine,
 /obj/structure/window/reinforced/ultra{
 	dir = 4
 	},
 /obj/structure/window/reinforced/ultra{
 	dir = 8
 	},
+/obj/structure/personal_stash,
 /turf/open/floor/plating/plating_catwalk,
 /area/galleyburned/requisition)
 "aX" = (
@@ -189,18 +189,15 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/galleyburned/prep)
 "cT" = (
-/obj/structure/inventory_machine{
-	color = "#ff2222";
-	name = "Outdated ColMarTech Personal Stash Access Point"
-	},
 /obj/structure/window/reinforced/ultra{
-	dir = 4
+	dir = 1
 	},
 /obj/structure/window/reinforced/ultra{
 	dir = 8
 	},
+/obj/structure/machinery/door/window/southright,
 /turf/open/floor/plating/plating_catwalk,
-/area/galleyburned/stash)
+/area/galleyburned/requisition)
 "db" = (
 /obj/structure/largecrate/random/mini/small_case/c{
 	pixel_x = -26;
@@ -354,6 +351,7 @@
 /turf/open/floor/plating,
 /area/galleyburned/maint)
 "eB" = (
+/obj/structure/closet/crate,
 /obj/structure/barricade/handrail,
 /obj/structure/barricade/handrail{
 	dir = 8;
@@ -760,7 +758,6 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/galleyburned/residential)
 "ka" = (
-/obj/structure/closet/crate/alpha,
 /obj/structure/machinery/light/double/blue/golden_arrow{
 	dir = 8;
 	light_power = 0.7
@@ -769,7 +766,15 @@
 	pixel_y = 28;
 	pixel_x = 15
 	},
-/turf/open/floor/almayer/cargo,
+/obj/structure/personal_stash,
+/obj/structure/window/reinforced/ultra{
+	dir = 1
+	},
+/obj/structure/window/reinforced/ultra{
+	dir = 8
+	},
+/obj/structure/window/reinforced/ultra,
+/turf/open/floor/almayer/plate,
 /area/galleyburned/requisition)
 "kd" = (
 /obj/effect/decal/cleanable/blood/oil,
@@ -1224,7 +1229,7 @@
 /obj/structure/machinery/door/poddoor/railing{
 	id = "supply_elevator_railing"
 	},
-/turf/open/floor/almayer/plate,
+/turf/open/floor/plating/plating_catwalk,
 /area/galleyburned/requisition)
 "qX" = (
 /obj/structure/machinery/cm_vending/sorted/marine_food,
@@ -1280,6 +1285,7 @@
 	dir = 4;
 	light_power = 0.7
 	},
+/obj/structure/closet/crate/alpha,
 /turf/open/floor/almayer/cargo,
 /area/galleyburned/requisition)
 "rQ" = (
@@ -1637,11 +1643,11 @@
 /turf/open/floor/almayer/cargo,
 /area/galleyburned/requisition)
 "xP" = (
-/obj/structure/closet/crate/charlie,
 /obj/structure/machinery/light/double/blue/golden_arrow{
 	dir = 8;
 	light_power = 0.7
 	},
+/obj/structure/closet/crate/charlie,
 /turf/open/floor/almayer/cargo,
 /area/galleyburned/requisition)
 "xV" = (
@@ -1711,51 +1717,22 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/galleyburned/requisition)
 "zd" = (
-/obj/structure/machinery/light/double/blue/golden_arrow{
-	light_power = 0.3
-	},
-/obj/structure/prop/hybrisa/misc/trash{
-	name = "automated ammunition press";
-	desc = "A modified autolathe which slowly produces ammunition every deployment. It can produce up to four magazines of nearly any gun."
-	},
-/obj/item/ammo_magazine/rifle/xm51{
-	pixel_x = -1;
-	pixel_y = 14
-	},
-/obj/item/ammo_magazine/rifle/xm51{
-	pixel_x = -1;
-	pixel_y = 14
-	},
-/obj/item/ammo_magazine/rifle/xm51{
-	pixel_x = -1;
-	pixel_y = 14
-	},
-/obj/item/ammo_magazine/rifle/xm51{
-	pixel_x = -1;
-	pixel_y = 14
-	},
-/turf/open/floor/plating,
-/area/galleyburned/residential)
-"zl" = (
-/turf/open/floor/almayer/empty/requisitions,
-/area/supply/station)
-"zo" = (
-/obj/structure/inventory_machine{
-	color = "#ff2222";
-	name = "Outdated ColMarTech Personal Stash Access Point"
+/obj/structure/window/reinforced/ultra{
+	dir = 1
 	},
 /obj/structure/window/reinforced/ultra{
 	dir = 4
 	},
-/obj/structure/window/reinforced/ultra{
-	dir = 8
-	},
-/obj/structure/machinery/light/double/blue/golden_arrow{
-	dir = 1;
-	light_power = 0.7
-	},
+/obj/structure/machinery/door/window/southleft,
 /turf/open/floor/plating/plating_catwalk,
-/area/galleyburned/stash)
+/area/galleyburned/requisition)
+"zl" = (
+/turf/open/floor/almayer/empty/requisitions,
+/area/supply/station)
+"zo" = (
+/obj/structure/window/framed/almayer,
+/turf/open/floor/almayer,
+/area/galleyburned/memorial)
 "zG" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "SW-out";
@@ -2374,7 +2351,6 @@
 	pixel_x = -1;
 	pixel_y = 3
 	},
-/obj/structure/closet/crate,
 /turf/open/floor/plating/plating_catwalk,
 /area/galleyburned/requisition)
 "HT" = (
@@ -3063,6 +3039,18 @@
 /area/galleyburned/residential)
 "Tl" = (
 /turf/open/floor/almayer,
+/area/galleyburned/requisition)
+"Tp" = (
+/obj/structure/machinery/light/double/blue/golden_arrow{
+	dir = 4;
+	light_power = 0.7
+	},
+/obj/structure/personal_stash,
+/obj/structure/window/reinforced/ultra{
+	dir = 1
+	},
+/obj/structure/window/reinforced/ultra,
+/turf/open/floor/almayer/plate,
 /area/galleyburned/requisition)
 "Ts" = (
 /obj/structure/sign/banners/upp_worn{
@@ -4062,7 +4050,7 @@ Jf
 Jf
 db
 XD
-dM
+zd
 Tl
 Tl
 XD
@@ -4183,7 +4171,7 @@ sE
 LW
 dQ
 Ry
-zo
+fq
 ny
 WE
 AJ
@@ -4478,7 +4466,7 @@ Jf
 Jf
 UZ
 wF
-dM
+cT
 Tl
 Tl
 XD
@@ -4530,7 +4518,7 @@ Jb
 Jf
 UZ
 XD
-rK
+Tp
 ea
 rK
 XD
@@ -4810,7 +4798,7 @@ kG
 eJ
 LR
 kF
-kG
+zo
 MW
 Im
 Im
@@ -4862,7 +4850,7 @@ kG
 hE
 jj
 dJ
-kG
+zo
 jp
 Im
 Im
@@ -5615,7 +5603,7 @@ rC
 yC
 yC
 yC
-zd
+rj
 JF
 Xx
 yC
