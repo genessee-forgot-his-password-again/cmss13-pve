@@ -1,7 +1,7 @@
 // weapons
 
 /datum/supply_packs/sh_rxfm5
-	name = "Weapon: RXF-M5 Pistol"
+	name = "Weapon: RXF-M5 Energy Pistol"
 	contains = list(/obj/item/weapon/gun/energy/rxfm5_eva)
 	cost = 20
 	containertype = /obj/structure/closet/crate/secure/weapon
@@ -13,7 +13,7 @@
 /datum/supply_packs/sh_gauze
 	name = "Medicine: Gauze"
 	contains = list(/obj/item/stack/medical/bruise_pack)
-	cost = 2.5
+	cost = 2
 	containertype = /obj/structure/closet/crate/medical
 	containername = "\improper gauze crate"
 	group = "Scholar LL0"
@@ -21,7 +21,7 @@
 /datum/supply_packs/sh_ointment
 	name = "Medicine: Burn Ointment"
 	contains = list(/obj/item/stack/medical/ointment)
-	cost = 2.5
+	cost = 2
 	containertype = /obj/structure/closet/crate/medical
 	containername = "\improper ointment crate"
 	group = "Scholar LL0"
@@ -45,43 +45,27 @@
 // meds__pills
 
 /datum/supply_packs/sh_bicab
-	name = "Medicine: Bicaridine Pill Bottle"
+	name = "Medicine: Bicaridine Pills, Bulk"
 	contains = list(/obj/item/storage/pill_bottle/bicaridine/skillless)
 	cost = 10
 	containertype = /obj/structure/closet/crate/medical
-	containername = "\improper bicaridine bottle crate"
+	containername = "\improper bicaridine pillbottle crate"
 	group = "Scholar LL0"
 
 /datum/supply_packs/sh_kelob
-	name = "Medicine: Kelotane Pill Bottle"
+	name = "Medicine: Kelotane Pills, Bulk"
 	contains = list(/obj/item/storage/pill_bottle/kelotane/skillless)
 	cost = 10
 	containertype = /obj/structure/closet/crate/medical
-	containername = "\improper kelotane bottle crate"
+	containername = "\improper kelotane pillbottle crate"
 	group = "Scholar LL0"
 
 /datum/supply_packs/sh_tramb
-	name = "Medicine: Tramadol Pill Bottle"
+	name = "Medicine: Tramadol Pills, Bulk"
 	contains = list(/obj/item/storage/pill_bottle/tramadol/skillless)
 	cost = 10
 	containertype = /obj/structure/closet/crate/medical
-	containername = "\improper tramadol bottle crate"
-	group = "Scholar LL0"
-
-/datum/supply_packs/sh_mysteryb
-	name = "Medicine: Mystery Pill Bottle"
-	contains = list(/obj/item/storage/pill_bottle/mystery/skillless)
-	cost = 2.5
-	containertype = /obj/structure/closet/crate/medical
-	containername = "\improper mystery bottle crate"
-	group = "Scholar LL0"
-
-/datum/supply_packs/sh_drugb
-	name = "Medicine: Space Drugs Pill Bottle"
-	contains = list(/obj/item/storage/pill_bottle/happy)
-	cost = 2.5
-	containertype = /obj/structure/closet/crate/medical
-	containername = "\improper space drugs bottle crate"
+	containername = "\improper tramadol pillbottle crate"
 	group = "Scholar LL0"
 
 // meds__pens
@@ -89,7 +73,7 @@
 /datum/supply_packs/sh_bicpen
 	name = "Medicine: Bicaridine Autoinjector"
 	contains = list(/obj/item/reagent_container/hypospray/autoinjector/bicaridine/skillless)
-	cost = 2.5
+	cost = 2
 	containertype = /obj/structure/closet/crate/medical
 	containername = "\improper bicaridine pen crate"
 	group = "Scholar LL0"
@@ -97,7 +81,7 @@
 /datum/supply_packs/sh_kelopen
 	name = "Medicine: Kelotane Autoinjector"
 	contains = list(/obj/item/reagent_container/hypospray/autoinjector/kelotane/skillless)
-	cost = 2.5
+	cost = 2
 	containertype = /obj/structure/closet/crate/medical
 	containername = "\improper kelotane pen crate"
 	group = "Scholar LL0"
@@ -105,7 +89,7 @@
 /datum/supply_packs/sh_trampen
 	name = "Medicine: Tramadol Autoinjector"
 	contains = list(/obj/item/reagent_container/hypospray/autoinjector/tramadol/skillless)
-	cost = 2.5
+	cost = 2
 	containertype = /obj/structure/closet/crate/medical
 	containername = "\improper tramadol pen crate"
 	group = "Scholar LL0"
@@ -113,59 +97,59 @@
 // storage
 
 /datum/supply_packs/sh_surgvestg
-	name = "Storage: Surgical Webbing Vest (Green)"
+	name = "Storage: Surgical Webbing Vest, Green"
 	contains = list(/obj/item/clothing/accessory/storage/surg_vest)
 	cost = 20
 	containertype = /obj/structure/closet/crate/secure/gear
-	containername = "\improper surgical webbing crate"
+	containername = "\improper green surgical webbing crate"
 	group = "Scholar LL0"
 
 /datum/supply_packs/sh_surgvestb
-	name = "Storage: Surgical Webbing Vest (Blue)"
+	name = "Storage: Surgical Webbing Vest, Blue"
 	contains = list(/obj/item/clothing/accessory/storage/surg_vest/blue)
 	cost = 20
 	containertype = /obj/structure/closet/crate/secure/gear
-	containername = "\improper surgical webbing crate"
+	containername = "\improper blue surgical webbing crate"
 	group = "Scholar LL0"
 
 /datum/supply_packs/sh_surgpouchg
-	name = "Storage: Surgical Drop Pouch (Green)"
+	name = "Storage: Surgical Drop Pouch, Green"
 	contains = list(/obj/item/clothing/accessory/storage/surg_vest/drop_green)
 	cost = 20
 	containertype = /obj/structure/closet/crate/secure/gear
-	containername = "\improper surgical pouch crate"
+	containername = "\improper green surgical pouch crate"
 	group = "Scholar LL0"
 
 /datum/supply_packs/sh_surgpouchb
-	name = "Storage: Surgical Drop Pouch (Blue)"
+	name = "Storage: Surgical Drop Pouch, Blue"
 	contains = list(/obj/item/clothing/accessory/storage/surg_vest/drop_blue)
 	cost = 20
 	containertype = /obj/structure/closet/crate/secure/gear
-	containername = "\improper surgical pouch crate"
+	containername = "\improper blue surgical pouch crate"
 	group = "Scholar LL0"
 
 /datum/supply_packs/sh_surgpouchk
-	name = "Storage: Surgical Drop Pouch (Black)"
+	name = "Storage: Surgical Drop Pouch, Black"
 	contains = list(/obj/item/clothing/accessory/storage/surg_vest/drop_black)
 	cost = 20
 	containertype = /obj/structure/closet/crate/secure/gear
-	containername = "\improper surgical pouch crate"
+	containername = "\improper black surgical pouch crate"
 	group = "Scholar LL0"
 
 /datum/supply_packs/sh_backpack
-	name = "Storage: Lightweight UPP Medical Backpack"
+	name = "Storage: Corpsman Backpack, UPP"
 	contains = list(/obj/item/storage/backpack/marine/medic/upp)
 	cost = 20
 	containertype = /obj/structure/closet/crate/secure/gear
-	containername = "\improper backpack crate"
+	containername = "\improper UPP corpsman backpack crate"
 	group = "Scholar LL0"
 
 /datum/supply_packs/sh_genpouch
-	name = "Storage: Type 41 Lifesaver Belt"
+	name = "Storage: Lifesaver Belt, UPP"
 	contains = list(/obj/item/storage/belt/medical/lifesaver/upp)
 	cost = 20
 	containertype = /obj/structure/closet/crate/secure/gear
-	containername = "\improper general pouch crate"
+	containername = "\improper UPP lifesaver belt crate"
 	group = "Scholar LL0"
 
 // tools
@@ -195,7 +179,7 @@
 	group = "Scholar LL0"
 
 /datum/supply_packs/sh_trans
-	name = "Tool: Expiremental Language Translator"
+	name = "Tool: Experimental Language Translator"
 	contains = list(/obj/item/clothing/accessory/health/research_plate/translator)
 	cost = 20
 	containertype = /obj/structure/closet/crate/secure/gear
@@ -205,7 +189,7 @@
 // vehicle tokens
 
 /datum/supply_packs/sh_ambulance
-	name = "Vehicle: Medical Ambulance Token"
+	name = "Vehicle: Civilian Van, Medical"
 	contains = list(/obj/item/coin/vehicletoken/boxvan/ambulance)
 	cost = 300
 	containertype = /obj/structure/closet/coffin/woodencrate
