@@ -103,7 +103,7 @@
 	group = "Scholar LL0"
 
 /datum/supply_packs/sh_trampen
-	name = "Medicine: Painkiller Autoinjector"
+	name = "Medicine: Tramadol Autoinjector"
 	contains = list(/obj/item/reagent_container/hypospray/autoinjector/tramadol/skillless)
 	cost = 2.5
 	containertype = /obj/structure/closet/crate/medical
