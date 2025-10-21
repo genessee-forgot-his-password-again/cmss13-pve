@@ -1,11 +1,11 @@
 // weapons
 
 /datum/supply_packs/sh_cn20
-	name = "Weapon: Type 8 Phosphorus Grenade"
+	name = "Weapon: Type 8 Incendiary Grenade"
 	contains = list(/obj/item/explosive/grenade/phosphorus/upp)
 	cost = 10
 	containertype = /obj/structure/closet/crate/explosives
-	containername = "\improper type 8 phosphorus grenade crate"
+	containername = "\improper type 8 incendiary grenade crate"
 	group = "Scholar LL2"
 	sh_lltwo = TRUE
 
@@ -45,7 +45,7 @@
 /datum/supply_packs/sh_ultrapen
 	name = "Medicine: Ultrazine Autoinjector"
 	contains = list(/obj/item/reagent_container/hypospray/autoinjector/ultrazine)
-	cost = 10
+	cost = 20
 	containertype = /obj/structure/closet/crate/medical
 	containername = "\improper ultrazine pen crate"
 	group = "Scholar LL2"
@@ -54,7 +54,7 @@
 /datum/supply_packs/sh_emerpluspen
 	name = "Medicine: Concentrated Adrenaline Autoinjector"
 	contains = list(/obj/item/reagent_container/hypospray/autoinjector/adrenaline_concentrated/skillless)
-	cost = 10
+	cost = 15
 	containertype = /obj/structure/closet/crate/medical
 	containername = "\improper concentrated adrenaline pen crate"
 	group = "Scholar LL2"
@@ -82,7 +82,7 @@
 /datum/supply_packs/sh_apc_medical
 	name = "Vehicle: Armored Personnel Carrier, Medical"
 	contains = list(/obj/item/coin/vehicletoken/apc/med)
-	cost = 2000
+	cost = 3250
 	containertype = /obj/structure/closet/coffin/woodencrate
 	containername = "\improper medical APC token crate"
 	group = "Scholar LL2"

@@ -5,7 +5,7 @@
 	contains = list(/obj/item/explosive/grenade/nerve_gas)
 	cost = 5
 	containertype = /obj/structure/closet/crate/explosives
-	containername = "\improper CN20 Nerve Gas grenade crate"
+	containername = "\improper nerve gas crate"
 	group = "Scholar LL1"
 	sh_llone = TRUE
 
@@ -32,20 +32,20 @@
 // meds__pills
 
 /datum/supply_packs/sh_antitoxpills_bulk
-	name = "Medicine: Anti Toxine Pills, Bulk"
+	name = "Medicine: Antitoxin Pills, Bulk"
 	contains = list(/obj/item/storage/pill_bottle/antitox/skillless)
 	cost = 15
 	containertype = /obj/structure/closet/crate/medical
-	containername = "\improper anti toxine pillbottle crate"
+	containername = "\improper antitoxin pillbottle crate"
 	group = "Scholar LL1"
 	sh_llone = TRUE
 
 /datum/supply_packs/sh_dexpills_bulk
-	name = "Medicine: Dexaline Pills, Bulk"
+	name = "Medicine: Oxyloss Pills, Bulk"
 	contains = list(/obj/item/storage/pill_bottle/dexalin/skillless)
 	cost = 15
 	containertype = /obj/structure/closet/crate/medical
-	containername = "\improper dexaline pillbottle crate"
+	containername = "\improper oxyloss pillbottle crate"
 	group = "Scholar LL1"
 	sh_llone = TRUE
 
@@ -61,7 +61,7 @@
 /datum/supply_packs/sh_tricpills
 	name = "Medicine: Tricordazine Pills"
 	contains = list(/obj/item/storage/pill_bottle/packet/tricordrazine)
-	cost = 10
+	cost = 8
 	containertype = /obj/structure/closet/crate/medical
 	containername = "\improper tricordazine pill crate"
 	group = "Scholar LL1"
@@ -70,34 +70,34 @@
 /datum/supply_packs/sh_tricpills_bulk
 	name = "Medicine: Tricordazine Pills, Bulk"
 	contains = list(/obj/item/storage/pill_bottle/tricord/skillless)
-	cost = 15
+	cost = 20
 	containertype = /obj/structure/closet/crate/medical
 	containername = "\improper tricordazine pillbottle crate"
 	group = "Scholar LL1"
 	sh_llone = TRUE
 
 /datum/supply_packs/sh_antitoxpen
-	name = "Medicine: Anti Toxine Autoinjector"
+	name = "Medicine: Antitoxin Autoinjector"
 	contains = list(/obj/item/reagent_container/hypospray/autoinjector/dylovene/skillless)
-	cost = 10
+	cost = 5
 	containertype = /obj/structure/closet/crate/medical
 	containername = "\improper anti toxine pen crate"
 	group = "Scholar LL1"
 	sh_llone = TRUE
 
 /datum/supply_packs/sh_dexpluspen
-	name = "Medicine: Dexaline Plus Autoinjector"
+	name = "Medicine: Advanced Oxyloss Autoinjector"
 	contains = list(/obj/item/reagent_container/hypospray/autoinjector/dexalinp/skillless)
-	cost = 15
+	cost = 10
 	containertype = /obj/structure/closet/crate/medical
-	containername = "\improper dexaline plus pen crate"
+	containername = "\improper advanced oxyloss pen crate"
 	group = "Scholar LL1"
 	sh_llone = TRUE
 
 /datum/supply_packs/sh_inopen
 	name = "Medicine: Inaprovaline Autoinjector"
 	contains = list(/obj/item/reagent_container/hypospray/autoinjector/inaprovaline/skillless)
-	cost = 15
+	cost = 5
 	containertype = /obj/structure/closet/crate/medical
 	containername = "\improper inaprovaline pen crate"
 	group = "Scholar LL1"
@@ -106,7 +106,7 @@
 /datum/supply_packs/sh_tricpen
 	name = "Medicine: Tricordazine Autoinjector"
 	contains = list(/obj/item/reagent_container/hypospray/autoinjector/tricord/skillless)
-	cost = 15
+	cost = 8
 	containertype = /obj/structure/closet/crate/medical
 	containername = "\improper tricordazine pen crate"
 	group = "Scholar LL1"
@@ -155,7 +155,7 @@
 /datum/supply_packs/sh_gasmask
 	name = "Tool: M5 Gasmask"
 	contains = list(/obj/item/clothing/mask/gas/military)
-	cost = 20
+	cost = 10
 	containertype = /obj/structure/closet/crate/secure/gear
 	containername = "\improper M5 gasmask crate"
 	group = "Scholar LL1"
