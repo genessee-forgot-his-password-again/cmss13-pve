@@ -279,7 +279,7 @@
 
 /obj/item/pamphlet/skill/specialization
 	name = "Rifleman Specialization Book"
-	desc = "A worn training manual detailing platoon roles and HUD protocols. Its pages are mostly blank, suggesting it was never fully issued."
+	desc = "A worn training handbook detailing platoon roles and HUD protocols. Its pages are mostly blank, suggesting it was never fully issued."
 	icon = 'icons/obj/items/books.dmi'
 	icon_state = "book_black"
 	trait = /datum/character_trait/skills/intel	//Just a placeholder trait to give so it doesn't freak the fuck out
@@ -311,7 +311,7 @@
 	GLOB.data_core.manifest_modify(user.real_name, WEAKREF(user), "Rifleman")
 
 /obj/item/pamphlet/skill/specialization/supmed
-	name = "Support Medic Field Manual"
+	name = "Support Medic Book"
 	desc = "A compact handbook on frontline medical aid and squad support. The pages are smudged with antiseptic and field notes."
 	icon_state = "book_medical"
 
@@ -325,7 +325,7 @@
 	GLOB.data_core.manifest_modify(user.real_name, WEAKREF(user), "Support Medic")
 
 /obj/item/pamphlet/skill/specialization/vehcrew
-	name = "Vehicle Crew Field Manual"
+	name = "Vehicle Crew Book"
 	desc = "A compact handbook detailing vehicle operation, crew coordination, emergency repairs, and combat deployment procedures. The cover is scuffed with oil stains and carbon dust."
 	icon_state = "book_particle"
 
@@ -339,7 +339,7 @@
 	GLOB.data_core.manifest_modify(user.real_name, WEAKREF(user), "Vehicle Crew")
 
 /obj/item/pamphlet/skill/specialization/comtech
-	name = "Combat Technician Field Manual"
+	name = "Combat Technician Book"
 	desc = "A slim handbook detailing fortification setup, field repairs, and electronic support for frontline operations. The cover is marked with worn engineering schematics."
 	icon_state = "book_engineering"
 
@@ -353,7 +353,7 @@
 	GLOB.data_core.manifest_modify(user.real_name, WEAKREF(user), "Combat Technician")
 
 /obj/item/pamphlet/skill/specialization/pointman
-	name = "Pointman Field Manual"
+	name = "Pointman Book"
 	desc = "A compact handbook detailing breaching tactics, room entry procedures, and frontline coordination for pointmen. The cover is worn from use in the field."
 	icon_state = "book_piping"
 
@@ -367,7 +367,7 @@
 	GLOB.data_core.manifest_modify(user.real_name, WEAKREF(user), "Pointman")
 
 /obj/item/pamphlet/skill/specialization/astl
-	name = "Assistant Squad Lead Field Manual"
+	name = "Assistant Squad Lead Book"
 	desc = "A concise handbook guide covering squad coordination, basic command routines, and support leadership duties. Notes and markings suggest it's been passed between junior leaders."
 	icon_state = "book_law"
 
@@ -381,7 +381,7 @@
 	GLOB.data_core.manifest_modify(user.real_name, WEAKREF(user), "Assistant Squad Lead")
 
 /obj/item/pamphlet/skill/specialization/machinegunner
-	name = "Machine Gunner Field Manual"
+	name = "Machine Gunner Book"
 	desc = "A rugged handbook outlining suppression tactics, firing lane control, and sustained fire procedures for platoon machine gunners. The cover is worn from repeated handling."
 	icon_state = "book_sop"
 
@@ -395,7 +395,7 @@
 	GLOB.data_core.manifest_modify(user.real_name, WEAKREF(user), "Machinegunner")
 
 /obj/item/pamphlet/skill/specialization/sniper
-	name = "Sniper Field Manual"
+	name = "Sniper Book"
 	desc = "A concise handbook detailing marksmanship techniques, spotting protocols, and long-range engagement doctrine for designated marksmen. Its cover is lined with precise sighting diagrams."
 	icon_state = "book_green"
 
