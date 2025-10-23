@@ -387,7 +387,7 @@
 /area/galleyburned/residential)
 "eZ" = (
 /obj/item/prop/tableflag{
-	pixel_x = 6;
+	pixel_x = 0;
 	pixel_y = 15
 	},
 /obj/structure/machinery/prop/almayer/CICmap/table/horizontal/segment/five,
@@ -1052,12 +1052,12 @@
 "ns" = (
 /obj/structure/machinery/prop/almayer/CICmap/table/horizontal/segment/two,
 /obj/item/pamphlet/skill/specialization{
-	pixel_x = -1;
-	pixel_y = 22
-	},
-/obj/item/pamphlet/skill/specialization/vehcrew{
-	pixel_x = 13;
+	pixel_x = 11;
 	pixel_y = 16
+	},
+/obj/item/pamphlet/skill/specialization{
+	pixel_x = 12;
+	pixel_y = 19
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/galleyburned/briefing)
@@ -2417,6 +2417,10 @@
 /obj/item/pamphlet/skill/specialization/supmed{
 	pixel_x = -5;
 	pixel_y = 12
+	},
+/obj/item/pamphlet/skill/specialization/vehcrew{
+	pixel_x = -4;
+	pixel_y = 15
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/galleyburned/briefing)

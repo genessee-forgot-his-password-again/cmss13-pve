@@ -30,8 +30,7 @@ GLOBAL_LIST_INIT(cm_vending_extraction, list(
 		list("Magazine Pouch", 0, /obj/item/storage/pouch/magazine, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_REGULAR),
 		list("Shotgun Shell Pouch", 0, /obj/item/storage/pouch/shotgun, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_REGULAR),
 
-		list("SPECIALIZATION (CHOOSE 1)", 0, null, null, null),
-		list("Rifleman", 0, /obj/item/pamphlet/skill/specialization, MARINE_CAN_BUY_KIT, VENDOR_ITEM_RECOMMENDED),
+		list("COSMETIC SPECIALIZATION (CHOOSE 1)", 0, null, null, null),
 		list("Support Medic", 0, /obj/item/pamphlet/skill/specialization/supmed, MARINE_CAN_BUY_KIT, VENDOR_ITEM_REGULAR),
 		list("Vehicle Crew", 0, /obj/item/pamphlet/skill/specialization/vehcrew, MARINE_CAN_BUY_KIT, VENDOR_ITEM_REGULAR),
 		list("Combat Technician", 0, /obj/item/pamphlet/skill/specialization/comtech, MARINE_CAN_BUY_KIT, VENDOR_ITEM_REGULAR),
