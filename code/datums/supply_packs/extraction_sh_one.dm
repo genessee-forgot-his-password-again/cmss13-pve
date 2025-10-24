@@ -9,7 +9,7 @@
 	group = "Scholar LL1"
 	sh_llone = TRUE
 
-/datum/supply_packs/sh_cn20
+/datum/supply_packs/sh_lazuzi
 	name = "Weapon: Laser UZI"
 	contains = list(/obj/item/weapon/gun/energy/laz_uzi)
 	cost = 50
