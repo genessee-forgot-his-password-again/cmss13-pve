@@ -120,7 +120,7 @@
 	muzzle_flash_color = COLOR_LASER_RED
 	fire_sound = 'sound/weapons/Laser4.ogg'
 	w_class = SIZE_SMALL
-	charge_cost = 100 //actually reliable sidearm now
+	charge_cost = 80 //actually reliable sidearm now
 	gun_category = GUN_CATEGORY_HANDGUN
 	flags_equip_slot = SLOT_WAIST
 	flags_gun_features = GUN_CAN_POINTBLANK|GUN_AMMO_COUNTER|GUN_ONE_HAND_WIELDED
