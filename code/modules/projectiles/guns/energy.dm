@@ -120,7 +120,7 @@
 	muzzle_flash_color = COLOR_LASER_RED
 	fire_sound = 'sound/weapons/Laser4.ogg'
 	w_class = SIZE_SMALL
-	charge_cost = 80 //actually reliable sidearm now
+	charge_cost = 100 //actually reliable sidearm now 100 shots no reload
 	gun_category = GUN_CATEGORY_HANDGUN
 	flags_equip_slot = SLOT_WAIST
 	flags_gun_features = GUN_CAN_POINTBLANK|GUN_AMMO_COUNTER|GUN_ONE_HAND_WIELDED
@@ -180,7 +180,7 @@
 	gun_category = GUN_CATEGORY_SMG
 	flags_equip_slot = SLOT_WAIST
 	w_class = SIZE_MEDIUM
-	charge_cost = 80 //Accuracy fucking terrible, cant be reloaded in any way, no way to recharge, may change back if i add portable rechargers
+	charge_cost = 50 //200 shots no reload
 	ammo = /datum/ammo/energy/laz_uzi
 	fire_sound = 'sound/weapons/Laser4.ogg'
 	has_charge_meter = FALSE
