@@ -194,12 +194,12 @@
 	set_burst_amount(BURST_AMOUNT_TIER_2)
 	accuracy_mult = BASE_ACCURACY_MULT - HIT_ACCURACY_MULT_TIER_3
 	accuracy_mult_unwielded = BASE_ACCURACY_MULT - HIT_ACCURACY_MULT_TIER_7
-	scatter = SCATTER_AMOUNT_TIER_2 // the uzi can shoot behind itself what the FUCK
-	burst_scatter_mult = SCATTER_AMOUNT_TIER_5
-	scatter_unwielded = SCATTER_AMOUNT_TIER_6
+	scatter = SCATTER_AMOUNT_TIER_8 // the uzi could shoot behind itself before what the FUCK
+	burst_scatter_mult = SCATTER_AMOUNT_TIER_7
+	scatter_unwielded = SCATTER_AMOUNT_TIER_1
 	damage_mult = BASE_BULLET_DAMAGE_MULT
 	recoil_unwielded = RECOIL_AMOUNT_TIER_5
-	fa_scatter_peak = SCATTER_AMOUNT_TIER_2
+	fa_scatter_peak = SCATTER_AMOUNT_TIER_9
 
 //############################ Taser ##################
 // Lots of bits for it so splitting off an area
