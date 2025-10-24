@@ -75,7 +75,14 @@
 
 // tools
 
-// no tools this tier!
+/datum/supply_packs/sh_nvg
+	name = "Tool: Night Vision implanter (REUSEABLE)"
+	contains = list(/obj/item/device/implanter/nvg)
+	cost = 100
+	containertype = /obj/structure/closet/crate/secure/gear
+	containername = "\improper Night Vision implanter crate"
+	group = "Scholar LL2"
+	sh_lltwo = TRUE
 
 // vehicle tokens
 

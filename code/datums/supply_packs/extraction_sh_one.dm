@@ -9,6 +9,15 @@
 	group = "Scholar LL1"
 	sh_llone = TRUE
 
+/datum/supply_packs/sh_cn20
+	name = "Weapon: Laser UZI"
+	contains = list(/obj/item/weapon/gun/energy/laz_uzi)
+	cost = 50
+	containertype = /obj/structure/closet/crate/secure/gear
+	containername = "\improper Laser UZI crate"
+	group = "Scholar LL1"
+	sh_llone = TRUE
+
 // meds
 
 /datum/supply_packs/sh_advgause
@@ -170,6 +179,25 @@
 	group = "Scholar LL1"
 	sh_llone = TRUE
 
+// implanters refresh on round end
+
+/datum/supply_packs/sh_subdermal
+	name = "Tool: Subdermal Armor implanter (REUSEABLE)"
+	contains = list(/obj/item/device/implanter/subdermal_armor)
+	cost = 100
+	containertype = /obj/structure/closet/crate/secure/gear
+	containername = "\improper Subdermal Armor implanter crate"
+	group = "Scholar LL1"
+	sh_llone = TRUE
+
+/datum/supply_packs/sh_agility
+	name = "Tool: Agility Booster implanter (REUSEABLE)"
+	contains = list(/obj/item/device/implanter/agility)
+	cost = 100
+	containertype = /obj/structure/closet/crate/secure/gear
+	containername = "\improper Agility Booster implanter crate"
+	group = "Scholar LL1"
+	sh_llone = TRUE
 // vehicle tokens
 
 //no vehicle tokens this tier!
