@@ -1985,3 +1985,127 @@ GLOBAL_LIST_INIT(rebel_ua_pistols, list(
 		/obj/item/clothing/glasses/sunglasses/aviator,
 	)
 	new_human.equip_to_slot_or_del(new helmeteyewearpath, WEAR_IN_HELMET)
+
+// SCAVS //
+
+/datum/equipment_preset/proc/scav_satchel(mob/living/carbon/human/new_human)
+	if(!istype(new_human))
+		return
+	var/random_satchel = pick(
+		/obj/item/storage/backpack/satchel,
+		/obj/item/storage/backpack/satchel/black,
+		/obj/item/storage/backpack/satchel/blue,
+		/obj/item/storage/backpack/satchel/chem,
+		/obj/item/storage/backpack/satchel/gen,
+		/obj/item/storage/backpack/satchel/vir,
+		/obj/item/storage/backpack/satchel/tox,
+		/obj/item/storage/backpack/satchel/med,
+		/obj/item/storage/backpack/satchel/eng,
+		/obj/item/storage/backpack/satchel/hyd,
+		/obj/item/storage/backpack/satchel/norm,
+		/obj/item/storage/backpack/satchel/sec,
+		)
+	new_human.equip_to_slot_or_del(new random_satchel, WEAR_BACK)
+
+/datum/equipment_preset/proc/scav_facewrap(mob/living/carbon/human/new_human)
+	if(!istype(new_human))
+		return
+	var/random_facewrap = pick(
+		/obj/item/clothing/mask/rebreather/scarf/tacticalmask,
+		/obj/item/clothing/mask/rebreather/scarf/tacticalmask/red,
+		/obj/item/clothing/mask/rebreather/scarf/tacticalmask/green,
+		/obj/item/clothing/mask/rebreather/scarf/tacticalmask/tan,
+		/obj/item/clothing/mask/rebreather/scarf/tacticalmask/black,
+		/obj/item/clothing/mask/rebreather/scarf/tacticalmask/alpha,
+		/obj/item/clothing/mask/rebreather/scarf/tacticalmask/bravo,
+		/obj/item/clothing/mask/rebreather/scarf/tacticalmask/charlie,
+		/obj/item/clothing/mask/rebreather/scarf/tacticalmask/delta,
+		/obj/item/clothing/mask/rebreather/scarf/tacticalmask/echo,
+		/obj/item/clothing/mask/rebreather/scarf/tacticalmask/foxtrot,
+		/obj/item/clothing/mask/tornscarf,
+		/obj/item/clothing/mask/tornscarf/green,
+		/obj/item/clothing/mask/tornscarf/snow,
+		/obj/item/clothing/mask/tornscarf/desert,
+		/obj/item/clothing/mask/tornscarf/urban,
+		/obj/item/clothing/mask/tornscarf/black,
+		/obj/item/clothing/mask/neckerchief,
+		/obj/item/clothing/mask/neckerchief/gray,
+		/obj/item/clothing/mask/neckerchief/green,
+		/obj/item/clothing/mask/neckerchief/black,
+		/obj/item/clothing/mask/neckerchief/red,
+		/obj/item/clothing/mask/gas,
+		/obj/item/clothing/mask/rebreather,
+		/obj/item/clothing/mask/cigarette,
+		/obj/item/clothing/mask/fakemoustache,
+		/obj/item/clothing/mask/surgical,
+		)
+
+/datum/equipment_preset/proc/scav_uniform(mob/living/carbon/human/new_human)
+	if(!istype(new_human))
+		return
+	var/uniformpath = pick(
+// colonist
+		/obj/item/clothing/under/colonist/workwear,
+		/obj/item/clothing/under/colonist/workwear/khaki,
+		/obj/item/clothing/under/colonist/workwear/pink,
+		/obj/item/clothing/under/colonist/workwear/blue,
+		/obj/item/clothing/under/colonist/workwear/green,
+		/obj/item/clothing/under/colonist/boilersuit,
+		/obj/item/clothing/under/colonist/boilersuit/darkblue,
+		/obj/item/clothing/under/colonist/boilersuit/khaki,
+		/obj/item/clothing/under/colonist/boilersuit/white,
+		/obj/item/clothing/under/colonist/boilersuit/cyan,
+		/obj/item/clothing/under/colonist/boilersuit/grey,
+		/obj/item/clothing/under/colonist/prison_boiler,
+		/obj/item/clothing/under/colonist/clf,
+		/obj/item/clothing/under/color/black,
+		/obj/item/clothing/under/color/blue,
+		/obj/item/clothing/under/color/green,
+		/obj/item/clothing/under/color/grey,
+		/obj/item/clothing/under/color/white,
+		/obj/item/clothing/under/color/yellow,
+		/obj/item/clothing/under/lightbrown,
+		/obj/item/clothing/under/brown,
+		/obj/item/clothing/under/lightred,
+		/obj/item/clothing/under/darkred,
+		/obj/item/clothing/under/color/orange,
+		/obj/item/clothing/under/colonist/ua_civvies,
+		/obj/item/clothing/under/pizza,
+// factions
+		/obj/item/clothing/under/marine/veteran/canc,
+		/obj/item/clothing/under/marine/veteran/UPP,
+		/obj/item/clothing/under/marine/veteran/UPP/boiler,
+		/obj/item/clothing/under/marine/veteran/freelancer,
+		/obj/item/clothing/under/marine/ua_riot,
+		)
+	var/obj/item/clothing/under/uniform = new uniformpath
+	var/random_uniform = rand(1,2)
+	switch(random_uniform)
+		if(1)
+			uniform.roll_suit_jacket(new_human)
+		if(2)
+			uniform.roll_suit_sleeves(new_human)
+	new_human.equip_to_slot_or_del(uniform, WEAR_BODY)
+
+/datum/equipment_preset/proc/scav_shoes(mob/living/carbon/human/new_human)
+	if(!istype(new_human))
+		return
+	var/shoespath = pick(
+		/obj/item/clothing/shoes/black,
+		/obj/item/clothing/shoes/brown,
+		/obj/item/clothing/shoes/blue,
+		/obj/item/clothing/shoes/green,
+		/obj/item/clothing/shoes/yellow,
+		/obj/item/clothing/shoes/purple,
+		/obj/item/clothing/shoes/red/knife,
+		/obj/item/clothing/shoes/white,
+		/obj/item/clothing/shoes/orange,
+		/obj/item/clothing/shoes/jackboots,
+		/obj/item/clothing/shoes/marine/civilian,
+		/obj/item/clothing/shoes/marine/civilian/brown,
+		/obj/item/clothing/shoes/marine/civilian/knife,
+		/obj/item/clothing/shoes/marine/knife,
+		/obj/item/clothing/shoes/marine/jungle/knife,
+		/obj/item/clothing/shoes/marine/rmc,
+		)
+	new_human.equip_to_slot_or_del(new shoespath, WEAR_FEET)
