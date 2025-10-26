@@ -12,7 +12,7 @@
 /datum/supply_packs/sh_lazuzi
 	name = "Weapon: Laser UZI"
 	contains = list(/obj/item/weapon/gun/energy/laz_uzi)
-	cost = 50
+	cost = 75
 	containertype = /obj/structure/closet/crate/secure/gear
 	containername = "\improper Laser UZI crate"
 	group = "Scholar LL1"
@@ -182,16 +182,16 @@
 // implanters refresh on round end
 
 /datum/supply_packs/sh_subdermal
-	name = "Tool: Subdermal Armor implanter (REUSEABLE)"
+	name = "Tool: Reusable Implanter, Armor"
 	contains = list(/obj/item/device/implanter/subdermal_armor)
-	cost = 100
+	cost = 800
 	containertype = /obj/structure/closet/crate/secure/gear
 	containername = "\improper Subdermal Armor implanter crate"
 	group = "Scholar LL1"
 	sh_llone = TRUE
 
 /datum/supply_packs/sh_agility
-	name = "Tool: Agility Booster implanter (REUSEABLE)"
+	name = "Tool: Reusable Implanter, Agility"
 	contains = list(/obj/item/device/implanter/agility)
 	cost = 100
 	containertype = /obj/structure/closet/crate/secure/gear
