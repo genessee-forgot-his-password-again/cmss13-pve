@@ -193,7 +193,7 @@
 /datum/supply_packs/sh_agility
 	name = "Tool: Reusable Implanter, Agility"
 	contains = list(/obj/item/device/implanter/agility)
-	cost = 100
+	cost = 1000
 	containertype = /obj/structure/closet/crate/secure/gear
 	containername = "\improper Agility Booster implanter crate"
 	group = "Scholar LL1"
