@@ -182,7 +182,7 @@
 // implanters refresh on round end
 
 /datum/supply_packs/sh_subdermal
-	name = "Tool: Subdermal Armor implanter (REUSEABLE)"
+	name = "Tool: Reusable Implanter, Armor"
 	contains = list(/obj/item/device/implanter/subdermal_armor)
 	cost = 800
 	containertype = /obj/structure/closet/crate/secure/gear
