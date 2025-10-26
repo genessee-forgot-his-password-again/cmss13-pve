@@ -1988,24 +1988,90 @@ GLOBAL_LIST_INIT(rebel_ua_pistols, list(
 
 // SCAVS //
 
-/datum/equipment_preset/proc/scav_satchel(mob/living/carbon/human/new_human)
+/datum/equipment_preset/proc/scav_head(mob/living/carbon/human/new_human)
 	if(!istype(new_human))
 		return
-	var/random_satchel = pick(
-		/obj/item/storage/backpack/satchel,
-		/obj/item/storage/backpack/satchel/black,
-		/obj/item/storage/backpack/satchel/blue,
-		/obj/item/storage/backpack/satchel/chem,
-		/obj/item/storage/backpack/satchel/gen,
-		/obj/item/storage/backpack/satchel/vir,
-		/obj/item/storage/backpack/satchel/tox,
-		/obj/item/storage/backpack/satchel/med,
-		/obj/item/storage/backpack/satchel/eng,
-		/obj/item/storage/backpack/satchel/hyd,
-		/obj/item/storage/backpack/satchel/norm,
-		/obj/item/storage/backpack/satchel/sec,
+	var/headpath = pick(
+		/obj/item/clothing/head/beanie,
+		/obj/item/clothing/head/beanie/green,
+		/obj/item/clothing/head/beanie/gray,
+		/obj/item/clothing/head/beanie/tan,
+		/obj/item/clothing/head/beret/cm,
+		/obj/item/clothing/head/beret/cm/black/civilian,
+		/obj/item/clothing/head/beret/cm/red,
+		/obj/item/clothing/head/beret/cm/green,
+		/obj/item/clothing/head/beret/cm/tan,
+		/obj/item/clothing/head/beret/cm/white/civilian,
+		/obj/item/clothing/head/beret/eng,
+		/obj/item/clothing/head/beret/jan,
+		/obj/item/clothing/head/beret/sec,
+		/obj/item/clothing/head/beret/sec/alt,
+		/obj/item/clothing/head/feathertrilby,
+		/obj/item/clothing/head/cmcap,
+		/obj/item/clothing/head/cmcap/khaki,
+		/obj/item/clothing/head/cmcap/snow,
+		/obj/item/clothing/head/cmcap/desert,
+		/obj/item/clothing/head/cmcap/boonie,
+		/obj/item/clothing/head/cmcap/boonie/tan,
+		/obj/item/clothing/head/cmcap/boonie/snow,
+		/obj/item/clothing/head/cmcap/flap,
+		/obj/item/clothing/head/cmcap/flap/desert,
+		/obj/item/clothing/head/cmcap/flap/snow,
+		/obj/item/clothing/head/cmcap/flap/canc,
+		/obj/item/clothing/head/cmcap/reporter,
+		/obj/item/clothing/head/cowboy,
+		/obj/item/clothing/head/cowboy/light,
+		/obj/item/clothing/head/fez,
+		/obj/item/clothing/head/greenbandana,
+		/obj/item/clothing/head/headband,
+		/obj/item/clothing/head/headband/red,
+		/obj/item/clothing/head/headband/tan,
+		/obj/item/clothing/head/headband/brown,
+		/obj/item/clothing/head/headband/gray,
+		/obj/item/clothing/head/headband/rebel,
+		/obj/item/clothing/head/headset,
+		/obj/item/clothing/head/soft,
+		/obj/item/clothing/head/soft/red,
+		/obj/item/clothing/head/soft/blue,
+		/obj/item/clothing/head/soft/green,
+		/obj/item/clothing/head/soft/yellow,
+		/obj/item/clothing/head/soft/grey,
+		/obj/item/clothing/head/soft/orange,
+		/obj/item/clothing/head/soft/purple,
+		/obj/item/clothing/head/soft/ferret,
+		/obj/item/clothing/head/soft/trucker,
+		/obj/item/clothing/head/soft/trucker/red,
+		/obj/item/clothing/head/soft/sec,
+		/obj/item/clothing/head/uppcap, // very low armor
+		/obj/item/clothing/head/uppcap/civi,
+		/obj/item/clothing/head/uppcap/boonie,
+		/obj/item/clothing/head/uppcap/boonie/canc,
+		/obj/item/clothing/head/uppcap/beret/guerilla,
+		/obj/item/clothing/head/uppcap/beret,
+		/obj/item/clothing/head/uppcap/ushanka,
+		/obj/item/clothing/head/uppcap/ushanka/civi,
 		)
-	new_human.equip_to_slot_or_del(new random_satchel, WEAR_BACK)
+	new_human.equip_to_slot_or_del(new headpath, WEAR_HEAD)
+
+/datum/equipment_preset/proc/scav_eyes(mob/living/carbon/human/new_human)
+	if(!istype(new_human))
+		return
+	var/eyespath = pick(
+		/obj/item/clothing/glasses/eyepatch,
+		/obj/item/clothing/glasses/eyepatch/green,
+		/obj/item/clothing/glasses/gglasses,
+		/obj/item/clothing/glasses/kutjevo,
+		/obj/item/clothing/glasses/meson,
+		/obj/item/clothing/glasses/regular,
+		/obj/item/clothing/glasses/regular/hipster,
+		/obj/item/clothing/glasses/sunglasses,
+		/obj/item/clothing/glasses/sunglasses/aviator,
+		/obj/item/clothing/glasses/sunglasses/big,
+		/obj/item/clothing/glasses/sunglasses/big/classic,
+		/obj/item/clothing/glasses/threedglasses,
+		/obj/item/clothing/glasses/welding,
+		)
+	new_human.equip_to_slot_or_del(new eyespath, WEAR_EYES)
 
 /datum/equipment_preset/proc/scav_facewrap(mob/living/carbon/human/new_human)
 	if(!istype(new_human))
@@ -2039,6 +2105,7 @@ GLOBAL_LIST_INIT(rebel_ua_pistols, list(
 		/obj/item/clothing/mask/fakemoustache,
 		/obj/item/clothing/mask/surgical,
 		)
+	new_human.equip_to_slot_or_del(new random_facewrap, WEAR_FACE)
 
 /datum/equipment_preset/proc/scav_uniform(mob/living/carbon/human/new_human)
 	if(!istype(new_human))
@@ -2087,6 +2154,86 @@ GLOBAL_LIST_INIT(rebel_ua_pistols, list(
 			uniform.roll_suit_sleeves(new_human)
 	new_human.equip_to_slot_or_del(uniform, WEAR_BODY)
 
+/datum/equipment_preset/proc/scav_accessory(mob/living/carbon/human/new_human)
+	if(!istype(new_human))
+		return
+	var/accessorypath = pick(
+		/obj/item/clothing/accessory/armband,
+		/obj/item/clothing/accessory/armband/cargo,
+		/obj/item/clothing/accessory/armband/engine,
+		/obj/item/clothing/accessory/armband/science,
+		/obj/item/clothing/accessory/armband/hydro,
+		/obj/item/clothing/accessory/armband/med,
+		/obj/item/clothing/accessory/armband/medgreen,
+		/obj/item/clothing/accessory/armband/nurse,
+		/obj/item/clothing/accessory/armband/mpsec,
+		/obj/item/clothing/accessory/flak,
+		/obj/item/clothing/accessory/flak/od,
+		/obj/item/clothing/accessory/holobadge,
+		/obj/item/clothing/accessory/holobadge/cord,
+		/obj/item/clothing/accessory/stethoscope,
+		/obj/item/clothing/accessory/wrist/watch,
+		/obj/item/clothing/accessory/wrist/watch/bishop,
+		/obj/item/clothing/accessory/wrist/watch/ripley,
+		/obj/item/clothing/accessory/wrist/watch/burke,
+		/obj/item/clothing/accessory/wrist/watch/dallas,
+	)
+	new_human.equip_to_slot_or_del(new accessorypath, WEAR_ACCESSORY)
+
+/datum/equipment_preset/proc/scav_suit(mob/living/carbon/human/new_human)
+	if(!istype(new_human))
+		return
+	var/suitpath = pick(
+		/obj/item/clothing/suit/storage/hazardvest,
+		/obj/item/clothing/suit/storage/hazardvest/blue,
+		/obj/item/clothing/suit/storage/hazardvest/yellow,
+		/obj/item/clothing/suit/storage/hazardvest/black,
+		/obj/item/clothing/suit/storage/hazardvest/medical_green,
+		/obj/item/clothing/suit/storage/hazardvest/medical_red,
+		/obj/item/clothing/suit/storage/hazardvest/kelland_mining,
+		/obj/item/clothing/suit/storage/hazardvest/sanitation,
+		/obj/item/clothing/suit/storage/hazardvest/weymart,
+		/obj/item/clothing/suit/storage/bomber,
+		/obj/item/clothing/suit/storage/bomber/alt,
+		/obj/item/clothing/suit/storage/webbing,
+		/obj/item/clothing/suit/storage/jacket/marine/reporter,
+		/obj/item/clothing/suit/storage/jacket/marine/reporter/green,
+		/obj/item/clothing/suit/storage/jacket/marine/reporter/black,
+		/obj/item/clothing/suit/storage/jacket/marine/reporter/blue,
+		/obj/item/clothing/suit/storage/jacket/marine/vest,
+		/obj/item/clothing/suit/storage/jacket/marine/vest/tan,
+		/obj/item/clothing/suit/storage/jacket/marine/vest/grey,
+		/obj/item/clothing/suit/storage/snow_suit/survivor/parka,
+		/obj/item/clothing/suit/storage/snow_suit/survivor/parka/red,
+		/obj/item/clothing/suit/storage/snow_suit/survivor/parka/navy,
+		/obj/item/clothing/suit/storage/snow_suit/survivor/parka/yellow,
+		/obj/item/clothing/suit/storage/snow_suit/survivor/parka/green,
+		/obj/item/clothing/suit/storage/snow_suit/survivor/parka/purple,
+		/obj/item/clothing/suit/storage/utility_vest,
+		/obj/item/clothing/suit/storage/windbreaker/windbreaker_brown,
+		/obj/item/clothing/suit/storage/windbreaker/windbreaker_gray,
+		/obj/item/clothing/suit/storage/windbreaker/windbreaker_green,
+		/obj/item/clothing/suit/storage/windbreaker/windbreaker_blue,
+		/obj/item/clothing/suit/storage/windbreaker/windbreaker_yellow,
+		/obj/item/clothing/suit/storage/windbreaker/windbreaker_fr,
+		/obj/item/clothing/suit/storage/windbreaker/windbreaker_covenant,
+		)
+	new_human.equip_to_slot_or_del(new suitpath, WEAR_JACKET)
+
+/datum/equipment_preset/proc/scav_gloves(mob/living/carbon/human/new_human)
+	if(!istype(new_human))
+		return
+	var/glovespath = pick(
+		/obj/item/clothing/gloves/botanic_leather/generic,
+		/obj/item/clothing/gloves/fyellow,
+		/obj/item/clothing/gloves/light_brown,
+		/obj/item/clothing/gloves/marine/brown/fingerless,
+		/obj/item/clothing/gloves/marine/fingerless,
+		/obj/item/clothing/gloves/marine/veteran/royal_marine,
+		/obj/item/clothing/gloves/marine,
+		)
+	new_human.equip_to_slot_or_del(new glovespath, WEAR_HANDS)
+
 /datum/equipment_preset/proc/scav_shoes(mob/living/carbon/human/new_human)
 	if(!istype(new_human))
 		return
@@ -2109,3 +2256,23 @@ GLOBAL_LIST_INIT(rebel_ua_pistols, list(
 		/obj/item/clothing/shoes/marine/rmc,
 		)
 	new_human.equip_to_slot_or_del(new shoespath, WEAR_FEET)
+
+/datum/equipment_preset/proc/scav_satchel(mob/living/carbon/human/new_human)
+	if(!istype(new_human))
+		return
+	var/random_satchel = pick(
+		/obj/item/storage/backpack/satchel,
+		/obj/item/storage/backpack/satchel/black,
+		/obj/item/storage/backpack/satchel/blue,
+		/obj/item/storage/backpack/satchel/chem,
+		/obj/item/storage/backpack/satchel/gen,
+		/obj/item/storage/backpack/satchel/vir,
+		/obj/item/storage/backpack/satchel/tox,
+		/obj/item/storage/backpack/satchel/med,
+		/obj/item/storage/backpack/satchel/eng,
+		/obj/item/storage/backpack/satchel/hyd,
+		/obj/item/storage/backpack/satchel/norm,
+		/obj/item/storage/backpack/satchel/sec,
+		)
+	new_human.equip_to_slot_or_del(new random_satchel, WEAR_BACK)
+
