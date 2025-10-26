@@ -58,15 +58,15 @@
 	//face
 	if(prob(40))
 		scav_head(new_human)
-	if(prob(20))
+	if(prob(30))
 		scav_facewrap(new_human)
-	if(prob(10))
+	if(prob(20))
 		scav_eyes(new_human)
 	//uniform
 	scav_uniform(new_human)
-	if(prob(25))
-		scav_accessory(new_human)
 	if(prob(30))
+		scav_accessory(new_human)
+	if(prob(50))
 		scav_suit(new_human)
 	//waist
 	switch(scav_weapon)
