@@ -12,7 +12,7 @@
 /datum/supply_packs/sh_lazuzi
 	name = "Weapon: Laser UZI"
 	contains = list(/obj/item/weapon/gun/energy/laz_uzi)
-	cost = 50
+	cost = 75
 	containertype = /obj/structure/closet/crate/secure/gear
 	containername = "\improper Laser UZI crate"
 	group = "Scholar LL1"
