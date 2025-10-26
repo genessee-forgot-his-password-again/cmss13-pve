@@ -191,7 +191,7 @@
 	sh_llone = TRUE
 
 /datum/supply_packs/sh_agility
-	name = "Tool: Agility Booster implanter (REUSEABLE)"
+	name = "Tool: Reusable Implanter, Agility"
 	contains = list(/obj/item/device/implanter/agility)
 	cost = 100
 	containertype = /obj/structure/closet/crate/secure/gear
