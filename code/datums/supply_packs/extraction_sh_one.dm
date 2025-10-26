@@ -184,7 +184,7 @@
 /datum/supply_packs/sh_subdermal
 	name = "Tool: Subdermal Armor implanter (REUSEABLE)"
 	contains = list(/obj/item/device/implanter/subdermal_armor)
-	cost = 100
+	cost = 800
 	containertype = /obj/structure/closet/crate/secure/gear
 	containername = "\improper Subdermal Armor implanter crate"
 	group = "Scholar LL1"
