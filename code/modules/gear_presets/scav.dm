@@ -83,7 +83,7 @@
 	//uniform
 	scav_uniform(new_human)
 	if(prob(30))
-		scav_accessory(new_human)
+		scav_accessory_under(new_human)
 	if(prob(50))
 		scav_suit(new_human)
 	//waist
@@ -100,8 +100,8 @@
 			new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/pistol/b92fs(new_human), WEAR_IN_BACK)
 	//boots
 	scav_shoes(new_human)
-	//gloves
-	scav_gloves(new_human)
+	if(prob(20))
+		scav_gloves(new_human)
 	//pockets
 	if(prob(50))
 		new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/full/alternate, WEAR_L_STORE)
@@ -120,7 +120,7 @@
 	new_human.undershirt = "undershirt"
 	//back
 	scav_backsatch(new_human)
-	var/scav_weapon = rand(1,5)
+	var/scav_weapon = rand(1,8)
 	switch(scav_weapon)
 		if(1)
 			if(prob(50))
@@ -167,6 +167,33 @@
 			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/smg/mp5(new_human), WEAR_IN_BACK)
 			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/smg/mp5(new_human), WEAR_IN_BACK)
 			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/smg/mp5(new_human), WEAR_IN_BACK)
+		if(6)
+			if(prob(50))
+				new_human.equip_to_slot_or_del(new /obj/item/storage/box/mre/wy(new_human), WEAR_IN_BACK)
+			else
+				new_human.equip_to_slot_or_del(new /obj/item/storage/box/mre/hdr(new_human), WEAR_IN_BACK)
+			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/smg/pps43(new_human), WEAR_IN_BACK)
+			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/smg/pps43(new_human), WEAR_IN_BACK)
+			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/smg/pps43(new_human), WEAR_IN_BACK)
+			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/smg/pps43(new_human), WEAR_IN_BACK)
+		if(7)
+			if(prob(50))
+				new_human.equip_to_slot_or_del(new /obj/item/storage/box/mre/wy(new_human), WEAR_IN_BACK)
+			else
+				new_human.equip_to_slot_or_del(new /obj/item/storage/box/mre/hdr(new_human), WEAR_IN_BACK)
+			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/smg/ppsh(new_human), WEAR_IN_BACK)
+			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/smg/ppsh(new_human), WEAR_IN_BACK)
+			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/smg/ppsh(new_human), WEAR_IN_BACK)
+			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/smg/ppsh(new_human), WEAR_IN_BACK)
+		if(8)
+			if(prob(50))
+				new_human.equip_to_slot_or_del(new /obj/item/storage/box/mre/wy(new_human), WEAR_IN_BACK)
+			else
+				new_human.equip_to_slot_or_del(new /obj/item/storage/box/mre/hdr(new_human), WEAR_IN_BACK)
+			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/smg/mp27(new_human), WEAR_IN_BACK)
+			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/smg/mp27(new_human), WEAR_IN_BACK)
+			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/smg/mp27(new_human), WEAR_IN_BACK)
+			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/smg/mp27(new_human), WEAR_IN_BACK)
 	//face
 	if(prob(60))
 		scav_head(new_human)
@@ -177,23 +204,9 @@
 	//uniform
 	scav_uniform(new_human)
 	//helmet
-	var/scav_helmet = rand(1,3)
-	switch(scav_helmet)
-		if(1)
-			add_rebel_ua_helmet(new_human)
-		if(2)
-			add_rebel_twe_helmet(new_human)
-		if(3)
-			add_rebel_upp_helmet(new_human)
+	scav_head_helmet(new_human)
 	//jacket
-	var/scav_armor = rand(1,3)
-	switch(scav_armor)
-		if(1)
-			add_rebel_ua_suit(new_human)
-		if(2)
-			add_rebel_twe_suit(new_human)
-		if(3)
-			add_rebel_upp_suit(new_human)
+	scav_suit_armor(new_human)
 	//waist
 	switch(scav_weapon)
 		if(1)
@@ -206,10 +219,16 @@
 			new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/smg/uzi(new_human), WEAR_J_STORE)
 		if(5)
 			new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/smg/mp5(new_human), WEAR_J_STORE)
+		if(6)
+			new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/smg/pps43(new_human), WEAR_J_STORE)
+		if(7)
+			new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/smg/ppsh(new_human), WEAR_J_STORE)
+		if(8)
+			new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/smg/mp27(new_human), WEAR_J_STORE)
 	//boots
 	scav_shoes(new_human)
-	//gloves
-	scav_gloves(new_human)
+	if(prob(20))
+		scav_gloves(new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/full/alternate, WEAR_L_STORE)
 
 /datum/equipment_preset/scav/shotgun
@@ -235,34 +254,13 @@
 		new_human.equip_to_slot_or_del(new /obj/item/storage/box/mre/hdr(new_human), WEAR_IN_BACK)
 	//face
 	if(prob(50))
-		add_facewrap(new_human)
+		scav_facewrap(new_human)
 	//uniform
-	var/scav_uniform = rand(1,3)
-	switch(scav_uniform)
-		if(1)
-			add_rebel_ua_uniform(new_human)
-		if(2)
-			add_rebel_twe_uniform(new_human)
-		if(3)
-			add_rebel_upp_uniform(new_human)
+	scav_uniform(new_human)
 	//helmet
-	var/scav_helmet = rand(1,3)
-	switch(scav_helmet)
-		if(1)
-			add_rebel_ua_helmet(new_human)
-		if(2)
-			add_rebel_twe_helmet(new_human)
-		if(3)
-			add_rebel_upp_helmet(new_human)
+	scav_head_helmet(new_human)
 	//jacket
-	var/scav_armor = rand(1,3)
-	switch(scav_armor)
-		if(1)
-			add_rebel_ua_suit(new_human)
-		if(2)
-			add_rebel_twe_suit(new_human)
-		if(3)
-			add_rebel_upp_suit(new_human)
+	scav_suit_armor(new_human)
 	//waist
 	var/scav_weapon = rand(1,3)
 	switch(scav_weapon)
@@ -273,22 +271,10 @@
 		if(3)
 			new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/shotgun/double/upp(new_human), WEAR_J_STORE)
 	//boots
-	var/scav_boots = rand(1,3)
-	switch(scav_boots)
-		if(1)
-			add_rebel_ua_shoes(new_human)
-		if(2)
-			add_rebel_twe_shoes(new_human)
-		if(3)
-			new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/upp/guard/canc(new_human), WEAR_FEET)
+	scav_shoes(new_human)
 	//gloves
-	var/scav_gloves = rand(1,2)
 	if(prob(20))
-		switch(scav_gloves)
-			if(1)
-				new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/fingerless, WEAR_HANDS)
-			if(2)
-				new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/brown/fingerless, WEAR_HANDS)
+		scav_gloves(new_human)
 	//pockets
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/full/alternate, WEAR_L_STORE)
 

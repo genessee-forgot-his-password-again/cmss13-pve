@@ -2009,6 +2009,7 @@ GLOBAL_LIST_INIT(rebel_ua_pistols, list(
 		/obj/item/clothing/head/feathertrilby,
 		/obj/item/clothing/head/cmcap,
 		/obj/item/clothing/head/cmcap/khaki,
+		/obj/item/clothing/head/cmcap/bridge,
 		/obj/item/clothing/head/cmcap/snow,
 		/obj/item/clothing/head/cmcap/desert,
 		/obj/item/clothing/head/cmcap/boonie,
@@ -2050,6 +2051,34 @@ GLOBAL_LIST_INIT(rebel_ua_pistols, list(
 		/obj/item/clothing/head/uppcap/beret,
 		/obj/item/clothing/head/uppcap/ushanka,
 		/obj/item/clothing/head/uppcap/ushanka/civi,
+		)
+	new_human.equip_to_slot_or_del(new headpath, WEAR_HEAD)
+
+/datum/equipment_preset/proc/scav_head_helmet(mob/living/carbon/human/new_human)
+	if(!istype(new_human))
+		return
+	var/headpath = pick(
+		/obj/item/clothing/head/cmcap,
+		/obj/item/clothing/head/cmcap/khaki,
+		/obj/item/clothing/head/cmcap/desert,
+		/obj/item/clothing/head/cmcap/boonie,
+		/obj/item/clothing/head/cmcap/boonie/tan,
+		/obj/item/clothing/head/uppcap/beret/guerilla,
+		/obj/item/clothing/head/headband/red,
+		/obj/item/clothing/head/headband/rebel,
+		/obj/item/clothing/head/cowboy,
+		/obj/item/clothing/head/cowboy/light,
+		/obj/item/clothing/head/helmet/marine,
+		/obj/item/clothing/head/helmet/marine/MP,
+		/obj/item/clothing/head/helmet/marine/veteran/ua_riot,
+		/obj/item/clothing/head/helmet/upp/marinepilot,
+		/obj/item/clothing/head/helmet/upp/marinepilot/tex,
+		/obj/item/clothing/head/sippyhat,
+		/obj/item/clothing/head/sippyhat/duff,
+		/obj/item/clothing/head/helmet/construction,
+		/obj/item/clothing/head/helmet/marine/veteran/royal_marine,
+		/obj/item/clothing/head/helmet/marine/veteran/UPP/old,
+		/obj/item/clothing/head/helmet/marine/veteran/canc,
 		)
 	new_human.equip_to_slot_or_del(new headpath, WEAR_HEAD)
 
@@ -2154,7 +2183,7 @@ GLOBAL_LIST_INIT(rebel_ua_pistols, list(
 			uniform.roll_suit_sleeves(new_human)
 	new_human.equip_to_slot_or_del(uniform, WEAR_BODY)
 
-/datum/equipment_preset/proc/scav_accessory(mob/living/carbon/human/new_human)
+/datum/equipment_preset/proc/scav_accessory_under(mob/living/carbon/human/new_human)
 	if(!istype(new_human))
 		return
 	var/accessorypath = pick(
@@ -2179,6 +2208,14 @@ GLOBAL_LIST_INIT(rebel_ua_pistols, list(
 		/obj/item/clothing/accessory/wrist/watch/dallas,
 	)
 	new_human.equip_to_slot_or_del(new accessorypath, WEAR_ACCESSORY)
+
+/datum/equipment_preset/proc/scav_accessory_helmet(mob/living/carbon/human/new_human)
+	if(!istype(new_human))
+		return
+	var/accessorypath = pick(
+		/obj/item/clothing/accessory/armband,
+	)
+	new_human.equip_to_slot_or_del(new accessorypath, WEAR_IN_HELMET)
 
 /datum/equipment_preset/proc/scav_suit(mob/living/carbon/human/new_human)
 	if(!istype(new_human))
@@ -2217,6 +2254,35 @@ GLOBAL_LIST_INIT(rebel_ua_pistols, list(
 		/obj/item/clothing/suit/storage/windbreaker/windbreaker_yellow,
 		/obj/item/clothing/suit/storage/windbreaker/windbreaker_fr,
 		/obj/item/clothing/suit/storage/windbreaker/windbreaker_covenant,
+		/obj/item/clothing/suit/storage/apron/overalls,
+		/obj/item/clothing/suit/storage/apron/overalls/tan,
+		/obj/item/clothing/suit/storage/apron/overalls/red,
+		)
+	new_human.equip_to_slot_or_del(new suitpath, WEAR_JACKET)
+
+/datum/equipment_preset/proc/scav_suit_armor(mob/living/carbon/human/new_human)
+	if(!istype(new_human))
+		return
+	var/suitpath = pick(
+		/obj/item/clothing/suit/marine,
+		/obj/item/clothing/suit/marine/guard,
+		/obj/item/clothing/suit/marine/lamp,
+		/obj/item/clothing/suit/armor/bulletproof,
+		/obj/item/clothing/suit/armor/vest/pilot,
+		/obj/item/clothing/suit/armor/vest/ballistic,
+		/obj/item/clothing/suit/marine/veteran/royal_marine,
+		/obj/item/clothing/suit/marine/faction/UPP/CANC,
+		/obj/item/clothing/suit/marine/faction/UPP/light,
+		/obj/item/clothing/suit/storage/jacket/marine/upp,
+		/obj/item/clothing/suit/storage/jacket/marine/upp/coldweather,
+		/obj/item/clothing/suit/marine/faction/UPP/jacket,
+		/obj/item/clothing/suit/marine/faction/UPP/jacket/mp,
+		/obj/item/clothing/suit/marine/faction/UPP/jacket/pap,
+		/obj/item/clothing/suit/armor/vest/hybrisa/civilian_vest,
+		/obj/item/clothing/suit/armor/vest/hybrisa/cmb_vest,
+		/obj/item/clothing/suit/storage/CMB,
+		/obj/item/clothing/suit/storage/apron/overalls,
+		/obj/item/clothing/suit/storage/windbreaker/windbreaker_green,
 		)
 	new_human.equip_to_slot_or_del(new suitpath, WEAR_JACKET)
 
