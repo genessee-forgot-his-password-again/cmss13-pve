@@ -26,7 +26,7 @@
 	new_human.undershirt = "undershirt"
 	//back
 	scav_satchel(new_human)
-	var/scav_weapon = rand(1,3)
+	var/scav_weapon = rand(1,5)
 	switch(scav_weapon)
 		if(1)
 			if(prob(50))
@@ -55,6 +55,24 @@
 			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/pistol/holdout(new_human), WEAR_IN_BACK)
 			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/pistol/holdout(new_human), WEAR_IN_BACK)
 			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/pistol/holdout(new_human), WEAR_IN_BACK)
+		if(4)
+			if(prob(50))
+				new_human.equip_to_slot_or_del(new /obj/item/storage/box/mre/wy(new_human), WEAR_IN_BACK)
+			else
+				new_human.equip_to_slot_or_del(new /obj/item/storage/box/mre/hdr(new_human), WEAR_IN_BACK)
+			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/pistol/es4(new_human), WEAR_IN_BACK)
+			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/pistol/es4(new_human), WEAR_IN_BACK)
+			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/pistol/es4(new_human), WEAR_IN_BACK)
+			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/pistol/es4(new_human), WEAR_IN_BACK)
+		if(5)
+			if(prob(50))
+				new_human.equip_to_slot_or_del(new /obj/item/storage/box/mre/wy(new_human), WEAR_IN_BACK)
+			else
+				new_human.equip_to_slot_or_del(new /obj/item/storage/box/mre/hdr(new_human), WEAR_IN_BACK)
+			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/pistol/b92fs(new_human), WEAR_IN_BACK)
+			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/pistol/b92fs(new_human), WEAR_IN_BACK)
+			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/pistol/b92fs(new_human), WEAR_IN_BACK)
+			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/pistol/b92fs(new_human), WEAR_IN_BACK)
 	//face
 	if(prob(40))
 		scav_head(new_human)
@@ -76,6 +94,10 @@
 			new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/pistol/l54(new_human), WEAR_IN_BACK)
 		if(3)
 			new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/pistol/holdout(new_human), WEAR_IN_BACK)
+		if(4)
+			new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/pistol/es4(new_human), WEAR_IN_BACK)
+		if(5)
+			new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/pistol/b92fs(new_human), WEAR_IN_BACK)
 	//boots
 	scav_shoes(new_human)
 	//gloves
@@ -97,7 +119,7 @@
 /datum/equipment_preset/scav/rifle/load_gear(mob/living/carbon/human/new_human)
 	new_human.undershirt = "undershirt"
 	//back
-	add_random_satchel(new_human)
+	scav_backsatch(new_human)
 	var/scav_weapon = rand(1,5)
 	switch(scav_weapon)
 		if(1)
@@ -146,17 +168,14 @@
 			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/smg/mp5(new_human), WEAR_IN_BACK)
 			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/smg/mp5(new_human), WEAR_IN_BACK)
 	//face
+	if(prob(60))
+		scav_head(new_human)
 	if(prob(50))
-		add_facewrap(new_human)
+		scav_facewrap(new_human)
+	if(prob(30))
+		scav_eyes(new_human)
 	//uniform
-	var/scav_uniform = rand(1,3)
-	switch(scav_uniform)
-		if(1)
-			add_rebel_ua_uniform(new_human)
-		if(2)
-			add_rebel_twe_uniform(new_human)
-		if(3)
-			add_rebel_upp_uniform(new_human)
+	scav_uniform(new_human)
 	//helmet
 	var/scav_helmet = rand(1,3)
 	switch(scav_helmet)
@@ -188,23 +207,9 @@
 		if(5)
 			new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/smg/mp5(new_human), WEAR_J_STORE)
 	//boots
-	var/scav_boots = rand(1,3)
-	switch(scav_boots)
-		if(1)
-			add_rebel_ua_shoes(new_human)
-		if(2)
-			add_rebel_twe_shoes(new_human)
-		if(3)
-			new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/upp/guard/canc(new_human), WEAR_FEET)
+	scav_shoes(new_human)
 	//gloves
-	var/scav_gloves = rand(1,2)
-	if(prob(20))
-		switch(scav_gloves)
-			if(1)
-				new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/fingerless, WEAR_HANDS)
-			if(2)
-				new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/brown/fingerless, WEAR_HANDS)
-	//pockets
+	scav_gloves(new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/full/alternate, WEAR_L_STORE)
 
 /datum/equipment_preset/scav/shotgun

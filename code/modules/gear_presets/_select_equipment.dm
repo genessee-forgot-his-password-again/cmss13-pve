@@ -2273,3 +2273,22 @@ GLOBAL_LIST_INIT(rebel_ua_pistols, list(
 		)
 	new_human.equip_to_slot_or_del(new random_satchel, WEAR_BACK)
 
+/datum/equipment_preset/proc/scav_backsatch(mob/living/carbon/human/new_human)
+	if(!istype(new_human))
+		return
+	var/random_backsatch = pick(
+		/obj/item/storage/backpack/satchel/chem,
+		/obj/item/storage/backpack/satchel/med,
+		/obj/item/storage/backpack/satchel/eng,
+		/obj/item/storage/backpack/satchel/hyd,
+		/obj/item/storage/backpack/satchel/norm,
+		/obj/item/storage/backpack/satchel/sec,
+		/obj/item/storage/backpack,
+		/obj/item/storage/backpack/medic,
+		/obj/item/storage/backpack/security,
+		/obj/item/storage/backpack/cultpack,
+		/obj/item/storage/backpack/hydroponics,
+		/obj/item/storage/backpack/industrial,
+		)
+	new_human.equip_to_slot_or_del(new random_backsatch, WEAR_BACK)
+
