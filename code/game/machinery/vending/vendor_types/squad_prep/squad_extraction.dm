@@ -33,6 +33,16 @@ GLOBAL_LIST_INIT(cm_vending_extraction, list(
 		list("LIGHTS (CHOOSE 1)", 0, null, null, null),
 		list("Flashlight", 0, /obj/item/device/flashlight, MARINE_CAN_BUY_MRE, VENDOR_ITEM_RECOMMENDED),
 		list("M94 Marking Flare Pack", 0, /obj/item/storage/box/flare, MARINE_CAN_BUY_MRE, VENDOR_ITEM_REGULAR),
+
+		list("COSMETIC SPECIALIZATION KITS", 0, null, null, null),
+		list("No Specialization", 5, /obj/item/pamphlet/skill/specialization, VENDOR_ITEM_REGULAR),
+		list("Support Medic", 5, /obj/item/pamphlet/skill/specialization/supmed, VENDOR_ITEM_REGULAR),
+		list("Vehicle Crew", 5, /obj/item/pamphlet/skill/specialization/vehcrew, VENDOR_ITEM_REGULAR),
+		list("Combat Technician", 5, /obj/item/pamphlet/skill/specialization/comtech, VENDOR_ITEM_REGULAR),
+		list("Pointman", 5, /obj/item/pamphlet/skill/specialization/pointman, VENDOR_ITEM_REGULAR),
+		list("Assistant Squad Lead", 5, /obj/item/pamphlet/skill/specialization/astl, VENDOR_ITEM_REGULAR),
+		list("Machine Gunner", 5, /obj/item/pamphlet/skill/specialization/machinegunner, VENDOR_ITEM_REGULAR),
+		list("Sniper", 5, /obj/item/pamphlet/skill/specialization/sniper, VENDOR_ITEM_REGULAR),
 	))
 
 /obj/structure/machinery/cm_vending/gear/extraction
