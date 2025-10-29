@@ -1,6 +1,6 @@
 /obj/structure/machinery/ammunition_fabricator
 	name = "ammunition fabricator"
-	desc = "An old ammunition fabricator that runs on a good word, it seems to have a limited number of charges."
+	desc = "A jury-rigged autolathe that's been modified to print various types of ammunition. It can pull from a limited material stock which replenishes every mission."
 	icon_state = "armylathe"
 	var/base_state = "armylathe"
 	density = TRUE
@@ -37,18 +37,15 @@
 		"Shotgun magazine (XM51)" = list(/obj/item/ammo_magazine/rifle/xm51, 1, 1, "Shotgun"),
 		"Ammo Packet, (Slug)" = list(/obj/item/ammo_magazine/shotgun, 1, 1, "Shotgun"),
 		"Ammo Packet, (Buckshot)" = list(/obj/item/ammo_magazine/shotgun/buckshot, 1, 1, "Shotgun"),
-		"Ammo Packet, (Flechette)" = list(/obj/item/ammo_magazine/shotgun/flechette, 1, 1, "Shotgun"),
-		"Ammo Packet, (Incendiary Slug)" = list(/obj/item/ammo_magazine/shotgun/incendiary, 1, 1, "Shotgun"),
-		"Ammo Packet, (Incendiary Buckshot)" = list(/obj/item/ammo_magazine/shotgun/incendiarybuck, 2, 1, "Shotgun"),
 		// Revolver
-		"Revolver speed loaders (Spearhead)" = list(/obj/item/ammo_magazine/revolver/spearhead, 1, 2, "Revolver"),
-		"Revolver speed loaders (M44)" = list(/obj/item/ammo_magazine/revolver, 1, 2, "Revolver"),
+		"Revolver speedloader (Spearhead) x2" = list(/obj/item/ammo_magazine/revolver/spearhead, 1, 2, "Revolver"),
+		"Revolver speedloader (M44) x2" = list(/obj/item/ammo_magazine/revolver, 1, 2, "Revolver"),
 		// Pistol
-		"Pistol magazines (VP70)" = list(/obj/item/ammo_magazine/pistol/vp70, 1, 2, "Pistol"),
-		"Pistol magazines (M1911)" = list(/obj/item/ammo_magazine/pistol/m1911, 1, 2, "Pistol"),
-		"Pistol magazines (M4A3)" = list(/obj/item/ammo_magazine/pistol, 1, 2, "Pistol"),
-		"Pistol magazines (VP78)" = list(/obj/item/ammo_magazine/pistol/vp78, 1, 2, "Pistol"),
-		"Pistol magazines (HG-45)" = list(/obj/item/ammo_magazine/pistol/highpower, 1, 2, "Pistol"),
+		"Pistol magazines (VP70) x2" = list(/obj/item/ammo_magazine/pistol/vp70, 1, 2, "Pistol"),
+		"Pistol magazines (M1911) x2" = list(/obj/item/ammo_magazine/pistol/m1911, 1, 2, "Pistol"),
+		"Pistol magazines (M4A3) x2" = list(/obj/item/ammo_magazine/pistol, 1, 2, "Pistol"),
+		"Pistol magazines (VP78) x2" = list(/obj/item/ammo_magazine/pistol/vp78, 1, 2, "Pistol"),
+		"Pistol magazines (HG-45) x2" = list(/obj/item/ammo_magazine/pistol/highpower, 1, 2, "Pistol"),
 	)
 
 /obj/structure/machinery/ammunition_fabricator/attack_hand(mob/user)
