@@ -1,4 +1,9 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"aa" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/fabricator/mre,
+/turf/open/floor/plating,
+/area/galleyburned/residential)
 "ab" = (
 /obj/structure/surface/rack,
 /obj/effect/decal/cleanable/dirt,
@@ -6,6 +11,28 @@
 /obj/item/tool/hand_labeler,
 /turf/open/floor/plating,
 /area/galleyburned/maint)
+"ac" = (
+/obj/effect/decal/cleanable/generic,
+/obj/structure/machinery/fabricator/mre,
+/turf/open/floor/plating,
+/area/galleyburned/residential)
+"ad" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/fabricator/chemistry,
+/turf/open/floor/plating,
+/area/galleyburned/residential)
+"ae" = (
+/obj/structure/machinery/fabricator/mre,
+/turf/open/floor/plating,
+/area/galleyburned/residential)
+"af" = (
+/obj/structure/machinery/fabricator/grenade,
+/turf/open/floor/plating,
+/area/galleyburned/residential)
+"ag" = (
+/obj/structure/machinery/fabricator/ammunition,
+/turf/open/floor/plating,
+/area/galleyburned/residential)
 "ah" = (
 /obj/structure/machinery/light/double/blue/golden_arrow{
 	dir = 8;
@@ -1300,6 +1327,7 @@
 /obj/structure/machinery/light/double/blue/golden_arrow{
 	light_power = 0.3
 	},
+/obj/structure/machinery/fabricator/mre,
 /turf/open/floor/plating,
 /area/galleyburned/residential)
 "rx" = (
@@ -3503,6 +3531,7 @@
 	light_power = 0.3
 	},
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/fabricator/mre,
 /turf/open/floor/plating,
 /area/galleyburned/residential)
 "ZK" = (
@@ -5418,9 +5447,9 @@ vS
 JF
 ix
 yC
-yC
-mt
-Sv
+ae
+aa
+ac
 yC
 rj
 JF
@@ -5474,7 +5503,7 @@ mt
 mt
 yC
 mt
-mt
+aa
 JF
 rQ
 yC
@@ -5521,9 +5550,9 @@ JF
 vS
 JF
 fl
-yC
-yC
-mt
+ag
+af
+ad
 mt
 yC
 ZI

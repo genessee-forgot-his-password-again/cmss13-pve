@@ -12,9 +12,10 @@
 	var/is_busy = FALSE
 
 	var/list/categories = list()
+// 	categories = list("Rifle", "SMG", "Shotgun", "Revolver", "Pistol")
+	var/list/recipes = list()
 	// "name" = list(obj path, price, amount, category)
 	// "Rifle magazine (M41A-MK1)" = list(/obj/item/ammo_magazine/rifle/m41aMK1, 2, 1, "Rifle"),
-	var/list/recipes = list()
 
 /obj/structure/machinery/fabricator/attack_hand(mob/user)
 	if(!Adjacent(user) || usr.stat)
@@ -120,26 +121,73 @@
 /obj/item/proc/on_fabricated(/obj/structure/machinery/fabricator/fab, mob/user)
 	return
 
-// mre rackplant //
+// Ration Packplant //
 
 /obj/structure/machinery/fabricator/mre
-	name = "mre rackplant"
+	name = "Ration Packplant"
 	desc = "A specialized fabricator designed to produce Military Rations (MREs) for field operatives. It utilizes limited resources that are replenished periodically."
 	icon_state = "autolathe"
 	base_state = "autolathe"
 
-	max_points = 4
-	current_points = 4
+	max_points = 5
+	current_points = 5
 
-	categories = list("Rifle", "SMG", "Shotgun", "Revolver", "Pistol")
+	categories = list("Low quality", "Average quality", "High quality")
+	current_tab = "Low quality"
 
-// ammo //
+/obj/structure/machinery/fabricator/mre/Initialize()
+	. = ..()
+
+	// prob categories
+	var/list/all_categories = list(
+		list("Low quality", 100),
+		list("Average quality", 50),
+		list("High quality", 15)
+	)
+
+	if(("High quality" in categories) && !("Average quality" in categories))
+		categories -= "High quality"
+
+	categories = list()
+
+	for(var/entry in all_categories)
+		var/name = entry[1]
+		var/chance = entry[2]
+		if(prob(chance))
+			categories += name
+
+	if(!length(categories))
+		categories += "Low quality"
+
+	current_tab = categories[1]
+
+	recipes = list(
+		// Low quality
+		"Humanitarian Daily Ration (UA)" = list(/obj/item/storage/box/mre/hdr, 1, 1, "Low quality"),
+		"Box of HDR rations (UA)" = list(/obj/item/ammo_box/magazine/misc/mre/hdr, 3, 1, "Low quality"),
+		"W-Y Brand Ration (WY)" = list(/obj/item/storage/box/mre/wy, 1, 1, "Low quality"),
+		"Box of W-Y rations (WY)" = list(/obj/item/ammo_box/magazine/misc/mre/wy, 3, 1, "Low quality"), // 14 RP
+		// Average quality
+		"US Military Ration (USCM)" = list(/obj/item/storage/box/mre, 2, 1, "Average quality"),
+		"Box of Military Rations (USCM)" = list(/obj/item/ammo_box/magazine/misc/mre, 4, 1, "Average quality"),
+		"US First Strike Ration (USCM)" = list(/obj/item/storage/box/mre/fsr, 2, 1, "Average quality"),
+		"Box of FSR Rations (USCM)" = list(/obj/item/ammo_box/magazine/misc/mre/fsr, 4, 1, "Average quality"),
+		"Individual Meal Ration (UPP)" = list(/obj/item/storage/box/mre/upp, 2, 1, "Average quality"),
+		"Box of UPP Rations (UPP)" = list(/obj/item/ammo_box/magazine/misc/mre/upp, 4, 1, "Average quality"), // 25 RP
+		// High quality
+		"Operation Ration (TWE)" = list(/obj/item/storage/box/mre/twe, 3, 1, "High quality"),
+		"Box of Operation Rations (TWE)" = list(/obj/item/ammo_box/magazine/misc/mre/twe, 5, 1, "High quality"),
+		"Combat Field Ration (WY)" = list(/obj/item/storage/box/mre/pmc, 3, 1, "High quality"),
+		"Box of Combat Field Rations (WY)" = list(/obj/item/ammo_box/magazine/misc/mre/pmc, 5, 1, "High quality"), // 48 RP
+	)
+
+// Ammo Press //
 
 /obj/structure/machinery/fabricator/ammunition
-	name = "ammunition fabricator"
+	name = "Ammo Press"
 	desc = "A jury-rigged autolathe that's been modified to print various types of ammunition. It can pull from a limited material stock which replenishes every mission."
-	icon_state = "armylathe"
-	base_state = "armylathe"
+	icon_state = "autolathe"
+	base_state = "autolathe"
 
 	max_points = 4
 	current_points = 4
@@ -182,4 +230,77 @@
 		"Pistol magazines (M4A3) x2" = list(/obj/item/ammo_magazine/pistol, 1, 2, "Pistol"),
 		"Pistol magazines (VP78) x2" = list(/obj/item/ammo_magazine/pistol/vp78, 1, 2, "Pistol"),
 		"Pistol magazines (HG-45) x2" = list(/obj/item/ammo_magazine/pistol/highpower, 1, 2, "Pistol"),
+	)
+
+// Grenade Manufactory //
+
+/obj/structure/machinery/fabricator/grenade
+	name = "Grenade Manufactory"
+	desc = "A specialized fabricator designed to produce various types of grenades for combat operatives. It can pull from a limited material stock which replenishes every mission."
+	icon_state = "autolathe"
+	base_state = "autolathe"
+
+	max_points = 2
+	current_points = 2
+	categories = list("High Explosive", "Shrapnel", "Incendiary", "Airburst", "Miscellaneous")
+	current_tab = "High Explosive"
+
+/obj/structure/machinery/fabricator/grenade/Initialize()
+	. = ..()
+	recipes = list(
+		// High Explosive
+		"M40 HEDP Grenade" = list(/obj/item/explosive/grenade/high_explosive, 1, 1, "High Explosive"),
+		"M15 fragmentation Grenade" = list(/obj/item/explosive/grenade/high_explosive/m15, 1, 1, "High Explosive"),
+		// Shrapnel
+		"M40 HEFA Grenade" = list(/obj/item/explosive/grenade/high_explosive/frag, 1, 1, "Shrapnel"),
+		"Type 6 Grenade" = list(/obj/item/explosive/grenade/high_explosive/upp, 1, 1, "Shrapnel"),
+		// Incendiary
+		"M77 HIAM incendiary Grenade" = list(/obj/item/explosive/grenade/incendiary, 1, 1, "Incendiary"),
+		"Improvised Phosphorus Grenade" = list(/obj/item/explosive/grenade/phosphorus/clf, 1, 1, "Incendiary"),
+		// Airburst
+		"M74 AGM-F Grenade" = list(/obj/item/explosive/grenade/high_explosive/airburst, 1, 1, "Airburst"),
+		"M74 AGM-I Grenade" = list(/obj/item/explosive/grenade/incendiary/airburst, 1, 1, "Airburst"),
+		"M74 AGM-S Grenade" = list(/obj/item/explosive/grenade/smokebomb/airburst, 1, 1, "Airburst"),
+		"M74 AGM-H Hornet Shell" = list(/obj/item/explosive/grenade/high_explosive/airburst/hornet_shell, 1, 1, "Airburst"),
+		"M74 AGM-S Star Shell" = list(/obj/item/explosive/grenade/high_explosive/airburst/starshell, 1, 1, "Airburst"),
+		"M108 canister Grenade" = list(/obj/item/explosive/grenade/high_explosive/airburst/canister, 1, 1, "Airburst"),
+		// Miscellaneous
+		"M66 teargas Grenade" = list(/obj/item/explosive/grenade/tear/marine, 1, 1, "Miscellaneous"),
+		"M47 HSDP smoke Grenade" = list(/obj/item/explosive/grenade/smokebomb, 1, 1, "Miscellaneous"),
+		"M47-G HSDP smoke Grenade" = list(/obj/item/explosive/grenade/smokebomb/green, 1, 1, "Miscellaneous"),
+		"M47-R HSDP smoke Grenade" = list(/obj/item/explosive/grenade/smokebomb/red, 1, 1, "Miscellaneous"),
+		"M72A2 HIPF starshell Grenade" = list(/obj/item/explosive/grenade/high_explosive/impact/flare, 1, 1, "Miscellaneous"),
+		"M42 MFHS Grenade" = list(/obj/item/explosive/grenade/metal_foam, 1, 1, "Miscellaneous"),
+	)
+
+// Chemistry Set //
+
+/obj/structure/machinery/fabricator/chemistry
+	name = "Chemistry Set"
+	desc = "A specialized fabricator designed to produce various chemical compounds and mixtures for field operatives. It can pull from a limited material stock which replenishes every mission."
+	icon_state = "autolathe"
+	base_state = "autolathe"
+
+	max_points = 4
+	current_points = 4
+	categories = list("Kits", "Medical Packs", "Autoinjectors")
+	current_tab = "Kits"
+
+/obj/structure/machinery/fabricator/chemistry/Initialize()
+	. = ..()
+	recipes = list(
+		// Kits
+		"Regular First-Aid Kit" = list(/obj/item/storage/firstaid/regular, 4, 1, "Kits"),
+		"Brute First-Aid Kit" = list(/obj/item/storage/firstaid/brute, 4, 1, "Kits"),
+		"Fire First-Aid Kit" = list(/obj/item/storage/firstaid/fire, 4, 1, "Kits"),
+		// Medical Packs
+		"Gauzes x10" = list(/obj/item/stack/medical/bruise_pack, 1, 1, "Medical Packs"),
+		"Ointments x10" = list(/obj/item/stack/medical/ointment, 1, 1, "Medical Packs"),
+		"Splints x5" = list(/obj/item/stack/medical/splint, 1, 1, "Medical Packs"),
+		// Autoinjectors
+		"Bicaridine Autoinjector" = list(/obj/item/reagent_container/hypospray/autoinjector/bicaridine, 2, 1, "Autoinjectors"),
+		"Kelotane Autoinjector" = list(/obj/item/reagent_container/hypospray/autoinjector/kelotane, 2, 1, "Autoinjectors"),
+		"Tricordrazine Autoinjector" = list(/obj/item/reagent_container/hypospray/autoinjector/tricord, 2, 1, "Autoinjectors"),
+		"Tramadol Autoinjector" = list(/obj/item/reagent_container/hypospray/autoinjector/tramadol, 2, 1, "Autoinjectors"),
+		"Inaprovaline Autoinjector" = list(/obj/item/reagent_container/hypospray/autoinjector/inaprovaline, 2, 1, "Autoinjectors"),
 	)
