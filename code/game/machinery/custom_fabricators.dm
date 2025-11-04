@@ -27,6 +27,8 @@
 		user << browse("<html><body><h3 style='text-align:center; color:red;'>Fabricator busy...</h3></body></html>", "window=fabricator;size=300x100")
 		return
 
+	RegisterSignal(user, COMSIG_MOVABLE_MOVED, PROC_REF(close_ui))
+
 	var/html = "<html><body style='background-color:#1b1b1b; color:#d0d0d0; font-family:Verdana; font-size:13px;'>"
 	html += "<h2 style='text-align:center; color:#f0f0f0;'>[name]</h2>"
 	html += "<p style='text-align:center;'>Fabrication points: <b>[current_points]</b> / [max_points]</p>"
@@ -118,16 +120,23 @@
 	is_busy = FALSE
 	ui_open(user)
 
-/obj/item/proc/on_fabricated(/obj/structure/machinery/fabricator/fab, mob/user)
+/obj/item/proc/on_fabricated(/obj/structure/machinery/fabricator/, mob/user)
 	return
+
+/obj/structure/machinery/fabricator/proc/close_ui(atom/movable/user)
+	if(!Adjacent(user))
+		user << browse(null, "window=fabricator")
+		to_chat(user, "<span class='warning'>You moved too far away from the fabricator.</span>")
+		UnregisterSignal(user, COMSIG_MOVABLE_MOVED)
+
 
 // Ration Packplant //
 
 /obj/structure/machinery/fabricator/mre
 	name = "Ration Packplant"
 	desc = "A specialized fabricator designed to produce Military Rations (MREs) for field operatives. It utilizes limited resources that are replenished periodically."
-	icon_state = "autolathe"
-	base_state = "autolathe"
+	icon_state = "mrelathe"
+	base_state = "mrelathe"
 
 	max_points = 5
 	current_points = 5
@@ -186,8 +195,8 @@
 /obj/structure/machinery/fabricator/ammunition
 	name = "Ammo Press"
 	desc = "A jury-rigged autolathe that's been modified to print various types of ammunition. It can pull from a limited material stock which replenishes every mission."
-	icon_state = "autolathe"
-	base_state = "autolathe"
+	icon_state = "ammolathe"
+	base_state = "ammolathe"
 
 	max_points = 4
 	current_points = 4
@@ -237,8 +246,8 @@
 /obj/structure/machinery/fabricator/grenade
 	name = "Grenade Manufactory"
 	desc = "A specialized fabricator designed to produce various types of grenades for combat operatives. It can pull from a limited material stock which replenishes every mission."
-	icon_state = "autolathe"
-	base_state = "autolathe"
+	icon_state = "nadelathe"
+	base_state = "nadelathe"
 
 	max_points = 2
 	current_points = 2
@@ -278,8 +287,8 @@
 /obj/structure/machinery/fabricator/chemistry
 	name = "Chemistry Set"
 	desc = "A specialized fabricator designed to produce various chemical compounds and mixtures for field operatives. It can pull from a limited material stock which replenishes every mission."
-	icon_state = "autolathe"
-	base_state = "autolathe"
+	icon_state = "medilathe"
+	base_state = "medilathe"
 
 	max_points = 4
 	current_points = 4
