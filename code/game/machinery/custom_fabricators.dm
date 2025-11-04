@@ -259,12 +259,12 @@
 	recipes = list(
 		// High Explosive
 		"M40 HEDP Grenade" = list(/obj/item/explosive/grenade/high_explosive, 1, 1, "High Explosive"),
-		"M15 fragmentation Grenade" = list(/obj/item/explosive/grenade/high_explosive/m15, 1, 1, "High Explosive"),
+		"M15 Fragmentation Grenade" = list(/obj/item/explosive/grenade/high_explosive/m15, 1, 1, "High Explosive"),
 		// Shrapnel
 		"M40 HEFA Grenade" = list(/obj/item/explosive/grenade/high_explosive/frag, 1, 1, "Shrapnel"),
 		"Type 6 Grenade" = list(/obj/item/explosive/grenade/high_explosive/upp, 1, 1, "Shrapnel"),
 		// Incendiary
-		"M77 HIAM incendiary Grenade" = list(/obj/item/explosive/grenade/incendiary, 1, 1, "Incendiary"),
+		"M77 HIAM Incendiary Grenade" = list(/obj/item/explosive/grenade/incendiary, 1, 1, "Incendiary"),
 		"Improvised Phosphorus Grenade" = list(/obj/item/explosive/grenade/phosphorus/clf, 1, 1, "Incendiary"),
 		// Airburst
 		"M74 AGM-F Grenade" = list(/obj/item/explosive/grenade/high_explosive/airburst, 1, 1, "Airburst"),
@@ -274,11 +274,11 @@
 		"M74 AGM-S Star Shell" = list(/obj/item/explosive/grenade/high_explosive/airburst/starshell, 1, 1, "Airburst"),
 		"M108 canister Grenade" = list(/obj/item/explosive/grenade/high_explosive/airburst/canister, 1, 1, "Airburst"),
 		// Miscellaneous
-		"M66 teargas Grenade" = list(/obj/item/explosive/grenade/tear/marine, 1, 1, "Miscellaneous"),
-		"M47 HSDP smoke Grenade" = list(/obj/item/explosive/grenade/smokebomb, 1, 1, "Miscellaneous"),
-		"M47-G HSDP smoke Grenade" = list(/obj/item/explosive/grenade/smokebomb/green, 1, 1, "Miscellaneous"),
-		"M47-R HSDP smoke Grenade" = list(/obj/item/explosive/grenade/smokebomb/red, 1, 1, "Miscellaneous"),
-		"M72A2 HIPF starshell Grenade" = list(/obj/item/explosive/grenade/high_explosive/impact/flare, 1, 1, "Miscellaneous"),
+		"M66 Teargas Grenade" = list(/obj/item/explosive/grenade/tear/marine, 1, 1, "Miscellaneous"),
+		"M47 HSDP Smoke Grenade" = list(/obj/item/explosive/grenade/smokebomb, 1, 1, "Miscellaneous"),
+		"M47-G HSDP Smoke Grenade" = list(/obj/item/explosive/grenade/smokebomb/green, 1, 1, "Miscellaneous"),
+		"M47-R HSDP Smoke Grenade" = list(/obj/item/explosive/grenade/smokebomb/red, 1, 1, "Miscellaneous"),
+		"M72A2 HIPF Starshell Grenade" = list(/obj/item/explosive/grenade/high_explosive/impact/flare, 1, 1, "Miscellaneous"),
 		"M42 MFHS Grenade" = list(/obj/item/explosive/grenade/metal_foam, 1, 1, "Miscellaneous"),
 	)
 
