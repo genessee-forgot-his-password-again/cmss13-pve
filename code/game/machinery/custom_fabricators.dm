@@ -1,6 +1,6 @@
 /obj/structure/machinery/fabricator
-	name = "template"
-	desc = "you shouldn't see this"
+	name = "weird fabricator"
+	desc = "A fabricator that produces REDACTED. It's hooked into a centralized feedstock in the bowels of the ship and can pull a limited -- wait, what? This really shouldn't be here. You should report it to a coder. Oh, fuck. Oh, God, the game sucks! IT SUCKS!"
 	icon_state = "autolathe"
 	var/base_state = "autolathe"
 	density = TRUE
@@ -100,6 +100,10 @@
 	if(confirm != "Yes")
 		is_busy = FALSE
 		return
+	if(!Adjacent(user))
+		to_chat(user, "<span class='warning'>You moved too far away from the fabricator.</span>")
+		is_busy = FALSE
+		return
 
 	current_points -= cost
 	to_chat(user, "<span class='notice'>Fabricator is printing [choice]...</span>")
@@ -130,71 +134,11 @@
 		UnregisterSignal(user, COMSIG_MOVABLE_MOVED)
 
 
-// Ration Packplant //
-
-/obj/structure/machinery/fabricator/mre
-	name = "Ration Packplant"
-	desc = "A specialized fabricator designed to produce Military Rations (MREs) for field operatives. It utilizes limited resources that are replenished periodically."
-	icon_state = "mrelathe"
-	base_state = "mrelathe"
-
-	max_points = 5
-	current_points = 5
-
-	categories = list("Low quality", "Average quality", "High quality")
-	current_tab = "Low quality"
-
-/obj/structure/machinery/fabricator/mre/Initialize()
-	. = ..()
-
-	// prob categories
-	var/list/all_categories = list(
-		list("Low quality", 100),
-		list("Average quality", 50),
-		list("High quality", 15)
-	)
-
-	if(("High quality" in categories) && !("Average quality" in categories))
-		categories -= "High quality"
-
-	categories = list()
-
-	for(var/entry in all_categories)
-		var/name = entry[1]
-		var/chance = entry[2]
-		if(prob(chance))
-			categories += name
-
-	if(!length(categories))
-		categories += "Low quality"
-
-	current_tab = categories[1]
-
-	recipes = list(
-		// Low quality
-		"Humanitarian Daily Ration (UA)" = list(/obj/item/storage/box/mre/hdr, 1, 1, "Low quality"),
-		"Box of HDR rations (UA)" = list(/obj/item/ammo_box/magazine/misc/mre/hdr, 3, 1, "Low quality"),
-		"W-Y Brand Ration (WY)" = list(/obj/item/storage/box/mre/wy, 1, 1, "Low quality"),
-		"Box of W-Y rations (WY)" = list(/obj/item/ammo_box/magazine/misc/mre/wy, 3, 1, "Low quality"), // 14 RP
-		// Average quality
-		"US Military Ration (USCM)" = list(/obj/item/storage/box/mre, 2, 1, "Average quality"),
-		"Box of Military Rations (USCM)" = list(/obj/item/ammo_box/magazine/misc/mre, 4, 1, "Average quality"),
-		"US First Strike Ration (USCM)" = list(/obj/item/storage/box/mre/fsr, 2, 1, "Average quality"),
-		"Box of FSR Rations (USCM)" = list(/obj/item/ammo_box/magazine/misc/mre/fsr, 4, 1, "Average quality"),
-		"Individual Meal Ration (UPP)" = list(/obj/item/storage/box/mre/upp, 2, 1, "Average quality"),
-		"Box of UPP Rations (UPP)" = list(/obj/item/ammo_box/magazine/misc/mre/upp, 4, 1, "Average quality"), // 25 RP
-		// High quality
-		"Operation Ration (TWE)" = list(/obj/item/storage/box/mre/twe, 3, 1, "High quality"),
-		"Box of Operation Rations (TWE)" = list(/obj/item/ammo_box/magazine/misc/mre/twe, 5, 1, "High quality"),
-		"Combat Field Ration (WY)" = list(/obj/item/storage/box/mre/pmc, 3, 1, "High quality"),
-		"Box of Combat Field Rations (WY)" = list(/obj/item/ammo_box/magazine/misc/mre/pmc, 5, 1, "High quality"), // 48 RP
-	)
-
 // Ammo Press //
 
-/obj/structure/machinery/fabricator/ammunition
-	name = "Ammo Press"
-	desc = "A jury-rigged autolathe that's been modified to print various types of ammunition. It can pull from a limited material stock which replenishes every mission."
+/obj/structure/machinery/fabricator/munitions
+	name = "Munitions Fabricator"
+	desc = "An autolathe that's been modified to print various types of ammunition. It can pull from a limited material stock which replenishes every mission."
 	icon_state = "ammolathe"
 	base_state = "ammolathe"
 
@@ -203,7 +147,7 @@
 	categories = list("Rifle", "SMG", "Shotgun", "Revolver", "Pistol")
 	current_tab = "Rifle"
 
-/obj/structure/machinery/fabricator/ammunition/Initialize()
+/obj/structure/machinery/fabricator/munitions/Initialize()
 	. = ..()
 	recipes = list(
 		// Rifle
@@ -217,7 +161,7 @@
 		"Rifle magazine (M16)" = list(/obj/item/ammo_magazine/rifle/m16, 1, 1, "Rifle"),
 		"Rifle magazine (AR-10)" = list(/obj/item/ammo_magazine/rifle/ar10, 1, 1, "Rifle"),
 		"Rifle magazine (MAR-40)" = list(/obj/item/ammo_magazine/rifle/mar40, 1, 1, "Rifle"),
-		"Rifle magazine (ABR-40)" = list(/obj/item/weapon/gun/rifle/l42a/abr40, 1, 1, "Rifle"),
+		"Rifle magazine (ABR-40)" = list(/obj/item/ammo_magazine/rifle/l42a/abr40, 1, 1, "Rifle"),
 		// SMG
 		"SMG magazine (Viper 9)" = list(/obj/item/ammo_magazine/smg/m39, 1, 1, "SMG"),
 		"SMG helical magazine (Type 64)" = list(/obj/item/ammo_magazine/smg/bizon, 1, 1, "SMG"),
@@ -228,8 +172,8 @@
 		"SMG magazine (MP5)" = list(/obj/item/ammo_magazine/smg/mp5, 1, 1, "SMG"),
 		// Shotgun
 		"Shotgun magazine (XM51)" = list(/obj/item/ammo_magazine/rifle/xm51, 1, 1, "Shotgun"),
-		"Ammo Packet, (Slug)" = list(/obj/item/ammo_magazine/shotgun, 1, 1, "Shotgun"),
-		"Ammo Packet, (Buckshot)" = list(/obj/item/ammo_magazine/shotgun/buckshot, 1, 1, "Shotgun"),
+		"Ammo Packet (Slug)" = list(/obj/item/ammo_magazine/shotgun, 1, 1, "Shotgun"),
+		"Ammo Packet (Buckshot)" = list(/obj/item/ammo_magazine/shotgun/buckshot, 1, 1, "Shotgun"),
 		// Revolver
 		"Revolver speedloader (Spearhead) x2" = list(/obj/item/ammo_magazine/revolver/spearhead, 1, 2, "Revolver"),
 		"Revolver speedloader (M44) x2" = list(/obj/item/ammo_magazine/revolver, 1, 2, "Revolver"),
@@ -243,9 +187,9 @@
 
 // Grenade Manufactory //
 
-/obj/structure/machinery/fabricator/grenade
-	name = "Grenade Manufactory"
-	desc = "A specialized fabricator designed to produce various types of grenades for combat operatives. It can pull from a limited material stock which replenishes every mission."
+/obj/structure/machinery/fabricator/propellant
+	name = "Propellant Synthesizer"
+	desc = "A modified autolathe designed to produce various military-grade explosives. It can pull from a limited material stock which replenishes every mission."
 	icon_state = "nadelathe"
 	base_state = "nadelathe"
 
@@ -254,7 +198,7 @@
 	categories = list("High Explosive", "Shrapnel", "Incendiary", "Airburst", "Miscellaneous")
 	current_tab = "High Explosive"
 
-/obj/structure/machinery/fabricator/grenade/Initialize()
+/obj/structure/machinery/fabricator/propellant/Initialize()
 	. = ..()
 	recipes = list(
 		// High Explosive
@@ -284,18 +228,18 @@
 
 // Chemistry Set //
 
-/obj/structure/machinery/fabricator/chemistry
-	name = "Chemistry Set"
-	desc = "A specialized fabricator designed to produce various chemical compounds and mixtures for field operatives. It can pull from a limited material stock which replenishes every mission."
+/obj/structure/machinery/fabricator/medicinal
+	name = "Medicinal Synthesizer"
+	desc = "An autolathe with parts from a chemical dispenser attached to it - it is capable of synthesizing and packaging military-grade medical supplies. It can pull from a limited material stock which replenishes every mission."
 	icon_state = "medilathe"
 	base_state = "medilathe"
 
 	max_points = 4
 	current_points = 4
-	categories = list("Kits", "Medical Packs", "Autoinjectors")
+	categories = list("Kits", "Medical Packs", "Autoinjectors", "Pill Packs")
 	current_tab = "Kits"
 
-/obj/structure/machinery/fabricator/chemistry/Initialize()
+/obj/structure/machinery/fabricator/medicinal/Initialize()
 	. = ..()
 	recipes = list(
 		// Kits
@@ -303,13 +247,18 @@
 		"Brute First-Aid Kit" = list(/obj/item/storage/firstaid/brute, 4, 1, "Kits"),
 		"Fire First-Aid Kit" = list(/obj/item/storage/firstaid/fire, 4, 1, "Kits"),
 		// Medical Packs
-		"Gauzes x10" = list(/obj/item/stack/medical/bruise_pack, 1, 1, "Medical Packs"),
-		"Ointments x10" = list(/obj/item/stack/medical/ointment, 1, 1, "Medical Packs"),
-		"Splints x5" = list(/obj/item/stack/medical/splint, 1, 1, "Medical Packs"),
+		"Roll of Gauze (10)" = list(/obj/item/stack/medical/bruise_pack, 1, 1, "Medical Packs"),
+		"Bottle of Ointment (10)" = list(/obj/item/stack/medical/ointment, 1, 1, "Medical Packs"),
+		"Set of Splints (5)" = list(/obj/item/stack/medical/splint, 1, 1, "Medical Packs"),
 		// Autoinjectors
 		"Bicaridine Autoinjector" = list(/obj/item/reagent_container/hypospray/autoinjector/bicaridine, 2, 1, "Autoinjectors"),
 		"Kelotane Autoinjector" = list(/obj/item/reagent_container/hypospray/autoinjector/kelotane, 2, 1, "Autoinjectors"),
 		"Tricordrazine Autoinjector" = list(/obj/item/reagent_container/hypospray/autoinjector/tricord, 2, 1, "Autoinjectors"),
 		"Tramadol Autoinjector" = list(/obj/item/reagent_container/hypospray/autoinjector/tramadol, 2, 1, "Autoinjectors"),
 		"Inaprovaline Autoinjector" = list(/obj/item/reagent_container/hypospray/autoinjector/inaprovaline, 2, 1, "Autoinjectors"),
+		// Pill Packs
+		"Bicaridine Pill Packet" = list(/obj/item/storage/pill_bottle/packet/bicaridine, 2, 1, "Pill Packs"),
+		"Kelotane Pill Packet" = list(/obj/item/storage/pill_bottle/packet/kelotane, 2, 1, "Pill Packs"),
+		"Tricordrazine Pill Packet" = list(/obj/item/storage/pill_bottle/packet/tricordrazine, 2, 1, "Pill Packs"),
+		"Tramadol Pill Packet" = list(/obj/item/storage/pill_bottle/packet/tramadol, 2, 1, "Pill Packs"),
 	)
