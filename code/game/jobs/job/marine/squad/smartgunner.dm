@@ -148,6 +148,18 @@
 	job = JOB_SQUAD_SMARTGUN_FORECON
 	squad = SQUAD_LRRP
 
+/datum/job/marine/smartgunner/ai/raider
+	title = JOB_SQUAD_SMARTGUN_RAIDER
+	total_positions = 1
+	spawn_positions = 1
+	gear_preset = /datum/equipment_preset/uscm/sg/raider
+	job_options = null
+
+/obj/effect/landmark/start/marine/smartgunner/raider
+	name = JOB_SQUAD_SMARTGUN_RAIDER
+	squad = SQUAD_RAIDER
+	job = /datum/job/marine/smartgunner/ai/raider
+
 //-- RMC Platoon --//
 //Smartgunner//
 
