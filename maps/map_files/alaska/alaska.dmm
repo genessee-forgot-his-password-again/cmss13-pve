@@ -22,6 +22,20 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/black_alaska/cic)
+"ac" = (
+/obj/structure/holowindow{
+	dir = 8
+	},
+/obj/structure/closet/secure_closet/marine_personal{
+	pixel_x = -5;
+	pixel_y = 0
+	},
+/obj/structure/closet/secure_closet/marine_personal{
+	pixel_x = 9;
+	pixel_y = 0
+	},
+/turf/open/floor/almayer,
+/area/black_alaska/dorms)
 "ad" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
 /turf/closed/wall/almayer/outer,
@@ -35,6 +49,20 @@
 	},
 /turf/open/floor/almayer/cargo,
 /area/black_alaska/ot_room)
+"af" = (
+/obj/structure/holowindow{
+	dir = 8
+	},
+/obj/structure/closet/secure_closet/marine_personal{
+	pixel_x = 9;
+	pixel_y = 0
+	},
+/obj/structure/closet/secure_closet/marine_personal{
+	pixel_x = -6;
+	pixel_y = 0
+	},
+/turf/open/floor/almayer,
+/area/black_alaska/dorms)
 "ag" = (
 /obj/structure/desertdam/decals/road_edge{
 	icon_state = "road_edge_decal3";
@@ -56,6 +84,20 @@
 /obj/effect/decal/warning_stripes,
 /turf/open/floor/almayer,
 /area/black_alaska/ladders_three_aft)
+"ai" = (
+/obj/structure/holowindow{
+	dir = 8
+	},
+/obj/structure/closet/secure_closet/marine_personal/raider/squad_leader{
+	pixel_x = 9;
+	pixel_y = 0
+	},
+/obj/structure/closet/secure_closet/marine_personal/raider/platoon_commander{
+	pixel_x = -6;
+	pixel_y = 0
+	},
+/turf/open/floor/almayer,
+/area/black_alaska/dorms)
 "aj" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "cargo";
@@ -5463,14 +5505,6 @@
 /turf/open/floor/almayer/test_floor4,
 /area/black_alaska/ladders_two_aft)
 "yb" = (
-/obj/structure/closet/secure_closet/marine_personal{
-	pixel_x = -6;
-	job = "Smartgunner"
-	},
-/obj/structure/closet/secure_closet/marine_personal{
-	pixel_x = 13;
-	job = "Rifleman"
-	},
 /obj/structure/holowindow{
 	dir = 4;
 	pixel_x = -30
@@ -5480,6 +5514,14 @@
 	height = 2
 	},
 /obj/effect/decal/warning_stripes,
+/obj/structure/closet/secure_closet/marine_personal{
+	pixel_x = -7;
+	pixel_y = 0
+	},
+/obj/structure/closet/secure_closet/marine_personal{
+	pixel_x = 10;
+	pixel_y = 0
+	},
 /turf/open/floor/almayer,
 /area/black_alaska/dorms)
 "yf" = (
@@ -6897,16 +6939,16 @@
 	},
 /area/black_alaska/cic)
 "ED" = (
-/obj/structure/closet/secure_closet/marine_personal{
-	pixel_x = -7;
-	job = "Smartgunner"
-	},
-/obj/structure/closet/secure_closet/marine_personal{
-	pixel_x = 8;
-	job = "Rifleman"
-	},
 /obj/structure/holowindow{
 	dir = 8
+	},
+/obj/structure/closet/secure_closet/marine_personal/raider/rifleman{
+	pixel_x = -6;
+	pixel_y = 0
+	},
+/obj/structure/closet/secure_closet/marine_personal/raider/engi{
+	pixel_x = 9;
+	pixel_y = 0
 	},
 /turf/open/floor/almayer,
 /area/black_alaska/dorms)
@@ -7941,17 +7983,17 @@
 /turf/closed/wall/almayer/outer,
 /area/black_alaska/maintenance_tunell)
 "IM" = (
-/obj/structure/closet/secure_closet/marine_personal{
-	pixel_x = -7;
-	job = "Smartgunner"
-	},
-/obj/structure/closet/secure_closet/marine_personal{
-	pixel_x = 8;
-	job = "Rifleman"
-	},
 /obj/structure/holowindow{
 	dir = 4;
 	pixel_x = -30
+	},
+/obj/structure/closet/secure_closet/marine_personal/raider/squad_leader{
+	pixel_x = -6;
+	pixel_y = 0
+	},
+/obj/structure/closet/secure_closet/marine_personal/raider/platoon_leader{
+	pixel_x = 9;
+	pixel_y = 0
 	},
 /turf/open/floor/almayer,
 /area/black_alaska/dorms)
@@ -11185,19 +11227,19 @@
 /turf/open/floor/almayer/tcomms,
 /area/black_alaska/telecomms_lower)
 "VD" = (
-/obj/structure/closet/secure_closet/marine_personal{
-	pixel_x = -7;
-	job = "Smartgunner"
-	},
-/obj/structure/closet/secure_closet/marine_personal{
-	pixel_x = 8;
-	job = "Rifleman"
-	},
 /obj/structure/holowindow{
 	dir = 8
 	},
 /obj/structure/holowindow{
 	dir = 8
+	},
+/obj/structure/closet/secure_closet/marine_personal/raider/rifleman{
+	pixel_x = 9;
+	pixel_y = 0
+	},
+/obj/structure/closet/secure_closet/marine_personal/raider/corpsman{
+	pixel_x = -6;
+	pixel_y = 0
 	},
 /turf/open/floor/almayer,
 /area/black_alaska/dorms)
@@ -11743,7 +11785,7 @@
 	id = "maintfreezer";
 	height = 2
 	},
-/turf/open/space/basic,
+/turf/open/floor/plating,
 /area/black_alaska/maintenance_tunell)
 "XS" = (
 /obj/structure/barricade/handrail/wire{
@@ -41328,7 +41370,7 @@ Vg
 Vg
 Vg
 Ia
-ED
+ac
 dy
 Kj
 Iu
@@ -41690,7 +41732,7 @@ Vg
 Vg
 Vg
 Ia
-ED
+af
 dy
 Kj
 eK
@@ -42052,7 +42094,7 @@ Vg
 Vg
 Vg
 Ia
-ED
+ai
 dy
 GB
 eK

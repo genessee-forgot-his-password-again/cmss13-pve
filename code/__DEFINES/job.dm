@@ -53,9 +53,9 @@
 #define JOB_SQUAD_MARINE_FORECON "Recon Rifleman"
 #define JOB_SQUAD_SMARTGUN_FORECON "Recon Smartgunner"
 
-#define JOB_SO_RAIDER "Raider Platoon Commander"
-#define JOB_SQUAD_LEADER_RAIDER  "Raider Squad Leader"
-#define JOB_SQUAD_TEAM_LEADER_RAIDER "Assistant Raider Squad Leader"
+#define JOB_SO_RAIDER "Raider Team Commander"
+#define JOB_SQUAD_LEADER_RAIDER  "Raider Team Chief"
+#define JOB_SQUAD_TEAM_LEADER_RAIDER "Raider Team Leader"
 #define JOB_SQUAD_ENGINEER_RAIDER "Raider Engineer"
 #define JOB_SQUAD_MEDIC_RAIDER "Raider Corpsman"
 #define JOB_SQUAD_SMARTGUN_RAIDER "Raider Smartgunner"

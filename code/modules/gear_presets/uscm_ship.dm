@@ -1105,5 +1105,5 @@
 // raider
 
 /datum/equipment_preset/uscm_ship/so/raider
-	name = "Raider Overwatch Officer (PltCo)"
+	name = "Raider Team Commander"
 	paygrades = list(PAY_SHORT_MO3 = JOB_PLAYTIME_TIER_0)

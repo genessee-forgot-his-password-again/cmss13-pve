@@ -1298,12 +1298,12 @@
 	skills = /datum/skills/combat_engineer/raider
 
 /datum/equipment_preset/uscm/tl/raider
-	name = "Raider Assistant Squad Leader"
+	name = "Raider Team Leader"
 	assignment = JOB_SQUAD_TEAM_LEADER_RAIDER
 	paygrades = list(PAY_SHORT_ME5 = JOB_PLAYTIME_TIER_0)
 	skills = /datum/skills/SL/extraction
 
 /datum/equipment_preset/uscm/leader/raider
-	name = "Raider Section Sergeant"
+	name = "Raider Team Chief"
 	paygrades = list(PAY_SHORT_ME7 = JOB_PLAYTIME_TIER_0)
 	skills = /datum/skills/SL/extraction

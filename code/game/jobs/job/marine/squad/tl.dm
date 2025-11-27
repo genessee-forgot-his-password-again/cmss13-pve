@@ -108,8 +108,8 @@
 	job = /datum/job/marine/tl/ai/forecon
 
 /datum/job/marine/tl/ai/raider
-	total_positions = 1
-	spawn_positions = 1
+	total_positions = 2
+	spawn_positions = 2
 	title = JOB_SQUAD_TEAM_LEADER_RAIDER
 	gear_preset = /datum/equipment_preset/uscm/tl/raider
 	job_options = null
