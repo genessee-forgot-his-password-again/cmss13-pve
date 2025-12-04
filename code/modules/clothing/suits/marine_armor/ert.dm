@@ -1024,4 +1024,44 @@
 	time_to_unequip = 20
 	time_to_equip = 20
 
+// =MARADEURS & SCAVS= \\
 
+/obj/item/clothing/suit/storage/marine/veteran/mercenary/maradeur
+	name = "\improper K6 ceramic plated armor"
+	desc = "A set of grey, heavy ceramic armor with dark blue highlights. It is the standard uniform of an unknown maradeur group working in the sector. This product is made from cheaper materials, so it offers significantly less protection than its more expensive counterparts."
+	icon_state = "mercenary_heavy_armor"
+	flags_inventory = BLOCKSHARPOBJ|BLOCK_KNOCKDOWN
+	armor_melee = CLOTHING_ARMOR_HIGH
+	armor_bullet = CLOTHING_ARMOR_HIGH
+	armor_energy = CLOTHING_ARMOR_MEDIUMLOW
+	armor_bomb = CLOTHING_ARMOR_MEDIUM
+	armor_bio = CLOTHING_ARMOR_LOW
+	armor_rad = CLOTHING_ARMOR_LOW
+	armor_internaldamage = CLOTHING_ARMOR_MEDIUM
+	item_state_slots = list(WEAR_JACKET = "mercenary_heavy_armor")
+
+/obj/item/clothing/suit/storage/marine/veteran/mercenary/maradeur/miner
+	name = "\improper Y4 armored miner vest"
+	desc = "A set of beige, cheap light armor built for protection while mining. It is a specialized uniform of an unknown maradeur group working in the sector."
+	icon_state = "mercenary_miner_armor"
+	armor_melee = CLOTHING_ARMOR_MEDIUMLOW
+	armor_bullet = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_energy = CLOTHING_ARMOR_MEDIUM
+	armor_bomb = CLOTHING_ARMOR_HIGH
+	armor_bio = CLOTHING_ARMOR_LOW
+	armor_rad = CLOTHING_ARMOR_LOW
+	armor_internaldamage = CLOTHING_ARMOR_MEDIUM
+	item_state_slots = list(WEAR_JACKET = "mercenary_miner_armor")
+
+/obj/item/clothing/suit/storage/marine/veteran/mercenary/maradeur/support
+	name = "\improper Z3 armored vest"
+	desc = "A set of blue cheap armor with yellow highlights built for protection while building or carrying out medical treatment in highly dangerous environments. It is a specialized uniform of an unknown maradeur group working in the sector."
+	icon_state = "mercenary_engineer_armor"
+	armor_melee = CLOTHING_ARMOR_MEDIUMLOW
+	armor_bullet = CLOTHING_ARMOR_MEDIUMLOW
+	armor_energy = CLOTHING_ARMOR_HIGH
+	armor_bomb = CLOTHING_ARMOR_MEDIUM
+	armor_bio = CLOTHING_ARMOR_HIGH
+	armor_rad = CLOTHING_ARMOR_HIGH
+	armor_internaldamage = CLOTHING_ARMOR_MEDIUMHIGH
+	item_state_slots = list(WEAR_JACKET = "mercenary_engineer_armor")
