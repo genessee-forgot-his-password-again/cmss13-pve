@@ -1,5 +1,5 @@
 /datum/skills/scav
-	name = "Colonist Scavenger"
+	name = "Scavenger"
 	skills = list(
 		SKILL_FIREARMS = SKILL_FIREARMS_CIVILIAN,
 		SKILL_MELEE_WEAPONS = SKILL_MELEE_DEFAULT,
@@ -12,7 +12,7 @@
 	)
 
 /datum/skills/scav/marauder
-	name = "Marauder"
+	name = "Veteran Scavenger"
 	skills = list(
 		SKILL_CQC = SKILL_CQC_TRAINED,
 		SKILL_FIREMAN = SKILL_FIREMAN_TRAINED,

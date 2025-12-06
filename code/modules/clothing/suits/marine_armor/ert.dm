@@ -1024,11 +1024,11 @@
 	time_to_unequip = 20
 	time_to_equip = 20
 
-// =MARADEURS & SCAVS= \\
+// =MARAUDERS & SCAVS= \\
 
-/obj/item/clothing/suit/storage/marine/veteran/mercenary/maradeur
+/obj/item/clothing/suit/storage/marine/veteran/mercenary/marauder
 	name = "\improper K6 ceramic plated armor"
-	desc = "A set of grey, heavy ceramic armor with dark blue highlights. It is the standard uniform of an unknown maradeur group working in the sector. This product is made from cheaper materials, so it offers significantly less protection than its more expensive counterparts."
+	desc = "An early model of the highly sought-after K12 armor, usually favored by mercenaries or pirates on a budget. While not nearly as protective as the modern version, it still deflects bullets easily enough."
 	icon_state = "mercenary_heavy_armor"
 	flags_inventory = BLOCKSHARPOBJ|BLOCK_KNOCKDOWN
 	armor_melee = CLOTHING_ARMOR_HIGH
@@ -1040,9 +1040,9 @@
 	armor_internaldamage = CLOTHING_ARMOR_MEDIUM
 	item_state_slots = list(WEAR_JACKET = "mercenary_heavy_armor")
 
-/obj/item/clothing/suit/storage/marine/veteran/mercenary/maradeur/miner
+/obj/item/clothing/suit/storage/marine/veteran/mercenary/marauder/miner
 	name = "\improper Y4 armored miner vest"
-	desc = "A set of beige, cheap light armor built for protection while mining. It is a specialized uniform of an unknown maradeur group working in the sector."
+	desc = "An early model of Y8 mining armor. Much like the modern version, the Y4 armor sees more use by mercenaries and pirates rather than being used in actual mining operations -- this is primarily due to its sturdiness, while still being technically legal for a civilian to own. While not nearly as protective as the Y8 variant, it still deflects bullets easily enough."
 	icon_state = "mercenary_miner_armor"
 	armor_melee = CLOTHING_ARMOR_MEDIUMLOW
 	armor_bullet = CLOTHING_ARMOR_MEDIUMHIGH
@@ -1053,9 +1053,9 @@
 	armor_internaldamage = CLOTHING_ARMOR_MEDIUM
 	item_state_slots = list(WEAR_JACKET = "mercenary_miner_armor")
 
-/obj/item/clothing/suit/storage/marine/veteran/mercenary/maradeur/support
+/obj/item/clothing/suit/storage/marine/veteran/mercenary/marauder/support
 	name = "\improper Z3 armored vest"
-	desc = "A set of blue cheap armor with yellow highlights built for protection while building or carrying out medical treatment in highly dangerous environments. It is a specialized uniform of an unknown maradeur group working in the sector."
+	desc = "An early model of the highly sought-after Z7 support armor, usually favored by mercenaries or pirates tasked with more technical work. While not nearly as protective as the modern version, it still deflects bullets easily enough."
 	icon_state = "mercenary_engineer_armor"
 	armor_melee = CLOTHING_ARMOR_MEDIUMLOW
 	armor_bullet = CLOTHING_ARMOR_MEDIUMLOW

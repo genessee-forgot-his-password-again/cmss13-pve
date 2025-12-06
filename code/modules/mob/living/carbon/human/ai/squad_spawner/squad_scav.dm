@@ -4,14 +4,14 @@
 // scavs
 
 /datum/human_ai_squad_preset/scav/scav_pistols
-	name = "Scavs, Wanderers (Pistols)"
+	name = "Scavs, Fireteam (Pistols)"
 	desc = "Two poorly-equipped wandering scavs, each armed with a basic pistol."
 	ai_to_spawn = list(
 		/datum/equipment_preset/scav/pistol = 2
 	)
 
 /datum/human_ai_squad_preset/scav/scav_rifle
-	name = "Scavs, Scavenger Gang (Rifle & Pistols)"
+	name = "Scavs, Squad (Rifle & Pistols)"
 	desc = "Three scavengers: one with a rifle, the other two armed with pistols."
 	ai_to_spawn = list(
 		/datum/equipment_preset/scav/rifle = 1,
@@ -19,91 +19,75 @@
 	)
 
 /datum/human_ai_squad_preset/scav/scav_shotgun
-	name = "Scavs, Scavenger Gang (Shotgun & Pistols)"
+	name = "Scavs, Squad (Shotgun & Pistols)"
 	desc = "Three scavengers: one with a shotgun and two with pistols."
 	ai_to_spawn = list(
 		/datum/equipment_preset/scav/shotgun = 1,
 		/datum/equipment_preset/scav/pistol = 2
 	)
 
-/datum/human_ai_squad_preset/scav/scav_patrol_rifles
-	name = "Scavs, Patrol (Rifles & Pistol)"
-	desc = "A three-scav patrol with two rifles and one pistol."
-	ai_to_spawn = list(
-		/datum/equipment_preset/scav/rifle = 2,
-		/datum/equipment_preset/scav/pistol = 1
-	)
-
-/datum/human_ai_squad_preset/scav/scav_patrol_shotguns
-	name = "Scavs, Patrol (Shotguns & Pistol)"
-	desc = "A three-scav patrol with two shotguns and one pistol."
-	ai_to_spawn = list(
-		/datum/equipment_preset/scav/shotgun = 2,
-		/datum/equipment_preset/scav/pistol = 1
-	)
-
-// merc & scav mix
+// Marauder & scav mix
 
 /datum/human_ai_squad_preset/scav/mix_rifles
-	name = "Merc & Scavs, Wanderers (Rifles)"
-	desc = "A mixed group of one maradeur and two scavs, all equipped with rifles."
+	name = "Marauder & Scavs, Squad (Rifles)"
+	desc = "A mixed group of one marauder and two scavs, all equipped with rifles."
 	ai_to_spawn = list(
 		/datum/equipment_preset/scav/rifle/elite = 1,
 		/datum/equipment_preset/scav/rifle = 2
 	)
 
 /datum/human_ai_squad_preset/scav/mix_shotgun
-	name = "Merc & Scavs, Wanderers (Shotguns)"
-	desc = "A mixed group of one maradeur and two scavs, all armed with shotguns."
+	name = "Marauder & Scavs, Squad (Shotguns)"
+	desc = "A mixed group of one marauder and two scavs, all armed with shotguns."
 	ai_to_spawn = list(
 		/datum/equipment_preset/scav/shotgun/elite = 1,
 		/datum/equipment_preset/scav/shotgun = 2
 	)
 
 /datum/human_ai_squad_preset/scav/mix_antitank
-	name = "Merc & Scavs, Antitank Team"
-	desc = "A mixed three-man team: one merc with a SADAR, one scav with a shotgun, and one scav with a rifle."
+	name = "Marauder & Scavs, Squad (AT)"
+	desc = "A mixed three-man team: one marauder with a SADAR, one scav with a shotgun, and one scav with a rifle."
 	ai_to_spawn = list(
 		/datum/equipment_preset/scav/antitank = 1,
 		/datum/equipment_preset/scav/shotgun = 1,
 		/datum/equipment_preset/scav/rifle = 1
 	)
 
-// mercs
+// Marauders
 
-/datum/human_ai_squad_preset/scav/merc_rifles
-	name = "Mercs, Fireteam (Rifle+)"
-	desc = "A three-man maradeur patrol, all equipped with advanced rifles."
+/datum/human_ai_squad_preset/scav/marauder_rifles
+	name = "Marauders, Fireteam (Rifle+)"
+	desc = "A three-man marauder patrol, all equipped with advanced rifles."
 	ai_to_spawn = list(
 		/datum/equipment_preset/scav/rifle/elite = 3
 	)
 
-/datum/human_ai_squad_preset/scav/merc_shotguns
-	name = "Mercs, Fireteam (Shotguns+)"
-	desc = "A three-man maradeur patrol, all equipped with advanced shotguns."
+/datum/human_ai_squad_preset/scav/marauder_shotguns
+	name = "Marauders, Fireteam (Shotguns+)"
+	desc = "A three-man marauder patrol, all equipped with advanced shotguns."
 	ai_to_spawn = list(
 		/datum/equipment_preset/scav/shotgun/elite = 3
 	)
 
-/datum/human_ai_squad_preset/scav/merc_rifles_shotgun
-	name = "Mercs, Fireteam (Rifle+, Shotgun+)"
-	desc = "A maradeur fireteam with two advanced riflemen and one shotgunner."
+/datum/human_ai_squad_preset/scav/marauder_rifles_shotgun
+	name = "Marauders, Fireteam (Rifle+, Shotgun+)"
+	desc = "A marauder fireteam with two advanced riflemen and one shotgunner."
 	ai_to_spawn = list(
 		/datum/equipment_preset/scav/rifle/elite = 2,
 		/datum/equipment_preset/scav/shotgun/elite = 1,
 	)
 
-/datum/human_ai_squad_preset/scav/merc_machinegun
-	name = "Mercs, Heavy Weapon Fireteam (Heavy, Rifle+)"
-	desc = "A maradeur heavy squad: one machine gunner and two riflemen."
+/datum/human_ai_squad_preset/scav/marauder_machinegun
+	name = "Marauders, Heavy Weapon Fireteam (Heavy, Rifle+)"
+	desc = "A marauder heavy squad: one machine gunner and two riflemen."
 	ai_to_spawn = list(
 		/datum/equipment_preset/scav/machinegun = 1,
 		/datum/equipment_preset/scav/rifle/elite = 2,
 	)
 
-/datum/human_ai_squad_preset/scav/merc_antitank
-	name = "Mercs, Antitank Fireteam (SADAR, Rifle+)"
-	desc = "A maradeur team with one SADAR operator supported by two riflemen."
+/datum/human_ai_squad_preset/scav/marauder_antitank
+	name = "Marauders, Antitank Fireteam (SADAR, Rifle+)"
+	desc = "A marauder team with one SADAR operator supported by two riflemen."
 	ai_to_spawn = list(
 		/datum/equipment_preset/scav/antitank = 1,
 		/datum/equipment_preset/scav/rifle/elite = 2,

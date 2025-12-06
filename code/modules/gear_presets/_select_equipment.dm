@@ -2689,9 +2689,9 @@ GLOBAL_LIST_INIT(rebel_ua_pistols, list(
 		/obj/item/clothing/suit/storage/marine/veteran/royal_marine_advanced/cargo,
 		/obj/item/clothing/suit/storage/marine/veteran/pmc,
 		/obj/item/clothing/suit/storage/marine/veteran/merc,
-		/obj/item/clothing/suit/storage/marine/veteran/mercenary/maradeur,
-		/obj/item/clothing/suit/storage/marine/veteran/mercenary/maradeur/miner,
-		/obj/item/clothing/suit/storage/marine/veteran/mercenary/maradeur/support,
+		/obj/item/clothing/suit/storage/marine/veteran/mercenary/marauder,
+		/obj/item/clothing/suit/storage/marine/veteran/mercenary/marauder/miner,
+		/obj/item/clothing/suit/storage/marine/veteran/mercenary/marauder/support,
 		)
 	new_human.equip_to_slot_or_del(new suitpath, WEAR_JACKET)
 
