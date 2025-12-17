@@ -4371,3 +4371,52 @@ Defined in conflicts.dm of the #defines folder.
 	melee_mod = 0
 	flags_attach_features = ATTACH_ACTIVATION
 	attachment_action_type = /datum/action/item_action/toggle
+
+/obj/item/attachable/stock/m16/m16a5
+	name = "\improper M16A5 bump stock"
+	icon_state = "m16a5_stock"
+	attach_icon = "m16a5_stock"
+
+/obj/item/attachable/stock/m16/m16a5/New()//no stats, its cosmetic
+	..()
+
+/obj/item/attachable/stock/smg/collapsible/mp5a5
+	name = "MP5A5 folding stock"
+	icon_state = "mp5_stockc"
+	attach_icon = "mp5_stockc_a"
+	flags_attach_features = ATTACH_ACTIVATION
+	stock_activated = FALSE
+
+/obj/item/attachable/stock/smg/collapsible/mp5a5/apply_on_weapon(obj/item/weapon/gun/gun)
+	if(stock_activated)
+		accuracy_mod = HIT_ACCURACY_MULT_TIER_3
+		recoil_mod = -RECOIL_AMOUNT_TIER_4
+		scatter_mod = -SCATTER_AMOUNT_TIER_8
+		scatter_unwielded_mod = SCATTER_AMOUNT_TIER_10
+		size_mod = 1
+		aim_speed_mod = CONFIG_GET(number/slowdown_low)
+		wield_delay_mod = WIELD_DELAY_FAST
+		movement_onehanded_acc_penalty_mod = -MOVEMENT_ACCURACY_PENALTY_MULT_TIER_5
+		accuracy_unwielded_mod = -HIT_ACCURACY_MULT_TIER_3
+		recoil_unwielded_mod = RECOIL_AMOUNT_TIER_4
+		hud_offset_mod = 8
+		icon_state = "mp5_stockc"
+		attach_icon = "mp5_stockcc_a"
+
+	else
+		accuracy_mod = 0
+		recoil_mod = 0
+		scatter_mod = 0
+		scatter_unwielded_mod = 0
+		size_mod = 0
+		aim_speed_mod = 0
+		wield_delay_mod = 0
+		movement_onehanded_acc_penalty_mod = 0
+		accuracy_unwielded_mod = 0
+		recoil_unwielded_mod = 0
+		hud_offset_mod = 8
+		icon_state = "mp5_stockcc"
+		attach_icon = "mp5_stockcc_a"
+
+	gun.recalculate_attachment_bonuses()
+	gun.update_overlays(src, "stock")
