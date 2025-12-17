@@ -13,6 +13,7 @@
 	randomised_num_contained = 2
 	contains = list(
 		/obj/item/clothing/under/colonist/clf,
+		/obj/item/clothing/accessory/patch/clf_patch,
 		/obj/item/clothing/head/militia,
 		/obj/item/clothing/head/militia/bucket,
 		/obj/item/clothing/head/beret/clf,
