@@ -918,15 +918,13 @@
 		/obj/item/attachable/flashlight/grip,
 		/obj/item/attachable/burstfire_assembly,
 		/obj/item/attachable/attached_gun/grenade/m203,
-		/obj/item/attachable/stock/smg/collapsible/mp5a5,
 		)
 
 	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_AMMO_COUNTER|GUN_AUTO_EJECT_CASINGS
-	starting_attachment_types = list(/obj/item/attachable/stock/smg/collapsible/mp5a5)
 	map_specific_decoration = FALSE
 
 /obj/item/weapon/gun/smg/mp5/mp5a5/set_gun_attachment_offsets()
-	attachable_offset = list("muzzle_x" = 26, "muzzle_y" = 17,"rail_x" = 8, "rail_y" = 19, "under_x" = 19, "under_y" = 13, "stock_x" = 39, "stock_y" = 11)
+	attachable_offset = list("muzzle_x" = 30, "muzzle_y" = 17,"rail_x" = 12, "rail_y" = 19, "under_x" = 23, "under_y" = 15, "stock_x" = 28, "stock_y" = 17, "side_rail_x" = 27, "side_rail_y" = 17)
 
 /obj/item/weapon/gun/smg/mp5/mp5a5/set_gun_config_values()
 	..()
