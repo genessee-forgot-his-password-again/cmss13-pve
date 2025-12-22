@@ -439,6 +439,7 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 	/// extraction stuff
 	var/qm_loyalty = 0
 	var/sh_loyalty = 0
+	var/market_day = FALSE
 
 	//black market stuff
 	///in Weyland-Yutani dollars - Not Stan_Albatross.
@@ -658,10 +659,13 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 				timer += 0.5 SECONDS
 				addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(maul_human), movable_atom), timer)
 
-		if(movable_atom.rp_value != 0)
+		// selling things for rp
+		if(market_day)
 			var/rp_points_to_add = get_rp_value(movable_atom)
-			points += rp_points_to_add * get_loyalty_multiplier()
-			qdel(movable_atom)
+			if(rp_points_to_add > 0)
+				points += rp_points_to_add * get_loyalty_multiplier()
+				qdel(movable_atom)
+				continue
 
 		// Delete everything else.
 		else qdel(movable_atom)
@@ -993,6 +997,7 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 					dat += "<BR>\n<BR>"
 
 
+		dat += "<HR><b>Market Day:</b> <span style='color:[GLOB.supply_controller.market_day ? "lime" : "red"]'>[GLOB.supply_controller.market_day ? "ACTIVE" : "INACTIVE"]</span><br>"
 		dat += "<b>Quartermaster Loyalty:</b> [GLOB.supply_controller.qm_loyalty]<br>"
 		dat += "<b>Scholar Loyalty:</b> [GLOB.supply_controller.sh_loyalty]<br>"
 		dat += {"<HR>\nSupply budget: [GLOB.supply_controller.points * SUPPLY_TO_MONEY_MUPLTIPLIER]RP<BR>\n<BR>
@@ -1307,11 +1312,18 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 	return_value = POSITIVE(return_value - GLOB.supply_controller.black_market_sold_items[movable_atom.type] * 0.5)
 	return return_value
 
+#define RP_PER_DOLLAR 0.2
+
 /proc/get_rp_value(atom/movable/movable_atom)
 	var/return_value = 0
 	if(istype(movable_atom, /obj/item/stack))
 		var/obj/item/stack/rp_stack = movable_atom
 		return_value = rp_stack.rp_value * rp_stack.amount
+	else if(istype(movable_atom, /obj/item/spacecash))
+		var/obj/item/spacecash/cash = movable_atom
+		if(!cash.counterfeit)
+			return_value = cash.worth * RP_PER_DOLLAR
+
 	else
 		return_value = movable_atom.rp_value
 
@@ -1413,6 +1425,10 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 		return
 
 	return TRUE
+
+/datum/controller/supply/proc/toggle_market_day()
+	market_day = !market_day
+	return market_day
 
 /obj/structure/machinery/computer/supplycomp/proc/post_signal(command)
 
