@@ -998,7 +998,8 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 
 
 		dat += "<HR><b>Market Day:</b> <span style='color:[GLOB.supply_controller.market_day ? "lime" : "red"]'>[GLOB.supply_controller.market_day ? "ACTIVE" : "INACTIVE"]</span><br>"
-		dat += "<b>Quartermaster Loyalty:</b> [GLOB.supply_controller.qm_loyalty]<br>"
+		dat += "<b>QM Loyalty:</b> [GLOB.supply_controller.qm_loyalty] | "
+		dat += "<b>Sell Multiplier:</b> <span style='color:[round(GLOB.supply_controller.get_loyalty_multiplier()*100) >= 50 ? "lime" : round(GLOB.supply_controller.get_loyalty_multiplier()*100) >= 30 ? "orange" : "red"]'>[round(GLOB.supply_controller.get_loyalty_multiplier()*100)]%</span><br>"
 		dat += "<b>Scholar Loyalty:</b> [GLOB.supply_controller.sh_loyalty]<br>"
 		dat += {"<HR>\nSupply budget: [GLOB.supply_controller.points * SUPPLY_TO_MONEY_MUPLTIPLIER]RP<BR>\n<BR>
 		\n<A href='byond://?src=\ref[src];order=categories'>Order items</A><BR>\n<BR>
