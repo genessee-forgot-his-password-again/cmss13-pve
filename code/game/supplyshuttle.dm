@@ -101,7 +101,7 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 	icon = 'icons/obj/structures/machinery/computer.dmi'
 	icon_state = "supply"
 	density = TRUE
-	req_access = list(ACCESS_MARINE_CARGO)
+//	req_access = list(ACCESS_MARINE_CARGO)
 	circuit = /obj/item/circuitboard/computer/supplycomp
 	var/temp = null
 	var/reqtime = 0 //Cooldown for requisitions - Quarxink
@@ -508,6 +508,7 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 //		"Contraband Ammo",
 //		"Deep Storage",
 //		"Miscellaneous"
+		"CLF Equipment",
 		)
 
 	//dropship part fabricator's points, so we can reference them globally (mostly for DEFCON)

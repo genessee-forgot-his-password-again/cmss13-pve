@@ -846,6 +846,37 @@
 	desc = "This metal bucket appears to have been modified with padding and chin-straps, plus an eye-slit carved into the \"front\". Presumably, it is intended to be worn on the head, possibly for protection."
 	icon_state = "bucket"
 
+/obj/item/clothing/head/militia/brown
+	name = "\improper armored militia hood"
+	desc = "A large hood in service with some militias, modified for full obscurity on the frontier. Offers some head protection due to the study fibers utilized in production."
+	icon_state = "coordinator_hood"
+
+/obj/item/clothing/head/militia/brown/armored
+	name = "\improper armored militia hood"
+	desc = "A large hood in service with some militias, modified for full obscurity on the frontier. Offers some head protection due to the study fibers utilized in production."
+	icon_state = "coordinator_hood_armored"
+	armor_bullet = CLOTHING_ARMOR_MEDIUM
+
+/obj/item/clothing/head/beret/clf
+	name = "\improper Colonial Liberation Front beret"
+	desc = "A repurposed captured police beret, with a CLF insignia mounted on place where police cockade would usually sit."
+	icon = 'icons/obj/items/clothing/cm_hats.dmi'
+	icon_state = "CLF_beret"
+	item_icons = list(
+		WEAR_HEAD = 'icons/mob/humans/onmob/head_1.dmi'
+	)
+	flags_armor_protection = BODY_FLAG_HEAD
+	armor_melee = CLOTHING_ARMOR_MEDIUMLOW
+	armor_bullet = CLOTHING_ARMOR_MEDIUMLOW
+	armor_energy = CLOTHING_ARMOR_MEDIUMLOW
+	armor_bomb = CLOTHING_ARMOR_MEDIUMLOW
+	armor_bio = CLOTHING_ARMOR_LOW
+	armor_internaldamage = CLOTHING_ARMOR_MEDIUMLOW
+	flags_cold_protection = BODY_FLAG_HEAD
+	min_cold_protection_temperature = ICE_PLANET_MIN_COLD_PROT
+	flags_inventory = BLOCKSHARPOBJ
+	flags_inv_hide = NO_FLAGS
+
 /obj/item/clothing/head/general
 	name = "\improper armored General cap"
 	desc = "A sturdy general officer's cap. More protective than it seems. Please don't ditch this for a helmet like a punk."

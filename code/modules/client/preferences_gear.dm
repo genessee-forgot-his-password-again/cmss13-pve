@@ -1760,6 +1760,11 @@ GLOBAL_LIST_EMPTY(gear_datums_by_name)
 	display_name = "Three World Empire shoulder patch"
 	path = /obj/item/clothing/accessory/patch/twe
 
+/datum/gear/misc/patch_clf
+	display_name = "CLF patch"
+	path = /obj/item/clothing/accessory/patch/clf_patch
+	cost = 0
+
 /datum/gear/misc/family_photo
 	display_name = "Family photo"
 	path = /obj/item/prop/helmetgarb/family_photo

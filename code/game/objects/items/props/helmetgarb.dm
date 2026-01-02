@@ -639,3 +639,12 @@
 	user.visible_message(SPAN_NOTICE("[user] squeezes a few drops into their eye."), SPAN_NOTICE("You squeeze a few drops into your eye."))
 	user.apply_effect(5, EYE_BLUR)
 	COOLDOWN_START(src, last_eye_drops, 2.5 SECONDS)
+
+//===========================//CLF - SPECIAL FORCES\\================================\\
+
+/obj/item/prop/helmetgarb/clf_riot_shield
+	name = "\improper custom made riot shield"
+	desc = "A RC6 riot shield that has been heavily modified, painted over over with a darker color scheme and reinforced with extra metal plates to protect the user."
+	icon_state = "riot_shield_clf"
+	w_class = SIZE_SMALL
+	flags_obj = OBJ_NO_HELMET_BAND

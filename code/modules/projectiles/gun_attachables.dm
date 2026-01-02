@@ -4371,3 +4371,11 @@ Defined in conflicts.dm of the #defines folder.
 	melee_mod = 0
 	flags_attach_features = ATTACH_ACTIVATION
 	attachment_action_type = /datum/action/item_action/toggle
+
+/obj/item/attachable/stock/m16/m16a5
+	name = "\improper M16A5 bump stock"
+	icon_state = "m16a5_stock"
+	attach_icon = "m16a5_stock"
+
+/obj/item/attachable/stock/m16/m16a5/New()//no stats, its cosmetic
+	..()
