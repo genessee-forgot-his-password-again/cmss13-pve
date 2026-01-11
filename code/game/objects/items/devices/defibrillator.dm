@@ -268,3 +268,8 @@
 	item_state = "defib"
 	w_class = SIZE_SMALL
 	charge_cost = 99
+
+/obj/item/device/defibrillator/multiuse
+	name = "emergency defibrillator"
+	desc = "A handheld emergency defibrillator, used to restore fibrillating patients. Can optionally bring people back from the dead. It can be used multiple times before needing to be recharged."
+	charge_cost = 66
