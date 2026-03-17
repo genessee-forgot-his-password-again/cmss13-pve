@@ -353,6 +353,15 @@
 	flags_jumpsuit = FALSE
 	flags_atom = NO_NAME_OVERRIDE|NO_SNOW_TYPE
 
+/obj/item/clothing/under/marine/scribe
+	name = "\improper RR 'Scribe' uniform"
+	desc = "An armored robe that's snug enough to fit underneath protective vests and the like. This one has a little tag on the back collar reading 'Ad Victoriam'."
+	icon_state = "marine_scribe"
+	worn_state = "marine_scribe"
+	item_state_slots = list(WEAR_BODY = "marine_scribe")
+	flags_jumpsuit = FALSE
+	flags_atom = NO_NAME_OVERRIDE|NO_SNOW_TYPE
+
 //=========================//DRESS BLUES\\================================\\
 //=======================================================================\\
 

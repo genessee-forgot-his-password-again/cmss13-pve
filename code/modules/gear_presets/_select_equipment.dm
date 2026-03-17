@@ -647,6 +647,9 @@ GLOBAL_LIST_EMPTY(personal_closets)
 	if(new_human.ckey == "bartdrown")
 		new /obj/item/clothing/mask/gas/clown_hat(closet_to_spawn_in) // season 2 end-of-season purchase
 
+	if(new_human.ckey == "tuna_na")
+		new /obj/item/clothing/under/marine/scribe(closet_to_spawn_in) // season 2 end-of-season purchase
+
 /datum/equipment_preset/proc/load_traits(mob/living/carbon/human/new_human, client/mob_client)
 	var/client/real_client = mob_client || new_human.client
 	if(!real_client?.prefs?.traits)
