@@ -2065,7 +2065,7 @@
 		"Engaging.",
 		"Enemy spotted.",
 		"Contact.",
-		"Command, we've got hostiles."
+		"Command, we've got hostiles.",
 		"Neutralize that one.",
 		"Target acquired.",
 	)
