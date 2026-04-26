@@ -2,11 +2,11 @@
 	name = "Nexus Operative"
 	languages = list(LANGUAGE_ENGLISH)
 	flags = EQUIPMENT_PRESET_EXTRA
-	faction = FACTION_SCAV
+	faction = FACTION_NEXUS
 	faction_group = FACTION_LIST_NEXUS
 	skills = /datum/skills/scav
 	paygrades = list(PAY_SHORT_SCAV = JOB_PLAYTIME_TIER_0)
-	origin_override = ORIGIN_CIVILIAN
+	idtype = /obj/item/card/id/dogtag
 
 /datum/equipment_preset/nexus/New()
 	. = ..()
@@ -27,13 +27,14 @@
 
 /datum/equipment_preset/nexus/grunt/load_gear(mob/living/carbon/human/new_human)
 	new_human.undershirt = "undershirt"
-	new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/pistol/vp70(new_human), WEAR_WAIST)
-	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/pistol/vp70(new_human), WEAR_L_STORE)
-	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/pistol/vp70(new_human), WEAR_R_STORE)
 	//uniform
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/color/grey(new_human), WEAR_BODY)
 	//boots
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/jackboots(new_human), WEAR_FEET)
+	//gear
+	new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/pistol/vp70(new_human), WEAR_WAIST)
+	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/pistol/vp70(new_human), WEAR_L_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/pistol/vp70(new_human), WEAR_R_STORE)
 
 /datum/equipment_preset/nexus/grunt/load_name(mob/living/carbon/human/new_human, randomise)
 	var/random_name
@@ -55,14 +56,15 @@
 
 /datum/equipment_preset/nexus/agent/load_gear(mob/living/carbon/human/new_human)
 	new_human.undershirt = "undershirt"
-	new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/smg/m39(new_human), WEAR_J_STORE)
-	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/smg/m39/extended(new_human), WEAR_WAIST)
 	//uniform
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/liaison_suit/black(new_human), WEAR_BODY)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/jacket/marine/corporate/black(new_human), WEAR_JACKET)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/sunglasses(new_human), WEAR_EYES)
 	//boots
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/jackboots(new_human), WEAR_FEET)
+	// gear
+	new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/smg/m39(new_human), WEAR_J_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/smg/m39/extended(new_human), WEAR_WAIST)
 
 /datum/equipment_preset/nexus/agent/load_name(mob/living/carbon/human/new_human, randomise)
 	var/random_name
@@ -84,14 +86,15 @@
 
 /datum/equipment_preset/nexus/agentmkii/load_gear(mob/living/carbon/human/new_human)
 	new_human.undershirt = "undershirt"
-	new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/smg/m39/elite(new_human), WEAR_J_STORE)
-	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/smg/m39/ap(new_human), WEAR_WAIST)
 	//uniform
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/liaison_suit/black(new_human), WEAR_BODY)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/jacket/marine/corporate/black(new_human), WEAR_JACKET)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/sunglasses/sechud(new_human), WEAR_EYES)
 	//boots
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/jackboots(new_human), WEAR_FEET)
+	//gear
+	new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/smg/m39/elite(new_human), WEAR_J_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/smg/m39/ap(new_human), WEAR_WAIST)
 
 /datum/equipment_preset/nexus/agentmkii/load_name(mob/living/carbon/human/new_human, randomise)
 	var/random_name
@@ -122,14 +125,15 @@
 
 /datum/equipment_preset/nexus/atp/engineer/load_gear(mob/living/carbon/human/new_human)
 	new_human.undershirt = "undershirt"
-	new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/rifle/m41a(new_human), WEAR_J_STORE)
-	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/extended(new_human), WEAR_WAIST)
 	//uniform
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/marsoc(new_human), WEAR_BODY)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/marine/veteran/royal_marine(new_human), WEAR_JACKET)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/mask/gas/pmc(new_human), WEAR_FACE)
 	//boots
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/jackboots(new_human), WEAR_FEET)
+	// gear
+	new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/rifle/m41a(new_human), WEAR_J_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/extended(new_human), WEAR_WAIST)
 
 /datum/equipment_preset/nexus/atp/engineer/load_name(mob/living/carbon/human/new_human, randomise)
 	var/random_name
@@ -151,14 +155,15 @@
 
 /datum/equipment_preset/nexus/atp/soldat/load_gear(mob/living/carbon/human/new_human)
 	new_human.undershirt = "undershirt"
-	new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/rifle/m41aMK1/ap(new_human), WEAR_J_STORE)
-	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/m41aMK1/ap(new_human), WEAR_WAIST)
 	//uniform
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/marsoc(new_human), WEAR_BODY)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/marine/veteran/royal_marine(new_human), WEAR_JACKET)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/canc_monoscope(new_human), WEAR_EYES)
 	//boots
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/jackboots(new_human), WEAR_FEET)
+	// gear
+	new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/rifle/m41aMK1/ap(new_human), WEAR_J_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/m41aMK1/ap(new_human), WEAR_WAIST)
 
 /datum/equipment_preset/nexus/atp/soldat/load_name(mob/living/carbon/human/new_human, randomise)
 	var/random_name
