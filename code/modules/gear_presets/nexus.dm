@@ -36,6 +36,7 @@
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/jackboots(new_human), WEAR_FEET)
 
 /datum/equipment_preset/nexus/grunt/load_name(mob/living/carbon/human/new_human, randomise)
+	var/random_name
 	new_human.gender = pick(MALE)
 	if(new_human.gender == MALE)
 		random_name = "GR-[rand(1,999)]"
@@ -64,6 +65,7 @@
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/jackboots(new_human), WEAR_FEET)
 
 /datum/equipment_preset/nexus/agent/load_name(mob/living/carbon/human/new_human, randomise)
+	var/random_name
 	new_human.gender = pick(MALE)
 	if(new_human.gender == MALE)
 		random_name = "AG-[rand(1,999)]"
@@ -92,6 +94,7 @@
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/jackboots(new_human), WEAR_FEET)
 
 /datum/equipment_preset/nexus/agentmkii/load_name(mob/living/carbon/human/new_human, randomise)
+	var/random_name
 	new_human.gender = pick(MALE)
 	if(new_human.gender == MALE)
 		random_name = "EAG-[rand(1,999)]"
@@ -129,6 +132,7 @@
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/jackboots(new_human), WEAR_FEET)
 
 /datum/equipment_preset/nexus/atp/engineer/load_name(mob/living/carbon/human/new_human, randomise)
+	var/random_name
 	new_human.gender = pick(MALE)
 	if(new_human.gender == MALE)
 		random_name = "ATP/EN-[rand(1,999)]"
@@ -157,6 +161,7 @@
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/jackboots(new_human), WEAR_FEET)
 
 /datum/equipment_preset/nexus/atp/soldat/load_name(mob/living/carbon/human/new_human, randomise)
+	var/random_name
 	new_human.gender = pick(MALE)
 	if(new_human.gender == MALE)
 		random_name = "ATP/SD-[rand(1,999)]"
