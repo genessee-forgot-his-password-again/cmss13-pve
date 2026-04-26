@@ -2061,7 +2061,7 @@
 		"Target spotted.",
 		"Hostile.",
 		"Tagged for elimination.",
-		"Neutralize that one."
+		"Neutralize that one.",
 		"Engaging.",
 		"Enemy spotted.",
 		"Contact.",
