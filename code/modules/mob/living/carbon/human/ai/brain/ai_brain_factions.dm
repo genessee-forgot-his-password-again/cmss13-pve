@@ -2052,3 +2052,45 @@
 		"This gun's a piece of shit. Let me just-- there we go.",
 		"What-? FUCK! I'M OUT OF ROUNDS! RELOADING!",
 	)
+
+/datum/human_ai_faction/nexus
+	faction = FACTION_NEXUS
+	friendly_factions = list()
+	neutral_factions = list()
+	enter_combat_lines = list(
+		"Target spotted.",
+		"Hostile.",
+		"Tagged for elimination.",
+		"Neutralize that one."
+		"Engaging.",
+		"Enemy spotted.",
+		"Contact.",
+		"Command, we've got hostiles."
+		"Neutralize that one.",
+		"Target acquired.",
+	)
+	exit_combat_lines = list(
+		"Target down.",
+		"Enemy neutralized.",
+		"Command, target is KIA.",
+		"Regrouping.",
+		"Clear.",
+		"Scratch one.",
+		"All KIA.",
+	)
+	reload_lines = list(
+		"Reloading.",
+		"Cover me.",
+		"I'm dry.",
+		"Swapping magazines.",
+		"I need cover.",
+		"Eliminate on my mark. Need to reload.",
+	)
+	reload_internal_mag_lines = list(
+		"Reloading.",
+		"Cover me.",
+		"I'm dry.",
+		"Swapping rounds.",
+		"I need cover.",
+		"Eliminate on my mark. Need to reload.",
+	)

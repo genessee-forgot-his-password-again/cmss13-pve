@@ -17,3 +17,7 @@
 /datum/faction/rebels/scav
 	name = "Scavengers"
 	faction_tag = FACTION_SCAV
+
+/datum/faction/rebels/nexus
+	name = "Nexus Corps"
+	faction_tag = FACTION_NEXUS
