@@ -84,8 +84,6 @@
 		/datum/equipment_preset/colonist/security/guard/marksman::name = /datum/equipment_preset/colonist/security/guard/marksman,
 		/datum/equipment_preset/scav/sniper::name = /datum/equipment_preset/scav/sniper,
 		/datum/equipment_preset/mercenary/sentinel/marksman::name = /datum/equipment_preset/mercenary/sentinel/marksman,
-		/datum/equipment_preset/mercenary/sentinel/response/marksman::name = /datum/equipment_preset/mercenary/sentinel/response/marksman,
-		/datum/equipment_preset/mercenary/infiltrator::name = /datum/equipment_preset/mercenary/infiltrator,
 		/datum/equipment_preset/fil/rifleman/sniper::name = /datum/equipment_preset/fil/rifleman/sniper,
 	)
 
