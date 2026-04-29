@@ -71,7 +71,6 @@
 	guns = list(
 		/obj/item/weapon/gun/rifle/m16,
 		/obj/item/weapon/gun/rifle/m20a,
-		/obj/item/weapon/gun/rifle/m20a/merc,
 		/obj/item/weapon/gun/rifle/rmc_f90,
 		/obj/item/weapon/gun/rifle/type71,
 		/obj/item/weapon/gun/rifle/m41a,
@@ -149,7 +148,6 @@
 		/obj/item/weapon/gun/smg/bizon,
 		/obj/item/weapon/gun/rifle/m16,
 		/obj/item/weapon/gun/rifle/m20a,
-		/obj/item/weapon/gun/rifle/m20a/merc,
 		/obj/item/weapon/gun/rifle/rmc_f90,
 		/obj/item/weapon/gun/rifle/type71,
 		/obj/item/weapon/gun/rifle/m41a,

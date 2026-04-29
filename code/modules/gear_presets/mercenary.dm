@@ -254,7 +254,7 @@
 	skills = /datum/skills/trooper
 	faction = FACTION_MERCENARY
 
-/datum/equipment_preset/mercenary/sentinel/marksman/load_gear(mob/living/carbon/human/new_human)
+/datum/equipment_preset/mercenary/sentinel/load_gear(mob/living/carbon/human/new_human)
 	new_human.undershirt = "undershirt"
 	//back
 	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/black, WEAR_BACK)
