@@ -90,7 +90,7 @@
 		/datum/equipment_preset/clf/soldier/machinegunner::name = /datum/equipment_preset/clf/soldier/machinegunner,
 		/datum/equipment_preset/scav/machinegun::name = /datum/equipment_preset/scav/machinegun,
 		/datum/equipment_preset/fil/rifleman/mg::name = /datum/equipment_preset/fil/rifleman/mg,
-		/datum/equipment_preset/mercenary/bulwark/machinegun::name = /datum/equipment_preset/mercenary/bulwark/machinegun,
+		/datum/equipment_preset/mercenary/sentinel/mg::name = /datum/equipment_preset/mercenary/sentinel/mg,
 	)
 
 	if(!check_rights(R_DEBUG))
