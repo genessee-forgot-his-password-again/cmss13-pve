@@ -157,6 +157,7 @@
 	desc = "A jerry can. In space! Or maybe a colony."
 	icon_state = "canister"
 	icon = 'icons/obj/items/tank.dmi'
+	rp_value = 50
 
 /obj/item/prop/colony/proptag
 	name = "information dog tag"
@@ -189,6 +190,7 @@
 	desc = "It has some sort of a tube at the end of its tail. What the hell is this thing?"
 	icon = 'icons/mob/xenos/effects.dmi'
 	icon_state = "facehugger_impregnated"
+	rp_value = 20
 
 //-----USS Almayer Props -----//
 //Put any props that don't function properly, they could function in the future but for now are for looks. This system could be expanded for other maps too. ~Art
@@ -210,6 +212,7 @@
 	desc = "A small red box that contains flight data from a dropship while it's on mission. Usually referred to as the black box, although this one comes in bloody red."
 	icon_state = "flight_recorder"
 	w_class = SIZE_MEDIUM
+	rp_value = 200
 
 /obj/item/prop/almayer/flight_recorder/colony
 	name = "\improper CIR-60 colony information recorder"
@@ -415,3 +418,26 @@
 	throwforce = 0.5
 	desc = "An object crafted out of branches, twigs, and twine rope that seem to form a miniature pyramid. It leaves you with an ominous feeling."
 	w_class = SIZE_LARGE
+
+
+// Massive Digger by dimdimich1996
+
+/obj/structure/prop/invuln/dense/excavator
+	name = "Model 30 Light Excavator"
+	desc = "Weyland-Yutani Corporation's Model 30 Light Excavator. Despite looking like a massive beast, the Model 30 is fairly light when compared to other W-Y terraforming excavators. It's designed to be able to be disassembled for transport and re-assembled on site. This one is a nice orange color."
+	icon = 'icons/obj/structures/props/digger.dmi'
+	icon_state = "digger_orange"
+	layer = BIG_XENO_LAYER
+
+/obj/structure/prop/invuln/dense/excavator/gray
+	desc = "Weyland-Yutani Corporation's Model 30 Light Excavator. Despite looking like a massive beast, the Model 30 is fairly light when compared to other W-Y terraforming excavators. It's designed to be able to be disassembled for transport and re-assembled on site. This one is a nice gray color."
+	icon_state = "digger_gray"
+
+/obj/structure/prop/invuln/dense/excavator/Initialize()
+	. = ..()
+	if(dir & (SOUTH|NORTH))
+		bound_height = 192
+		bound_width = 96
+	else
+		bound_height = 96
+		bound_width = 192

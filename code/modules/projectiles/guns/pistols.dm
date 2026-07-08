@@ -67,6 +67,7 @@
 		/obj/item/attachable/heavy_barrel,
 		/obj/item/attachable/burstfire_assembly,
 	)
+	rp_value = 10
 
 /obj/item/weapon/gun/pistol/m4a3/set_gun_attachment_offsets()
 	attachable_offset = list("muzzle_x" = 28, "muzzle_y" = 20,"rail_x" = 10, "rail_y" = 21, "under_x" = 21, "under_y" = 17, "stock_x" = 21, "stock_y" = 17, "side_rail_x" = 19, "side_rail_y" = 15)
@@ -118,6 +119,7 @@
 	current_mag = /obj/item/ammo_magazine/pistol/l54
 	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_ONE_HAND_WIELDED|GUN_AUTO_EJECT_CASINGS
 	attachable_allowed = null
+	rp_value = 10
 
 /obj/item/weapon/gun/pistol/l54/set_gun_attachment_offsets()
 	attachable_offset = list("muzzle_x" = 28, "muzzle_y" = 20,"rail_x" = 10, "rail_y" = 21, "under_x" = 21, "under_y" = 17, "stock_x" = 21, "stock_y" = 17, "side_rail_x" = 19, "side_rail_y" = 14)
@@ -164,6 +166,7 @@
 		/obj/item/attachable/stock/vp70,
 	)
 	start_automatic = TRUE
+	rp_value = 10
 
 /obj/item/weapon/gun/pistol/vp70/set_gun_attachment_offsets()
 	attachable_offset = list("muzzle_x" = 27, "muzzle_y" = 21,"rail_x" = 8, "rail_y" = 22, "under_x" = 21, "under_y" = 18, "stock_x" = 11, "stock_y" = 14, "side_rail_x" = 19, "side_rail_y" = 16)
@@ -193,6 +196,20 @@
 	flashlight.Attach(src)
 	update_attachable(flashlight.slot)
 
+/obj/item/weapon/gun/pistol/vp70/veteran
+	name = "\improper VP70 M5 'Grizzled Veteran' service pistol"
+	desc = "Standard issue semi-automatic 9mm USCM service pistol. This particular pistol has been given a crimson leather grip and had various parts replaced with what appears to be genuine silver. There's an engraving along the side - 'THEY SHALL NOT GROW OLD.'"
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/uscm.dmi'
+	icon_state = "vp70_veteran"
+	item_state = "vp70_veteran"
+
+/obj/item/weapon/gun/pistol/vp70/legendary_veteran
+	name = "\improper VP70 M5 'Primeval Warrior' service pistol"
+	desc = "Standard issue semi-automatic 9mm USCM service pistol. This particular pistol has been given a crimson leather grip and had various parts replaced with what appears to be genuine gold! There's an engraving along the side - 'YOU MERELY STAND ON THE SHOULDERS OF GIANTS. I WALKED WITH THEM - AND THEY WALKED WITH ME.'"
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/uscm.dmi'
+	icon_state = "vp70_legendary_veteran"
+	item_state = "vp70_legendary_veteran"
+
 //-------------------------------------------------------
 
 /obj/item/weapon/gun/pistol/m1911
@@ -203,6 +220,7 @@
 	item_state = "m4a3"
 	fire_sound = 'sound/weapons/gun_vp78_v2.ogg'
 	current_mag = /obj/item/ammo_magazine/pistol/m1911
+	rp_value = 10
 
 /obj/item/weapon/gun/pistol/m1911/set_gun_attachment_offsets()
 	attachable_offset = list("muzzle_x" = 28, "muzzle_y" = 20,"rail_x" = 10, "rail_y" = 22, "under_x" = 21, "under_y" = 17, "stock_x" = 21, "stock_y" = 17, "side_rail_x" = 19, "side_rail_y" = 15)
@@ -223,6 +241,7 @@
 	icon_state = "m4a345_s"
 	item_state = "m4a3"
 	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_ONE_HAND_WIELDED|GUN_AMMO_COUNTER|GUN_AUTO_EJECT_CASINGS
+	rp_value = 50
 
 /obj/item/weapon/gun/pistol/m1911/socom/set_gun_config_values()
 	..()
@@ -805,7 +824,7 @@ It is a modified Beretta 93R, and can fire three-round burst or single fire. Whe
 	fire_sound = 'sound/weapons/gun_chimp70.ogg'
 	w_class = SIZE_MEDIUM
 	force = 8
-	flags_gun_features = GUN_AUTO_EJECTOR
+	flags_gun_features = GUN_AUTO_EJECTOR|GUN_AUTO_EJECT_CASINGS
 
 /obj/item/weapon/gun/pistol/chimp/set_gun_config_values()
 	..()
@@ -897,3 +916,39 @@ It is a modified Beretta 93R, and can fire three-round burst or single fire. Whe
 	accuracy_mult = BASE_ACCURACY_MULT
 	scatter = SCATTER_AMOUNT_TIER_7
 	damage_mult = BASE_BULLET_DAMAGE_MULT + BULLET_DAMAGE_MULT_TIER_2
+
+//-------------------------------------------------------
+//PA76 Pistol
+
+/obj/item/weapon/gun/pistol/pa76
+	name = "\improper PA76 pistol"
+	desc = "Pistolete automatique model 76, is a French pistol model made from SACM engineering company. A rather bit archaic but reliable pistol that is chambered in 7.65mm longue."
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/colony.dmi'
+	icon_state = "pa76"
+	item_state = "pa76"
+	fire_sound = "vp70"
+	current_mag = /obj/item/ammo_magazine/pistol/pa76
+	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_ONE_HAND_WIELDED|GUN_AUTO_EJECT_CASINGS
+	attachable_allowed = list(
+		/obj/item/attachable/reddot,
+		/obj/item/attachable/reflex,
+		/obj/item/attachable/flashlight,
+		/obj/item/attachable/lasersight,
+	)
+
+/obj/item/weapon/gun/pistol/pa76/set_gun_attachment_offsets()
+	attachable_offset = list("muzzle_x" = 28, "muzzle_y" = 20,"rail_x" = 10, "rail_y" = 21, "under_x" = 21, "under_y" = 17, "stock_x" = 21, "stock_y" = 17, "side_rail_x" = 19, "side_rail_y" = 15)
+
+
+/obj/item/weapon/gun/pistol/pa76/set_gun_config_values()
+	..()
+	set_fire_delay(FIRE_DELAY_TIER_11)
+	accuracy_mult = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_3
+	accuracy_mult_unwielded = BASE_ACCURACY_MULT - HIT_ACCURACY_MULT_TIER_1
+	scatter = SCATTER_AMOUNT_TIER_7
+	burst_scatter_mult = SCATTER_AMOUNT_TIER_7
+	scatter_unwielded = SCATTER_AMOUNT_TIER_8
+	damage_mult = BASE_BULLET_DAMAGE_MULT
+
+/obj/item/weapon/gun/pistol/pa76/ap
+	current_mag = /obj/item/ammo_magazine/pistol/pa76/ap

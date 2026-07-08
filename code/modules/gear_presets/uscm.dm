@@ -1259,3 +1259,57 @@
 	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/m41aMK1, WEAR_IN_R_STORE)
 	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/m41aMK1, WEAR_IN_R_STORE)
 	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/m41aMK1, WEAR_IN_R_STORE)
+
+// extraction loadouts for raiders
+
+/datum/equipment_preset/uscm/pfc/extraction
+	name = "Ex-USCM Deserter Rifleman"
+	skills = /datum/skills/pfc/extraction
+
+/datum/equipment_preset/uscm/medic/extraction
+	name = "Ex-USCM Deserter Corpsman"
+	role_comm_title = "Med"
+	skills = /datum/skills/combat_medic/extraction
+
+/datum/equipment_preset/uscm/leader/extraction
+	name = "Ex-USCM Deserter Sergeant"
+	skills = /datum/skills/SL/extraction
+
+/datum/equipment_preset/synth/uscm/extraction
+	name = "Ex-USCM Synthetic"
+	skills = /datum/skills/synthetic/extract
+
+/datum/equipment_preset/synth/uscm/extraction/load_skills(mob/living/carbon/human/new_human)
+	. = ..()
+	new_human.allow_gun_usage = FALSE
+
+/datum/equipment_preset/synth/uscm/extraction/load_gear(mob/living/carbon/human/new_human)
+	return
+
+// raiders
+
+/datum/equipment_preset/uscm/pfc/raider
+	name = "Raider Squad Rifleman"
+	paygrades = list(PAY_SHORT_ME4 = JOB_PLAYTIME_TIER_0)
+	skills = /datum/skills/pfc/extraction
+
+/datum/equipment_preset/uscm/medic/raider
+	name = "Raider Corpsman"
+	paygrades = list(PAY_SHORT_ME5 = JOB_PLAYTIME_TIER_0)
+	skills = /datum/skills/combat_medic/extraction
+
+/datum/equipment_preset/uscm/engineer/raider
+	name = "Raider Squad Combat Engineer"
+	paygrades = list(PAY_SHORT_ME5 = JOB_PLAYTIME_TIER_0)
+	skills = /datum/skills/combat_engineer/raider
+
+/datum/equipment_preset/uscm/tl/raider
+	name = "Raider Team Leader"
+	assignment = JOB_SQUAD_TEAM_LEADER_RAIDER
+	paygrades = list(PAY_SHORT_ME5 = JOB_PLAYTIME_TIER_0)
+	skills = /datum/skills/SL/extraction
+
+/datum/equipment_preset/uscm/leader/raider
+	name = "Raider Team Chief"
+	paygrades = list(PAY_SHORT_ME7 = JOB_PLAYTIME_TIER_0)
+	skills = /datum/skills/SL/extraction

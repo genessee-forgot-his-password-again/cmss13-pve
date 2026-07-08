@@ -60,6 +60,13 @@
 	total_positions = 4
 	spawn_positions = 4
 
+/datum/job/marine/standard/ai/extraction
+	total_positions = 7
+	spawn_positions = 7
+	gear_preset = /datum/equipment_preset/uscm/pfc/extraction
+	gear_preset_secondary = /datum/equipment_preset/uscm/pfc/extraction
+	gear_preset_tertiary = /datum/equipment_preset/uscm/pfc/extraction
+
 /datum/job/marine/standard/ai/set_spawn_positions(count)
 	return spawn_positions
 
@@ -156,6 +163,18 @@
 /obj/effect/landmark/start/marine/rmc
 	name = JOB_TWE_RMC_RIFLEMAN
 	squad = SQUAD_RMC
+	job = /datum/job/marine/standard/ai/rmc
+
+/datum/job/marine/standard/ai/raider
+	title = JOB_SQUAD_MARINE_RAIDER
+	total_positions = 2
+	spawn_positions = 2
+	gear_preset = /datum/equipment_preset/uscm/pfc/raider
+	job_options = null
+
+/obj/effect/landmark/start/marine/raider
+	name = JOB_SQUAD_MARINE_RAIDER
+	squad = SQUAD_RAIDER
 	job = /datum/job/marine/standard/ai/rmc
 
 #undef CPL_VARIANT

@@ -409,6 +409,11 @@
 	desc = "A fire-resistant shoulder patch, worn by the men and women of the 3rd Battalion 'Solar Devils', part of the USCM 2nd Division, 1st Regiment."
 	icon_state = "solardevilspatch"
 
+/obj/item/clothing/accessory/patch/deuce
+	name = "USCM Double Deuce patch"
+	desc = "A fire resistant shoulder patch, worn by the men and women of the 2nd Battalion Double Deuce, 2nd Marines."
+	icon_state = "doubledeucepatch"
+
 /obj/item/clothing/accessory/patch/forecon
 	name = "USCM Force Reconnaissance patch"
 	desc = "A fire-resistant shoulder patch, worn by the men and women of USCM FORECON. Swift, Silent, Deadly."
@@ -479,6 +484,11 @@
 	desc = "A fire-resistant shoulder patch, worn by the men and women of the Brazilian Military Police."
 	icon_state = "brazilpolicepatch"
 
+/obj/item/clothing/accessory/patch/freelance_cell
+	name = "Freelance Cell patch"
+	desc = "A worn-out shoulder patch depicting the insignia of the Freelance Cell; a skull disappearing into the night sky. 'There is nothing more for me than myself!'"
+	icon_state = "freelancecellpatch"
+
 //Flag patches
 /obj/item/clothing/accessory/patch/ua
 	name = "UA flag patch"
@@ -495,6 +505,11 @@
 	name = "USA flag patch"
 	desc = "A fire-resistant shoulder patch with the flag of the United States of America, a massive North American nation of Earth, and the leading superpower of the United Americas."
 	icon_state = "usaflagpatch"
+
+/obj/item/clothing/accessory/patch/france
+	name = "french insignia patch"
+	desc = "A fire-resistant shoulder patch with the flag of France, an independant nation found on Earth and their minor interstellar colonies."
+	icon_state = "french"
 
 //Ribbons
 /obj/item/clothing/accessory/patch/ribbon/topography
@@ -552,6 +567,18 @@
 /obj/item/clothing/accessory/poncho/green/army
 	name = "Well-worn Poncho"
 	desc = "The standard poncho has variations for every climate. Custom fitted to be attached to M3 & M4 armor variants, it is comfortable and warms or cools as needed. A trooper couldn't ask for more. Affectionately referred to as a \"woobie\"."
+
+/obj/item/clothing/accessory/poncho/freelancecellovercoat
+	name = "Freelance Cell overcoat"
+	desc = "A giant overcoat favored by high-ranking members of the Freelance Cell; it's so big that it needs to be clipped to a set of armor to keep it from falling off entirely. Wearing it makes you feel important."
+	icon_state = "freelancecellovercoat"
+	has_variation = FALSE
+
+/obj/item/clothing/accessory/poncho/freelancecellovercoat/quartermaster
+	name = "Michael's overcoat"
+	desc = "A giant overcoat favored worn by Lieutenant Michael Brown, a notable member of the Robert's Raiders pirate group. It's so big that it needs to be attached to a set of armor to keep it from falling off entirely, and it weighs a ton. You're pretty sure its inlaid with real gold."
+	icon_state = "freelancecellovercoat_qm"
+	has_variation = FALSE
 
 /obj/item/clothing/accessory/bomb //Suicide vesst
 	name = "explosive vest"

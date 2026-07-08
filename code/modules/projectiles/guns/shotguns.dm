@@ -299,6 +299,13 @@ can cause issues with ammo types getting mixed up during the burst.
 /obj/item/weapon/gun/shotgun/combat/riot
 	current_mag = /obj/item/ammo_magazine/internal/shotgun/combat/riot
 
+/obj/item/weapon/gun/shotgun/combat/haywood
+	name = "\improper M120 'Seventh Layer's Bellows' tactical shotgun"
+	desc = "A standard configuration M120 shotgun with a particularly wicked, violently hot paintjob. \n\nLootviticus 21:8: But the impoverished, scavenging, carrion-eaters, laymen, economically immoral, schemers, loyalists, and all filchers shall meet their maker in the twelve gauge which burns with fire and brimstone, which is the second death."
+	icon_state = "mk221_haywood"
+	item_state = "mk221_haywood"
+	current_mag = /obj/item/ammo_magazine/internal/shotgun/combat/unloaded
+
 //SOF MK210, an earlier developmental variant of the MK211 tactical used by USCM SOF.
 /obj/item/weapon/gun/shotgun/combat/marsoc
 	name = "\improper XM38 tactical shotgun"
@@ -441,6 +448,62 @@ can cause issues with ammo types getting mixed up during the burst.
 
 /obj/item/weapon/gun/shotgun/pump/type23/riot
 	current_mag = /obj/item/ammo_magazine/internal/shotgun/type23/riot
+
+//-------------------------------------------------------
+//P79S SHOTGUN
+
+/obj/item/weapon/gun/shotgun/p79s
+	name = "\improper P79S semi-automatic shotgun"
+	desc = "A somewhat older semi-automatic shotgun design, chambered in 10 gauge shells. Though not as common as more modern automatic ones, the P79S is still in use with various mercenary and police forces due to its reliability and stopping power. Its internal tube magazine can store 6 shells. Produced by Orion Defence Systems."
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/colony.dmi'
+	icon_state = "p79s"
+	item_state = "p79s"
+
+	fire_sound = 'sound/weapons/gun_shotgun_automatic.ogg'
+
+	flags_equip_slot = SLOT_BACK
+	current_mag = /obj/item/ammo_magazine/internal/shotgun/p79s
+	attachable_allowed = list(
+		/obj/item/attachable/stock/p79s,
+	)
+
+/obj/item/weapon/gun/shotgun/p79s/Initialize(mapload, spawn_empty)
+	. = ..()
+	if(current_mag && current_mag.current_rounds > 0)
+		load_into_chamber()
+
+/obj/item/weapon/gun/shotgun/p79s/set_gun_attachment_offsets()
+	attachable_offset = list("muzzle_x" = 33, "muzzle_y" = 19,"rail_x" = 11, "rail_y" = 21, "under_x" = 22, "under_y" = 14, "stock_x" = 18, "stock_y" = 14, "side_rail_x" = 23, "side_rail_y" = 17, "special_x" = 20, "special_y" = 16)
+
+/obj/item/weapon/gun/shotgun/p79s/set_gun_config_values()
+	..()
+	set_fire_delay(FIRE_DELAY_TIER_6)
+	accuracy_mult = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_2
+	accuracy_mult_unwielded = BASE_ACCURACY_MULT - HIT_ACCURACY_MULT_TIER_10
+	scatter = SCATTER_AMOUNT_TIER_5
+	burst_scatter_mult = SCATTER_AMOUNT_TIER_6
+	scatter_unwielded = SCATTER_AMOUNT_TIER_2
+	damage_mult = BASE_BULLET_DAMAGE_MULT
+	recoil = RECOIL_AMOUNT_TIER_3
+	recoil_unwielded = RECOIL_AMOUNT_TIER_1
+	starting_attachment_types = list(/obj/item/attachable/stock/p79s)
+
+/obj/item/weapon/gun/shotgun/p79s/handle_starting_attachment()
+	..()
+	var/obj/item/attachable/p79s_barrel/integrated = new(src)
+	integrated.flags_attach_features &= ~ATTACH_REMOVABLE
+	integrated.Attach(src)
+	update_attachable(integrated.slot)
+
+/obj/item/weapon/gun/shotgun/p79s/get_examine_text(mob/user)
+	. = ..()
+	if(in_chamber) . += "It has a chambered round."
+
+/obj/item/weapon/gun/shotgun/p79s/unloaded
+	current_mag = /obj/item/ammo_magazine/internal/shotgun/p79s/unloaded
+
+/obj/item/weapon/gun/shotgun/p79s/slug
+	current_mag = /obj/item/ammo_magazine/internal/shotgun/p79s/slug
 
 //-------------------------------------------------------
 //DOUBLE SHOTTY

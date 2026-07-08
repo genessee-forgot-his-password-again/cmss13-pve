@@ -25,6 +25,7 @@
 	var/shrapnel_type = /datum/ammo/bullet/shrapnel
 	var/fire_resistance = 15 //to prevent highly controlled massive explosions
 	falloff_mode = EXPLOSION_FALLOFF_SHAPE_EXPONENTIAL_HALF
+	rp_value = 5
 
 /obj/item/explosive/grenade/high_explosive/New()
 	..()
@@ -78,6 +79,18 @@
 	item_state = "grenade_hedp2"
 	explosion_power = 150
 	explosion_falloff = 50
+	rp_value = 25
+
+/obj/item/explosive/grenade/high_explosive/heap
+	name = "\improper M40/2 HEAP grenade"
+	desc = "High-Explosive, Armour Piercing, Dual-Purpose. A small, but deceptively strong blast grenade that can penetrate appreciable quantities of armor, whilst retaining a similar casualty radius as the standard M40. Due to faulty primers, it is inadvisable to fire them directly at hard surfaces like walls, landing them just in front is recommended."
+	icon_state = "grenade_heap"
+	item_state = "grenade_chem"
+	explosion_power = 250
+	explosion_falloff = 200
+	shrapnel_count = 0
+	falloff_mode = EXPLOSION_FALLOFF_SHAPE_LINEAR
+	rp_value = 30
 
 /obj/item/explosive/grenade/high_explosive/pmc
 	name = "\improper M12 blast grenade"
@@ -91,6 +104,7 @@
 	shrapnel_count = 0
 	dual_purpose = FALSE
 	falloff_mode = EXPLOSION_FALLOFF_SHAPE_EXPONENTIAL_HALF
+	rp_value = 10
 
 /obj/item/explosive/grenade/high_explosive/stick
 	name = "\improper Webley Mk15 stick grenade"
@@ -109,6 +123,7 @@
 	dual_purpose = FALSE
 	arm_sound = 'sound/weapons/pinpull.ogg'
 	falloff_mode = EXPLOSION_FALLOFF_SHAPE_LINEAR
+	rp_value = 5
 
 /obj/item/explosive/grenade/high_explosive/upp
 	name = "\improper Type 6 grenade"
@@ -124,6 +139,7 @@
 	dual_purpose = FALSE
 	arm_sound = 'sound/weapons/pinpull.ogg'
 	falloff_mode = EXPLOSION_FALLOFF_SHAPE_LINEAR
+	rp_value = 5
 
 /*
 //================================================
@@ -138,6 +154,7 @@
 	explosion_power = 40
 	shrapnel_count = 48
 	falloff_mode = EXPLOSION_FALLOFF_SHAPE_LINEAR
+	rp_value = 7
 
 /obj/item/explosive/grenade/high_explosive/frag/toy
 	AUTOWIKI_SKIP(TRUE)
@@ -148,6 +165,7 @@
 	shrapnel_type = /datum/ammo/bullet/shrapnel/rubber
 	antigrief_protection = FALSE
 	dual_purpose = FALSE
+	rp_value = 1
 
 /obj/item/explosive/grenade/high_explosive/m15
 	name = "\improper M15 fragmentation grenade"
@@ -163,6 +181,7 @@
 	shrapnel_count = 48
 	arm_sound = 'sound/weapons/pinpull.ogg'
 	falloff_mode = EXPLOSION_FALLOFF_SHAPE_LINEAR
+	rp_value = 5
 
 /*
 +//================================================
@@ -425,6 +444,7 @@
 	explosion_falloff = 200
 	shrapnel_count = 0
 	falloff_mode = EXPLOSION_FALLOFF_SHAPE_LINEAR
+	rp_value = 30
 
 /*
 +//================================================
@@ -518,6 +538,7 @@
 	var/flameshape = FLAMESHAPE_DEFAULT
 	var/radius = 2
 	var/fire_type = FIRE_VARIANT_TYPE_B //Armor Shredding Greenfire
+	rp_value = 10
 
 /obj/item/explosive/grenade/incendiary/prime(mob/living/user)
 	set waitfor = 0
@@ -568,6 +589,7 @@
 	arm_sound = 'sound/items/Welder2.ogg'
 	underslug_launchable = FALSE
 	fire_type = FIRE_VARIANT_DEFAULT
+	rp_value = 5
 
 /obj/item/explosive/grenade/incendiary/molotov/New(loc, custom_burn_level)
 	det_time = rand(10,40) //Adds some risk to using this thing.

@@ -20,6 +20,7 @@
 	var/lock_overridable = TRUE
 	var/xeno_icon_state = null //the icon_state for xeno's wearing this (using the dmi defined in default_xeno_onmob_icons list)
 	var/list/xeno_types = null //what xeno types can equip this backpack
+	rp_value = 20
 
 /obj/item/storage/backpack/attackby(obj/item/W, mob/user)
 	if(istype(W, /obj/item/card/id/) && is_id_lockable && ishuman(user))
@@ -220,6 +221,16 @@
 		crit_fail = 1
 		icon_state = "brokenpack"
 
+/obj/item/storage/backpack/debug
+	name = "absolutely massive backpack"
+	desc = "This thing is huge!"
+	icon_state = "backpack_large"
+	item_state = "backpack_large"
+	w_class = 7
+	max_w_class = SIZE_MASSIVE
+	worn_accessible = TRUE
+	max_storage_space = 300
+
 
 //==========================//JOKE PACKS\\================================\\
 
@@ -334,6 +345,7 @@
 	worn_accessible = TRUE
 	storage_slots = null
 	max_storage_space = 15
+	rp_value = 10
 
 /obj/item/storage/backpack/satchel/blue
 	name = "leather satchel"
@@ -434,6 +446,7 @@
 	xeno_types = null
 	var/base_icon_state = "ammo_pack"
 	var/move_delay_mult = 0.4
+	rp_value = 50
 
 /obj/item/storage/backpack/marine/ammo_rack/update_icon()
 	. = ..()
@@ -480,6 +493,7 @@
 	desc = "A heavy-duty IMP based backpack that can be slung around the front or to the side, and can quickly be accessed with only one hand. Usually issued to USCM intelligence officers."
 	icon_state = "marinebigsatch"
 	max_storage_space = 20
+	rp_value = 100
 
 /obj/item/storage/backpack/marine/satchel/intel/chestrig
 	name = "\improper USCM expedition chestrig"
@@ -495,6 +509,7 @@
 	storage_slots = null
 	max_storage_space = 15
 	xeno_types = null
+	rp_value = 10
 
 /obj/item/storage/backpack/marine/satchel/standard
 	has_gamemode_skin = FALSE
@@ -506,6 +521,7 @@
 	worn_accessible = TRUE
 	storage_slots = null
 	max_storage_space = 21 //backpack size
+	rp_value = 100
 
 /obj/item/storage/backpack/marine/satchel/medic
 	name = "\improper USCM corpsman satchel"
@@ -595,6 +611,12 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 	networks_transmit = list(FACTION_UPP)
 	phone_category = PHONE_UPP_SOLDIER
 
+/obj/item/storage/backpack/marine/satchel/rto/merc
+	name = "\improper Mercenary Radio Telephone Pack"
+	networks_receive = list(FACTION_FIL)
+	networks_transmit = list(FACTION_FIL)
+	max_storage_space = 10
+
 /obj/item/storage/backpack/marine/satchel/rto/io
 	phone_category = PHONE_IO
 
@@ -604,6 +626,13 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 	icon_state = "smock"
 	worn_accessible = TRUE
 	xeno_types = null
+
+/obj/item/storage/backpack/marine/smock/select_gamemode_skin()
+	. = ..()
+	switch(SSmapping.configs[GROUND_MAP].camouflage_type)
+		if("urban")
+			name = "\improper M60 Sniper Cloak"
+			desc = "A specially-designed cloak with thermal dampering waterproof coating, designed for urban environments. Doesn't have the optical camouflage electronics that more advanced M68 cloak has."
 
 /obj/item/storage/backpack/marine/marsoc
 	name = "\improper USCM SOF IMP tactical rucksack"
@@ -729,6 +758,14 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 	var/camo_message_delay = 2 SECONDS
 
 	actions_types = list(/datum/action/item_action/specialist/toggle_cloak)
+
+/obj/item/storage/backpack/marine/satchel/scout_cloak/select_gamemode_skin(expected_type, list/override_icon_state, list/override_protection)
+	. = ..()
+	switch(SSmapping.configs[GROUND_MAP].camouflage_type)
+		if("urban")
+			icon_state = "u_scout_cloak"
+		else
+			icon_state = "scout_cloak"
 
 /obj/item/storage/backpack/marine/satchel/scout_cloak/dropped(mob/user)
 	if(ishuman(user) && !issynth(user))
@@ -1057,6 +1094,14 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 	can_hold = list(/obj/item/ammo_magazine/flamer_tank, /obj/item/tool/extinguisher)
 	storage_flags = STORAGE_FLAGS_POUCH
 
+/obj/item/storage/backpack/marine/engineerpack/flamethrower/d60
+	name = "\improper D60-HI Heavy Fueltank"
+	desc = "A large fueltank used by French heavy incinerator units for their D60 flamethrowers."
+	icon_state = "flamethrower_french_backpack"
+	item_state = "flamethrower_french_backpack"
+	max_fuel = 750
+	max_storage_space = 8
+
 //----------OTHER FACTIONS AND ERTS----------
 
 /obj/item/storage/backpack/lightpack
@@ -1064,9 +1109,13 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 	desc = "A small, lightweight pack for expeditions and short-range operations."
 	icon_state = "ERT_satchel"
 	worn_accessible = TRUE
+	rp_value = 100
 
 /obj/item/storage/backpack/lightpack/five_slot
+	name = "\improper civilian combat pack"
+	desc = "A small, lightweight pack for expeditions and short-range operations. This model can't hold as much as the military-grade version."
 	max_storage_space = 15
+	rp_value = 10
 
 /obj/item/storage/backpack/marine/engineerpack/ert
 	name = "\improper lightweight technician welderpack"
@@ -1075,6 +1124,7 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 	has_gamemode_skin = FALSE
 	worn_accessible = TRUE
 	max_fuel = 180
+	rp_value = 50
 
 /obj/item/storage/backpack/commando
 	name = "commando bag"
@@ -1088,6 +1138,7 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 	icon_state = "marinepack"
 	storage_slots = null
 	max_storage_space = 30
+	rp_value = 150
 
 /obj/item/storage/backpack/ivan
 	name = "The Armory"
@@ -1177,6 +1228,7 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 	item_state = "backpack_large"
 	max_storage_space = 24
 	bag_open_time = 3 SECONDS
+	rp_value = 150
 
 /obj/item/storage/backpack/rmc/medic
 	name = "RMC medical backpack"
@@ -1192,6 +1244,7 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 	icon_state = "backpack_medium"
 	item_state = "backpack_medium"
 	max_storage_space = 18
+	rp_value = 20
 
 /obj/item/storage/backpack/marine/engineerpack/satchel/rmc
 	name = "RMC engineering backpack"
@@ -1209,6 +1262,7 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 	item_state = "backpack_small"
 	worn_accessible = TRUE
 	max_storage_space = 15
+	rp_value = 10
 
 /obj/item/storage/backpack/rmc/frame //One sorry sod should have to lug this about spawns in their shuttle currently
 	name = "\improper RMC carry-frame"
@@ -1229,6 +1283,7 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 		) //Jank, but amusing to think that the janitor can store these things in a frame pack whilst a marine commando can't
 
 	var/base_icon_state = "backpack_frame"
+	rp_value = 50
 
 /obj/item/storage/backpack/rmc/frame/update_icon()
 	. = ..()
@@ -1241,6 +1296,7 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 	item_state = "rmc_general"
 	has_gamemode_skin = FALSE
 	max_storage_space = 10
+	rp_value = 50
 
 //----------USASF & ARMY SECTION----------
 

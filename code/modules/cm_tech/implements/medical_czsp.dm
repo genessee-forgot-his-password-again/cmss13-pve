@@ -95,6 +95,7 @@
 	min_heart_damage_dealt = 0
 	max_heart_damage_dealt = 0
 	damage_heal_threshold = 35
+	charge_cost = 66
 
 /obj/item/ammo_magazine/internal/pillgun
 	name = "pill tube"

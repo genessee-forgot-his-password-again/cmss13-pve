@@ -604,6 +604,23 @@
 	damage = 55
 	shell_casing = /obj/effect/decal/ammo_casing/cartridge
 
+//R81M1
+/datum/ammo/bullet/rifle/r81m1
+	name = "9x32 high-velocity rifle bullet"
+	damage = 50
+	accuracy = HIT_ACCURACY_TIER_5
+
+/datum/ammo/bullet/rifle/r81m1/ap
+	name = "9x32 high-velocity AP rifle bullet"
+	damage = 40
+	penetration = ARMOR_PENETRATION_TIER_3
+
+/datum/ammo/bullet/rifle/r81m1/hp
+	name = "9x32 high-velocity HP rifle bullet"
+	damage = 60
+	penetration = -ARMOR_PENETRATION_TIER_3
+	shrapnel_chance = SHRAPNEL_CHANCE_TIER_5
+
 //NSG TWE RMC AMMO
 
 /datum/ammo/bullet/rifle/twe
@@ -671,3 +688,35 @@
 
 	damage = 35
 	penetration = ARMOR_PENETRATION_TIER_1
+
+
+/datum/ammo/bullet/rifle/fn107
+	name = "7.5x28 bullet"
+	damage = 35
+
+/datum/ammo/bullet/rifle/fn107/commando
+	name = "armor piercing tracer 7.5x28 bullet"
+	damage = 30
+	penetration = ARMOR_PENETRATION_TIER_5
+	ammo_glowing = TRUE
+	bullet_light_color = COLOR_SOFT_GREEN
+
+/datum/ammo/bullet/rifle/masm
+	name = "12x30 bullet"
+	damage = 50 //Medium machinegun, high damage
+	penetration = ARMOR_PENETRATION_TIER_2 //Tiny bit of AP just because the others don't have AP. And it's a god damn MMG
+
+/datum/ammo/bullet/rifle/fpsa
+	name = "7.5x50mm bullet"
+	damage = 45
+	penetration = ARMOR_PENETRATION_TIER_2
+	effective_range_max = 16
+	accurate_range = 24
+	max_range = 32
+
+/datum/ammo/bullet/rifle/fpsa/commando
+	name = "armor piercing tracer 7.5x50mm bullet"
+	damage = 40
+	penetration = ARMOR_PENETRATION_TIER_5
+	ammo_glowing = TRUE
+	bullet_light_color = COLOR_SOFT_RED

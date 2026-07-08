@@ -120,7 +120,7 @@
 	cocked_sound = 'sound/weapons/handling/nsg23_cocked.ogg'
 	aim_slowdown = SLOWDOWN_ADS_QUICK
 	wield_delay = WIELD_DELAY_VERY_FAST
-	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_AMMO_COUNTER|GUN_WY_RESTRICTED
+	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_AMMO_COUNTER
 	start_automatic = TRUE
 	current_mag = /obj/item/ammo_magazine/rifle/nsg23
 	attachable_allowed = list(
@@ -333,10 +333,10 @@
 	set_fire_delay(FIRE_DELAY_TIER_11)
 	set_burst_amount(BURST_AMOUNT_TIER_4)
 	set_burst_delay(FIRE_DELAY_TIER_11)
-	accuracy_mult = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_3
-	accuracy_mult_unwielded = BASE_ACCURACY_MULT - HIT_ACCURACY_MULT_TIER_7
-	scatter = SCATTER_AMOUNT_TIER_9
-	burst_scatter_mult = SCATTER_AMOUNT_TIER_9
+	accuracy_mult = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_2
+	accuracy_mult_unwielded = BASE_ACCURACY_MULT - HIT_ACCURACY_MULT_TIER_8
+	scatter = SCATTER_AMOUNT_TIER_6
+	burst_scatter_mult = SCATTER_AMOUNT_TIER_6
 	scatter_unwielded = SCATTER_AMOUNT_TIER_2
 	damage_mult = BASE_BULLET_DAMAGE_MULT
 	damage_falloff_mult = 0
@@ -356,6 +356,12 @@
 /obj/item/weapon/gun/rifle/m41aMK1/tactical
 	starting_attachment_types = list(/obj/item/attachable/attached_gun/grenade/mk1/preloaded, /obj/item/attachable/suppressor, /obj/item/attachable/magnetic_harness, /obj/item/attachable/stock/rifle/collapsible)
 	current_mag = /obj/item/ammo_magazine/rifle/m41aMK1
+
+/obj/item/weapon/gun/rifle/m41aMK1/evan
+	name = "\improper M41A 'Golden God' pulse rifle"
+	desc = "Pulse action 10x24mm caseless assault rifle of the USCMC, personal friend of one drug addict in particular. Features a sick-ass golden paintjob, plus an old red rag around the handle. Because what's the point of committing war crimes if you don't look good while doing it?"
+	icon_state = "m41amk1_evan"
+	item_state = "m41amk1_evan"
 
 /obj/item/weapon/gun/rifle/m41aMK1/forecon
 	desc = "Pulse action 10x24mm caseless assault rifle of the USCMC, personal friend of any Marine. This one is painted in a fresh coat of the newer Humbrol 76 camouflage and is used by Force Reconnaissance & MARSOC units."
@@ -450,6 +456,43 @@
 	random_spawn_muzzle = list(
 		/obj/item/attachable/suppressor,
 	)
+
+
+/obj/item/weapon/gun/rifle/m41aMK1/merc
+	name = "\improper M41A-I TAC pulse rifle"
+	desc = "An illegally modified M41A MK1 pulse rifle, shortened for CQB scenarios and given increased fire rate at the cost of accuracy and some damage. The standard underbarrel grenade launcher has been replaced with a modified rail mounting to permit newer variations of scopes."
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/colony.dmi'
+	icon_state = "m41a_tactical"
+	item_state = "m41amk1_tactical"
+	current_mag = /obj/item/ammo_magazine/rifle/m41aMK1
+	aim_slowdown = SLOWDOWN_ADS_QUICK
+	wield_delay = WIELD_DELAY_FAST
+	map_specific_decoration = FALSE
+	starting_attachment_types = list(/obj/item/attachable/stock/rifle/collapsible, /obj/item/attachable/reflex)
+	attachable_allowed = list(
+		/obj/item/attachable/suppressor,
+		/obj/item/attachable/reddot,
+		/obj/item/attachable/magnetic_harness,
+		/obj/item/attachable/flashlight,
+		/obj/item/attachable/reflex,
+		/obj/item/attachable/scope/pve,
+		/obj/item/attachable/scope/mini,
+		/obj/item/attachable/stock/rifle/collapsible,
+	)
+
+/obj/item/weapon/gun/rifle/m41aMK1/merc/set_gun_attachment_offsets()
+	attachable_offset = list("muzzle_x" = 32, "muzzle_y" = 18,"rail_x" = 12, "rail_y" = 23, "under_x" = 23, "under_y" = 13, "stock_x" = 24, "stock_y" = 14, "side_rail_x" = 23, "side_rail_y" = 16)
+
+/obj/item/weapon/gun/rifle/m41aMK1/merc/set_gun_config_values()
+	set_fire_delay(FIRE_DELAY_TIER_LMG)
+	set_burst_amount(BURST_AMOUNT_TIER_2)
+	set_burst_delay(FIRE_DELAY_TIER_12)
+	accuracy_mult = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_8
+	accuracy_mult_unwielded = BASE_ACCURACY_MULT - HIT_ACCURACY_MULT_TIER_6
+	scatter = SCATTER_AMOUNT_TIER_9
+	burst_scatter_mult = SCATTER_AMOUNT_TIER_9
+	scatter_unwielded = SCATTER_AMOUNT_TIER_4
+	damage_mult = BASE_BULLET_DAMAGE_MULT - BULLET_DAMAGE_MULT_TIER_1
 
 //AG80 pulse rifle (UPP MK1 equivalent)
 //=================================================
@@ -556,43 +599,6 @@
 	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_AMMO_COUNTER|GUN_TRIGGER_SAFETY
 	current_mag = null
 	starting_attachment_types = list(/obj/item/attachable/stock/m20a,/obj/item/attachable/attached_gun/shotgun/m20a/unloaded)
-
-/obj/item/weapon/gun/rifle/m20a/merc
-	name = "\improper M20CW pulse carbine"
-	desc = "A heavily modified black market version of the M20A pulse rifle, often used for CQC scenarios where SMGs just aren't cutting it. Comes with an integrated grip instead of an underbarrel shotgun and downsized barrel, alongside the removed stock. It can also now shoot in automatic!"
-	icon = 'icons/obj/items/weapons/guns/guns_by_faction/colony.dmi'
-	icon_state = "m20a_tactical"
-	item_state = "m20a_tactical"
-	attachable_allowed = list(
-		/obj/item/attachable/suppressor,
-		/obj/item/attachable/bayonet,
-		/obj/item/attachable/bayonet/upp,
-		/obj/item/attachable/bayonet/co2,
-		/obj/item/attachable/reddot,
-		/obj/item/attachable/reflex,
-		/obj/item/attachable/flashlight,
-		/obj/item/attachable/lasersight,
-		/obj/item/attachable/sling,
-	)
-	starting_attachment_types = list(/obj/item/attachable/sling)
-	start_automatic = TRUE
-
-/obj/item/weapon/gun/rifle/m20a/merc/set_gun_attachment_offsets()
-	attachable_offset = list("muzzle_x" = 28, "muzzle_y" = 19,"rail_x" = 12, "rail_y" = 20, "under_x" = 14, "under_y" = 15, "stock_x" = 22, "stock_y" = 15, "side_rail_x" = 23, "side_rail_y" = 16)
-
-/obj/item/weapon/gun/rifle/m20a/merc/set_gun_config_values()
-	..()
-	set_fire_delay(FIRE_DELAY_TIER_8)
-	set_burst_amount(BURST_AMOUNT_TIER_1)
-	damage_mult = BASE_BULLET_DAMAGE_MULT + BULLET_DAMAGE_MULT_TIER_2
-	scatter = SCATTER_AMOUNT_TIER_9
-	accuracy_mult = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_7
-
-/obj/item/weapon/gun/rifle/m20a/merc/tactical
-	starting_attachment_types = list(/obj/item/attachable/sling, /obj/item/attachable/suppressor, /obj/item/attachable/lasersight)
-
-/obj/item/weapon/gun/rifle/m20a/merc/unloaded
-	current_mag = null
 
 //----------------------------------------------
 //Experimental ARMAT side-grade to the M41A, not standard issue, only used by MARSOC
@@ -731,6 +737,7 @@
 	fire_sound = 'sound/weapons/gun_mar40.ogg'
 	reload_sound = 'sound/weapons/handling/gun_mar40_reload.ogg'
 	unload_sound = 'sound/weapons/handling/gun_mar40_unload.ogg'
+	rp_value = 75
 
 	current_mag = /obj/item/ammo_magazine/rifle/mar40
 	attachable_allowed = list(
@@ -789,6 +796,7 @@
 	fire_sound = 'sound/weapons/gun_mar40.ogg'
 	reload_sound = 'sound/weapons/handling/gun_mar40_reload.ogg'
 	unload_sound = 'sound/weapons/handling/gun_mar40_unload.ogg'
+	rp_value = 50
 
 	aim_slowdown = SLOWDOWN_ADS_QUICK //Carbine is more lightweight
 	wield_delay = WIELD_DELAY_FAST
@@ -834,6 +842,7 @@
 	icon_state = "mar50"
 	item_state = "mar50"
 	mouse_pointer = 'icons/effects/mouse_pointer/lmg_mouse.dmi'
+	rp_value = 125
 
 	fire_sound = 'sound/weapons/gun_mar40.ogg'
 	reload_sound = 'sound/weapons/handling/gun_mar40_reload.ogg'
@@ -890,6 +899,7 @@
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/colony.dmi'
 	icon_state = "m16"
 	item_state = "m16"
+	rp_value = 130
 
 	fire_sound = 'sound/weapons/gun_m16.ogg'
 	reload_sound = 'sound/weapons/handling/gun_m16_reload.ogg'
@@ -1098,6 +1108,7 @@
 	reload_sound = 'sound/weapons/handling/gun_m16_reload.ogg'
 	unload_sound = 'sound/weapons/handling/gun_ar10_unload.ogg'
 	cocked_sound = 'sound/weapons/handling/gun_ar10_cocked.ogg'
+	rp_value = 100
 
 	current_mag = /obj/item/ammo_magazine/rifle/ar10
 	attachable_allowed = list(
@@ -1232,6 +1243,7 @@
 	icon_state = "m41ae2"
 	item_state = "m41ae2"
 	mouse_pointer = 'icons/effects/mouse_pointer/lmg_mouse.dmi'
+	rp_value = 300
 
 	reload_sound = 'sound/weapons/handling/hpr_reload.ogg'
 	unload_sound = 'sound/weapons/handling/hpr_unload.ogg'
@@ -1421,6 +1433,7 @@
 	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_AMMO_COUNTER
 	flags_equip_slot = SLOT_BACK
 	start_automatic = TRUE
+	rp_value = 150
 
 /obj/item/weapon/gun/rifle/type71/set_gun_attachment_offsets()
 	attachable_offset = list("muzzle_x" = 33, "muzzle_y" = 17,"rail_x" = 10, "rail_y" = 23, "under_x" = 20, "under_y" = 13, "stock_x" = 11, "stock_y" = 13, "side_rail_x" = 23, "side_rail_y" = 16)
@@ -1467,6 +1480,7 @@
 	bonus_overlay_x = 1
 	bonus_overlay_y = 0
 	starting_attachment_types = list(/obj/item/attachable/stock/type71, /obj/item/attachable/type73suppressor, /obj/item/attachable/scope/mini/upp)
+	rp_value = 300
 
 /obj/item/weapon/gun/rifle/type71/carbine/set_gun_config_values()
 	..()
@@ -1512,6 +1526,7 @@
 	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_AMMO_COUNTER
 	flags_equip_slot = SLOT_BACK
 	start_automatic = TRUE
+	rp_value = 100
 
 /obj/item/weapon/gun/rifle/lw317/set_gun_config_values()
 	..()
@@ -1537,6 +1552,7 @@
 		/obj/item/attachable/verticalgrip/upp,
 		/obj/item/attachable/flashlight/grip/upp,
 		)
+	rp_value = 150
 
 /obj/item/weapon/gun/rifle/lw317/dmr/set_gun_config_values()
 	..()
@@ -1637,6 +1653,12 @@
 
 /obj/item/weapon/gun/rifle/m49a/marksman
 	starting_attachment_types = list(/obj/item/attachable/scope/variable_zoom, /obj/item/attachable/extended_barrel)
+
+/obj/item/weapon/gun/rifle/m49a/marksman/tactical
+	starting_attachment_types = list(/obj/item/attachable/scope/variable_zoom, /obj/item/attachable/suppressor, /obj/item/attachable/angledgrip)
+
+/obj/item/weapon/gun/rifle/m49a/mini
+	starting_attachment_types = list(/obj/item/attachable/scope/mini, /obj/item/attachable/extended_barrel)
 
 /obj/item/weapon/gun/rifle/m49a/army
 	desc = "The M49A battle rifle is a designated marksman rifle used by multiple branches of the UA armed forces. Sporting a bullpup configuration, the M49A battle rifle is perfect for reconnaissance and fire support teams."
@@ -1874,8 +1896,201 @@
 	random_under_chance = 50
 	random_spawn_under = list(/obj/item/attachable/flashlight/grip)
 
-/obj/item/weapon/gun/rifle/l42a/abr40/tactical/assassin
-	starting_attachment_types = list(/obj/item/attachable/stock/carbine/wood/tactical, /obj/item/attachable/scope/mini/hunting, /obj/item/attachable/suppressor)
+
+//-------------------------------------------------------
+// R81M1A Rifle
+/obj/item/weapon/gun/rifle/r81m1a
+	name = "\improper R81M1A pulse rifle"
+	desc = "The R81M1A highpower pulse rifle is a very popular weapon within the civilian market, previously rejected by the Royal Marine Commandos due to it's slow rate of fire and mediocre accuracy compared to other rifles in its class. However, it remains a favorite among mercenaries and private military contractors for its high damage output and reliability in harsh conditions. Produced by Orion Defence Systems."
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/colony.dmi'
+	icon_state = "fal"
+	item_state = "fal"
+
+	fire_sound = 'sound/weapons/gun_fal.ogg'
+	reload_sound = 'sound/weapons/handling/l42_reload.ogg'
+	unload_sound = 'sound/weapons/handling/l42_unload.ogg'
+	current_mag = /obj/item/ammo_magazine/rifle/r81m1
+
+	attachable_allowed = list(
+		/obj/item/attachable/bayonet, // Barrel
+		/obj/item/attachable/bayonet/upp,
+		/obj/item/attachable/bayonet/co2,
+		/obj/item/attachable/reddot, // Rail
+		/obj/item/attachable/reflex,
+		/obj/item/attachable/verticalgrip, // Bottom rail
+		/obj/item/attachable/lasersight, // Side Rail
+		/obj/item/attachable/flashlight,
+	)
+
+	flags_gun_features = GUN_CAN_POINTBLANK|GUN_AMMO_COUNTER
+	wield_delay = WIELD_DELAY_VERY_FAST
+	aim_slowdown = SLOWDOWN_ADS_QUICK
+	start_automatic = TRUE
+
+/obj/item/weapon/gun/rifle/r81m1a/set_gun_attachment_offsets()
+	attachable_offset = list("muzzle_x" = 46, "muzzle_y" = 20,"rail_x" = 11, "rail_y" = 21, "under_x" = 27, "under_y" = 15, "stock_x" = 24, "stock_y" = 13, "side_rail_x" = 24, "side_rail_y" = 18, "special_x" = 30, "special_y" = 16)
+
+/obj/item/weapon/gun/rifle/r81m1a/set_gun_config_values()
+	..()
+	set_fire_delay(FIRE_DELAY_TIER_7)
+	set_burst_amount(BURST_AMOUNT_TIER_2)
+	set_burst_delay(FIRE_DELAY_TIER_10)
+	accuracy_mult = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_4
+	accuracy_mult_unwielded = BASE_ACCURACY_MULT - HIT_ACCURACY_MULT_TIER_4
+	damage_mult = BASE_BULLET_DAMAGE_MULT
+	recoil_unwielded = RECOIL_AMOUNT_TIER_2
+	recoil = RECOIL_AMOUNT_TIER_5
+	damage_falloff_mult = 0
+	scatter = SCATTER_AMOUNT_TIER_7
+
+/obj/item/weapon/gun/rifle/r81m1a/handle_starting_attachment()
+	..()
+	var/obj/item/attachable/r81m1a_barrel/integrated = new(src)
+	integrated.flags_attach_features &= ~ATTACH_REMOVABLE
+	integrated.Attach(src)
+	update_attachable(integrated.slot)
+
+/obj/item/weapon/gun/rifle/r81m1a/modded
+	starting_attachment_types = list(/obj/item/attachable/bayonet, /obj/item/attachable/reflex, /obj/item/attachable/lasersight, /obj/item/attachable/verticalgrip)
+
+/obj/item/weapon/gun/rifle/r81m1a/unloaded
+	current_mag = null
+	flags_gun_features = GUN_CAN_POINTBLANK|GUN_AMMO_COUNTER|GUN_TRIGGER_SAFETY
+
+// R81M1B Marksman Rifle
+/obj/item/weapon/gun/rifle/r81m1a/m1b
+	name = "\improper R81M1B pulse marksman rifle"
+	desc = "A marksman variant of the M81M series of pulse rifles, the M81M1B sacrifices some rate of fire and it's automatic firemode for a higher accuracy and longer effective range. Favored by private military contractors and security details operating in high-threat environments. Produced by Orion Defence Systems."
+	item_state = "fal"
+	icon_state = "fal_sniper"
+	attachable_allowed = list(
+		/obj/item/attachable/lasersight,
+		/obj/item/attachable/flashlight,
+	)
+
+	starting_attachment_types = list(/obj/item/attachable/stock/r81_sniper, /obj/item/attachable/scope/variable_zoom/fal)
+	start_automatic = FALSE
+
+/obj/item/weapon/gun/rifle/r81m1a/m1b/set_gun_attachment_offsets()
+	attachable_offset = list("muzzle_x" = 33, "muzzle_y" = 19,"rail_x" = 17, "rail_y" = 19, "under_x" = 33, "under_y" = 13, "stock_x" = 19, "stock_y" = 16, "side_rail_x" = 28, "side_rail_y" = 18, "special_x" = 36, "special_y" = 19)
+
+/obj/item/weapon/gun/rifle/r81m1a/m1b/set_gun_config_values()
+	..()
+	set_fire_delay(FIRE_DELAY_TIER_4)
+	set_burst_amount(BURST_AMOUNT_TIER_2)
+	set_burst_delay(FIRE_DELAY_TIER_7)
+	accuracy_mult = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_6
+	accuracy_mult_unwielded = BASE_ACCURACY_MULT - HIT_ACCURACY_MULT_TIER_5
+	damage_mult = BASE_BULLET_DAMAGE_MULT
+	recoil_unwielded = RECOIL_AMOUNT_TIER_2
+	recoil = RECOIL_AMOUNT_TIER_4
+	damage_falloff_mult = 0
+	scatter = SCATTER_AMOUNT_TIER_8
+
+/obj/item/weapon/gun/rifle/r81m1a/m1b/handle_starting_attachment()
+	..()
+	var/obj/item/attachable/r81m1a_barrel/sniper/integrated = new(src)
+	integrated.flags_attach_features &= ~ATTACH_REMOVABLE
+	var/obj/item/attachable/old_barrel = attachments[integrated.slot]
+	if(old_barrel)
+		old_barrel.Detach(detaching_gub = src, drop_attachment = FALSE)
+		qdel(old_barrel)
+	integrated.Attach(src)
+	update_attachable(integrated.slot)
+
+// R81M1C Carbine
+/obj/item/weapon/gun/rifle/r81m1a/m1c
+	name = "\improper R81M1C pulse carbine"
+	desc = "A carbine variant of the M81M series of pulse rifles, the M81M1C sacrifices some range and accuracy for a more compact and maneuverable package. Favored by private military contractors and security details operating in urban environments. Produced by Orion Defence Systems."
+	item_state = "fal"
+	icon_state = "fal_short"
+	attachable_allowed = list(
+		/obj/item/attachable/reddot, // Rail
+		/obj/item/attachable/reflex,
+		/obj/item/attachable/lasersight, // Side Rail
+		/obj/item/attachable/flashlight,
+	)
+
+	flags_gun_features = GUN_CAN_POINTBLANK|GUN_AMMO_COUNTER
+	wield_delay = WIELD_DELAY_VERY_FAST
+	aim_slowdown = SLOWDOWN_ADS_QUICK
+	start_automatic = TRUE
+
+/obj/item/weapon/gun/rifle/r81m1a/m1c/set_gun_attachment_offsets()
+	attachable_offset = list("muzzle_x" = 43, "muzzle_y" = 17,"rail_x" = 12, "rail_y" = 21, "under_x" = 30, "under_y" = 13, "stock_x" = 24, "stock_y" = 13, "side_rail_x" = 20, "side_rail_y" = 18, "special_x" = 29, "special_y" = 16)
+
+/obj/item/weapon/gun/rifle/r81m1a/m1c/set_gun_config_values()
+	..()
+	set_fire_delay(FIRE_DELAY_TIER_8)
+	set_burst_amount(BURST_AMOUNT_TIER_2)
+	set_burst_delay(FIRE_DELAY_TIER_10)
+	accuracy_mult = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_3
+	accuracy_mult_unwielded = BASE_ACCURACY_MULT - HIT_ACCURACY_MULT_TIER_6
+	damage_mult = BASE_BULLET_DAMAGE_MULT
+	recoil_unwielded = RECOIL_AMOUNT_TIER_2
+	recoil = RECOIL_AMOUNT_TIER_4
+	damage_falloff_mult = 0
+	scatter = SCATTER_AMOUNT_TIER_6
+
+/obj/item/weapon/gun/rifle/r81m1a/m1c/handle_starting_attachment()
+	..()
+	var/obj/item/attachable/r81m1a_barrel/short/integrated = new(src)
+	integrated.flags_attach_features &= ~ATTACH_REMOVABLE
+	var/obj/item/attachable/old_barrel = attachments[integrated.slot]
+	if(old_barrel)
+		old_barrel.Detach(detaching_gub = src, drop_attachment = FALSE)
+		qdel(old_barrel)
+	integrated.Attach(src)
+	update_attachable(integrated.slot)
+
+/obj/item/weapon/gun/rifle/r81m1a/m1c/modded
+	starting_attachment_types = list(/obj/item/attachable/reflex, /obj/item/attachable/lasersight)
+
+// R81M1D Squad Automatic Weapon
+/obj/item/weapon/gun/rifle/r81m1a/m1d
+	name = "\improper R81M1D pulse squad automatic weapon"
+	desc = "A SAW variant of the M81M series of pulse rifles, the M81M1D sacrifices some accuracy for a higher rate of fire and larger magazine capacity, though at the cost of increased recoil. Favored by private military contractors and security details operating in high-threat environments. Produced by Orion Defence Systems."
+	item_state = "fal_saw"
+	icon_state = "fal_saw"
+	attachable_allowed = list(
+		/obj/item/attachable/lasersight,
+		/obj/item/attachable/flashlight,
+	)
+	current_mag = /obj/item/ammo_magazine/rifle/r81m1/drum
+
+	flags_gun_features = GUN_CAN_POINTBLANK|GUN_AMMO_COUNTER
+	wield_delay = WIELD_DELAY_NORMAL
+	aim_slowdown = SLOWDOWN_ADS_QUICK
+	start_automatic = TRUE
+
+	starting_attachment_types = list(/obj/item/attachable/bipod/r81, /obj/item/attachable/stock/r81_saw, /obj/item/attachable/scope/mini/r81)
+
+/obj/item/weapon/gun/rifle/r81m1a/m1d/set_gun_attachment_offsets()
+	attachable_offset = list("muzzle_x" = 43, "muzzle_y" = 17,"rail_x" = 7, "rail_y" = 16, "under_x" = 32, "under_y" = 13, "stock_x" = 22, "stock_y" = 15, "side_rail_x" = 28, "side_rail_y" = 18, "special_x" = 34, "special_y" = 16)
+
+/obj/item/weapon/gun/rifle/r81m1a/m1d/set_gun_config_values()
+	..()
+	set_fire_delay(FIRE_DELAY_TIER_11)
+	set_burst_amount(BURST_AMOUNT_TIER_6)
+	set_burst_delay(FIRE_DELAY_TIER_11)
+	accuracy_mult = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_3
+	accuracy_mult_unwielded = BASE_ACCURACY_MULT - HIT_ACCURACY_MULT_TIER_3
+	damage_mult = BASE_BULLET_DAMAGE_MULT
+	recoil_unwielded = RECOIL_AMOUNT_TIER_1
+	recoil = RECOIL_AMOUNT_TIER_3
+	damage_falloff_mult = 0
+	scatter = SCATTER_AMOUNT_TIER_6
+
+/obj/item/weapon/gun/rifle/r81m1a/m1d/handle_starting_attachment()
+	..()
+	var/obj/item/attachable/r81m1a_barrel/saw/integrated = new(src)
+	integrated.flags_attach_features &= ~ATTACH_REMOVABLE
+	var/obj/item/attachable/old_barrel = attachments[integrated.slot]
+	if(old_barrel)
+		old_barrel.Detach(detaching_gub = src, drop_attachment = FALSE)
+		qdel(old_barrel)
+	integrated.Attach(src)
+	update_attachable(integrated.slot)
 
 //=OLD ROYAL MARINES RIFLES=\\
 
@@ -2054,8 +2269,8 @@
 	set_fire_delay(FIRE_DELAY_TIER_LMG)
 	set_burst_amount(BURST_AMOUNT_TIER_3)
 	set_burst_delay(FIRE_DELAY_TIER_LMG)
-	accuracy_mult = BASE_ACCURACY_MULT - HIT_ACCURACY_MULT_TIER_8
-	accuracy_mult_unwielded = BASE_ACCURACY_MULT - HIT_ACCURACY_MULT_TIER_8
+	accuracy_mult = BASE_ACCURACY_MULT - HIT_ACCURACY_MULT_TIER_4
+	accuracy_mult_unwielded = BASE_ACCURACY_MULT - HIT_ACCURACY_MULT_TIER_6
 	scatter = SCATTER_AMOUNT_TIER_8
 	burst_scatter_mult = SCATTER_AMOUNT_TIER_10
 	scatter_unwielded = SCATTER_AMOUNT_TIER_5
@@ -2065,3 +2280,158 @@
 
 /obj/item/weapon/gun/rifle/isr/modded
 	starting_attachment_types = list(/obj/item/attachable/stock/isr, /obj/item/attachable/isr_barrel, /obj/item/attachable/flashlight, /obj/item/attachable/reddot)
+
+
+
+//FN107 Rifle
+//=================================================
+//=================================================
+
+/obj/item/weapon/gun/rifle/fn107
+	name = "\improper CAMAS61/78 pulse carbine"
+	desc = "To facilitate newer French military development, the CAMAS61/78 was created by Saint etienne in 2159. This was later modified in 2178 for privatized use. It is quite a well known pulse carbine within military circles, commonly being used by many different mercenary and security groups."
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/colony.dmi'
+	icon_state = "fn107"
+	item_state = "fn107"
+	reload_sound = 'sound/weapons/handling/l42_reload.ogg'
+	unload_sound = 'sound/weapons/handling/l42_unload.ogg'
+	fire_sound = "gun_oldpulse"
+	current_mag = /obj/item/ammo_magazine/rifle/fn107
+	attachable_allowed = list(
+		/obj/item/attachable/flashlight,
+		/obj/item/attachable/lasersight,
+		/obj/item/attachable/stock/fn107,
+		/obj/item/attachable/scope/mini,
+	)
+
+	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_AMMO_COUNTER
+	wield_delay = WIELD_DELAY_NORMAL
+	aim_slowdown = SLOWDOWN_ADS_RIFLE
+	starting_attachment_types = list(/obj/item/attachable/stock/fn107)
+	map_specific_decoration = FALSE
+	start_automatic = TRUE
+
+/obj/item/weapon/gun/rifle/fn107/set_gun_attachment_offsets()
+	attachable_offset = list("muzzle_x" = 32, "muzzle_y" = 19,"rail_x" = 12, "rail_y" = 20, "under_x" = 18, "under_y" = 14, "stock_x" = 18, "stock_y" = 14, "side_rail_x" = 23, "side_rail_y" = 16)
+
+/obj/item/weapon/gun/rifle/fn107/set_gun_config_values()
+	..()
+	fire_delay = FIRE_DELAY_TIER_10
+	burst_amount = BURST_AMOUNT_TIER_3
+	burst_delay = FIRE_DELAY_TIER_10
+	accuracy_mult = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_6
+	accuracy_mult_unwielded = BASE_ACCURACY_MULT - HIT_ACCURACY_MULT_TIER_5
+	damage_mult = BASE_BULLET_DAMAGE_MULT + BULLET_DAMAGE_MULT_TIER_1
+	recoil_unwielded = RECOIL_AMOUNT_TIER_3
+	scatter = SCATTER_AMOUNT_TIER_8
+	burst_scatter_mult = SCATTER_AMOUNT_TIER_8
+
+/obj/item/weapon/gun/rifle/fn107/unloaded
+	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_AMMO_COUNTER|GUN_TRIGGER_SAFETY
+	current_mag = null
+
+/obj/item/weapon/gun/rifle/fn107/marksman
+	starting_attachment_types = list(/obj/item/attachable/stock/fn107, /obj/item/attachable/scope/mini)
+
+/obj/item/weapon/gun/rifle/fn107/commando
+	current_mag = /obj/item/ammo_magazine/rifle/fn107/commando
+	starting_attachment_types = list(/obj/item/attachable/stock/fn107, /obj/item/attachable/scope/mini, /obj/item/attachable/lasersight)
+
+
+//MASM55 Medium Machinegun
+//=================================================
+//=================================================
+
+/obj/item/weapon/gun/rifle/masm55
+	name = "\improper MASM55 Medium Machinegun"
+	desc = "Though many groups and factions throughout modern day have switched to either Smartguns or LMGs, the MASM55 is still used for heavy suppression and are commonly found within the hands of Mercenaries. Created by Saint Etienne during 2155 due to the older French MGs were subpar, it has a radiator cooler for more stable fire."
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/colony.dmi'
+	icon_state = "masm"
+	item_state = "masm"
+	reload_sound = 'sound/weapons/handling/hpr_reload.ogg'
+	unload_sound = 'sound/weapons/handling/hpr_unload.ogg'
+	fire_sound = "gun_pulse"
+	current_mag = /obj/item/ammo_magazine/rifle/masm
+	attachable_allowed = list(
+		/obj/item/attachable/masm_barrel,
+		/obj/item/attachable/bipod/masm,
+	)
+
+	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_AMMO_COUNTER
+	wield_delay = WIELD_DELAY_SLOW
+	aim_slowdown = SLOWDOWN_ADS_LMG
+	starting_attachment_types = list(/obj/item/attachable/masm_barrel, /obj/item/attachable/bipod/masm)
+	map_specific_decoration = FALSE
+	start_automatic = TRUE
+	w_class = SIZE_HUGE
+	gun_category = GUN_CATEGORY_HEAVY
+
+/obj/item/weapon/gun/rifle/masm55/set_gun_attachment_offsets()
+	attachable_offset = list("muzzle_x" = 38, "muzzle_y" = 19,"rail_x" = 12, "rail_y" = 20, "under_x" = 32, "under_y" = 12, "stock_x" = 18, "stock_y" = 13, "side_rail_x" = 23, "side_rail_y" = 16)
+
+/obj/item/weapon/gun/rifle/masm55/set_gun_config_values()
+	..()
+	fire_delay = FIRE_DELAY_TIER_11
+	burst_amount = BURST_AMOUNT_TIER_4
+	burst_delay = FIRE_DELAY_TIER_10
+	accuracy_mult = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_2
+	accuracy_mult_unwielded = BASE_ACCURACY_MULT - HIT_ACCURACY_MULT_TIER_8
+	damage_mult = BASE_BULLET_DAMAGE_MULT
+	recoil_unwielded = RECOIL_AMOUNT_TIER_3
+	recoil = RECOIL_AMOUNT_TIER_4
+	damage_falloff_mult = 0
+	scatter = SCATTER_AMOUNT_TIER_9
+	burst_scatter_mult = SCATTER_AMOUNT_TIER_9
+
+/obj/item/weapon/gun/rifle/masm55/unloaded
+	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_AMMO_COUNTER|GUN_TRIGGER_SAFETY
+	current_mag = null
+
+
+//FPSA/76 DMR
+//=================================================
+//=================================================
+
+/obj/item/weapon/gun/rifle/fpsa
+	name = "\improper FPSA/76 Pulse DMR"
+	desc = "A domestically produced rifle developed and manufactured by Saint Etienne, 2176. Primarily meant for use by French Armed Forces, it has nonetheless made an impressive impact on the foreign market. The rifle boasts an effective engagement range of over a 1000m, and is chambered in 7.5x50mm high-velocity caseless."
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/colony.dmi'
+	icon_state = "fpsa"
+	item_state = "fpsa"
+	reload_sound = 'sound/weapons/handling/l42_reload.ogg'
+	unload_sound = 'sound/weapons/handling/l42_unload.ogg'
+	fire_sound = "gun_oldpulse"
+	current_mag = /obj/item/ammo_magazine/rifle/fpsa
+	attachable_allowed = list(
+		/obj/item/attachable/flashlight,
+		/obj/item/attachable/lasersight,
+		/obj/item/attachable/stock/fpsa,
+		/obj/item/attachable/scope/mini,
+		/obj/item/attachable/scope/variable_zoom/integrated,
+	)
+
+	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_AMMO_COUNTER
+	wield_delay = WIELD_DELAY_NORMAL
+	aim_slowdown = SLOWDOWN_ADS_QUICK
+	starting_attachment_types = list(/obj/item/attachable/stock/fpsa)
+	map_specific_decoration = FALSE
+	start_automatic = FALSE
+
+/obj/item/weapon/gun/rifle/fpsa/set_gun_attachment_offsets()
+	attachable_offset = list("muzzle_x" = 32, "muzzle_y" = 23,"rail_x" = 12, "rail_y" = 21, "under_x" = 16, "under_y" = 18, "stock_x" = 14, "stock_y" = 15, "side_rail_x" = 23, "side_rail_y" = 16)
+
+/obj/item/weapon/gun/rifle/fpsa/set_gun_config_values()
+	..()
+	fire_delay = FIRE_DELAY_TIER_8
+	burst_amount = BURST_AMOUNT_TIER_3
+	burst_delay = FIRE_DELAY_TIER_8
+	accuracy_mult = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_7
+	accuracy_mult_unwielded = BASE_ACCURACY_MULT - HIT_ACCURACY_MULT_TIER_6
+	damage_mult = BASE_BULLET_DAMAGE_MULT
+	recoil_unwielded = RECOIL_AMOUNT_TIER_3
+	scatter = SCATTER_AMOUNT_TIER_9
+	burst_scatter_mult = SCATTER_AMOUNT_TIER_8
+
+/obj/item/weapon/gun/rifle/fpsa/unloaded
+	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_AMMO_COUNTER|GUN_TRIGGER_SAFETY
+	current_mag = null

@@ -76,9 +76,9 @@
 	/// maximum # of squad medics allowed in the squad
 	var/max_medics = 4
 	/// maximum # of specs allowed in the squad
-	var/max_specialists = 1
+	var/max_specialists = 5
 	/// maximum # of fireteam leaders allowed in the suqad
-	var/max_tl = 2
+	var/max_tl = 4
 	/// maximum # of smartgunners allowed in the squad
 	var/max_smartgun = 2
 	/// maximum # of squad leaders allowed in the squad
@@ -155,6 +155,16 @@
 	faction = FACTION_MARINE
 	lead_icon = "leader"
 
+/datum/squad/marine/extraction
+	name = SQUAD_EXTRACTION
+	equipment_color = "#4148c8"
+	chat_color = "#828cff"
+	access = list(ACCESS_MARINE_ALPHA)
+	radio_freq = ALPHA_FREQ
+	minimap_color = MINIMAP_SQUAD_ALPHA
+	use_stripe_overlay = FALSE
+	usable = TRUE
+
 /datum/squad/marine/alpha
 	name = SQUAD_MARINE_1
 	equipment_color = "#4148c8"
@@ -205,6 +215,20 @@
 	minimap_color = "#32CD32"
 	usable = TRUE
 	squad_type = "Squad"
+
+/datum/squad/marine/raider
+	name = SQUAD_RAIDER
+	access = list(ACCESS_MARINE_ALPHA)
+
+	radio_freq = RAID_FREQ
+	equipment_color = "#400000"
+	chat_color = "#400000"
+	minimap_color = "#400000"
+
+	usable = TRUE
+	squad_type = "Squad"
+
+	use_stripe_overlay = FALSE
 
 /datum/squad/marine/bravo
 	name = SQUAD_MARINE_2
@@ -659,12 +683,13 @@
 		if(JOB_SQUAD_MARINE)
 			assignment = JOB_SQUAD_MARINE
 			num_riflemen++
-			var/squad_number = (ceil(num_riflemen / 2) > 2) ? pick(1, 2) : ceil(num_riflemen / 2)
+			var/squad_number = (ceil(num_riflemen / 2) > 4) ? pick(1, 2, 3, 4) : ceil(num_riflemen / 2)
 			assign_fireteam("SQ[squad_number]", M)
 		if(JOB_SQUAD_ENGI)
 			assignment = JOB_SQUAD_ENGI
 			num_engineers++
 			C.claimedgear = FALSE
+			assign_fireteam("SQ3", M)
 		if(JOB_SQUAD_MEDIC)
 			assignment = JOB_SQUAD_MEDIC
 			num_medics++
@@ -676,7 +701,7 @@
 			assignment = JOB_SQUAD_TEAM_LEADER
 			num_tl++
 			M.important_radio_channels += radio_freq
-			var/squad_number = (num_tl > 2) ? pick(1, 2) : num_tl
+			var/squad_number = (num_tl > 4)	? pick(1, 2, 3, 4) : num_tl
 			assign_fireteam("SQ[squad_number]", M)
 			assign_ft_leader("SQ[squad_number]", M)
 		if(JOB_SQUAD_SMARTGUN)

@@ -357,6 +357,8 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	/obj/item/clothing/head/headset = "headset",
 	/obj/item/ammo_magazine/handful = "bullet",
 	/obj/item/prop/helmetgarb/riot_shield = "helmet_riot_shield",
+	/obj/item/prop/helmetgarb/faceplate = "helmet_faceplate",
+	/obj/item/prop/helmetgarb/faceplate/flag = "helmet_faceplate_flag",
 	/obj/item/attachable/flashlight = HELMET_GARB_RELAY_ICON_STATE,
 	/obj/item/prop/helmetgarb/chaplain_patch = "chaplain_patch",
 	/obj/item/tool/pen/fountain = "fountainpen",
@@ -857,6 +859,8 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	item_state = "io"
 	armor_melee = CLOTHING_ARMOR_MEDIUMHIGH
 	armor_bio = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_bullet = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_internaldamage = CLOTHING_ARMOR_MEDIUMHIGH
 	flags_atom = NO_NAME_OVERRIDE
 	max_inserted_visors = 2
 
@@ -880,6 +884,22 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	anti_hug = 6
 	force = 20
 	flags_atom = NO_NAME_OVERRIDE
+
+/obj/item/clothing/head/helmet/marine/specialist/breacher
+	name = "\improper B16 breacher helmet"
+	desc = "Helmet and faceplate component of the B16 armor system. Nanobonded carbonfiber laminated with ultrahigh molecular density polymer, with an integral rebreather and heads up display. Perfect for kicking down doors."
+	icon_state = "grenadier_helmet"
+	item_state = "grenadier_helmet"
+	armor_melee = CLOTHING_ARMOR_MEDIUM
+	armor_bullet = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_bomb = CLOTHING_ARMOR_HIGHPLUS
+	armor_bio = CLOTHING_ARMOR_LOW
+	armor_rad = CLOTHING_ARMOR_LOW
+	armor_internaldamage = CLOTHING_ARMOR_HIGH
+	unacidable = TRUE
+	anti_hug = 6
+	force = 20
+	specialty = "B16 breacher"
 
 /obj/item/clothing/head/helmet/marine/grenadier
 	name = "\improper M12 grenadier helmet"
@@ -945,9 +965,9 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	item_state = "helmetp_tex"
 	built_in_visors = list(new /obj/item/device/helmet_visor/po_visor/lightblue)
 
-/obj/item/clothing/head/helmet/upp/marinepilot/merc //just so it uses the wide overlay for garbs
+/obj/item/clothing/head/helmet/upp/marinepilot/merc
 	name = "\improper DP MK80-TAC aviation helmet"
-	desc = "Standard flight helmet of the UA treaty forces, presumably stolen or found and reproduced with cheaper materials by Davis Proprietary for extortionate amounts. Less comfortable but comes with some cool goggles that do absolutely nothing!"
+	desc = "Standard flight helmet of the UA treaty forces, presumably stolen or found and reproduced with cheaper materials by Davis Proprietary for extortionate amounts. Less comfortable but comes with some cool goggles!"
 	icon_state = "pilot_merc"
 	item_state = "pilot_merc"
 
@@ -963,6 +983,13 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	flags_inv_hide = HIDEEARS|HIDETOPHAIR
 	flags_marine_helmet = HELMET_GARB_OVERLAY
 	flags_atom = NO_NAME_OVERRIDE
+
+/obj/item/clothing/head/helmet/marine/ghillie/select_gamemode_skin()
+	. = ..()
+	switch(SSmapping.configs[GROUND_MAP].camouflage_type)
+		if("urban")
+			name = "\improper M10-LS pattern sniper helmet"
+			desc = "A lightweight version of M10 helmet with thermal signature dampering used by USCM snipers on urban recon missions."
 
 /obj/item/clothing/head/helmet/marine/CO
 	name = "\improper M10 pattern commanding officer helmet"
@@ -1021,8 +1048,8 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	built_in_visors = list(new /obj/item/device/helmet_visor/night_vision/marine_raider, new /obj/item/device/helmet_visor/security)
 	start_down_visor_type = /obj/item/device/helmet_visor/night_vision/marine_raider
 
-//=============================//PMCS\\==================================\\
-//=======================================================================\\
+//=============================//PMCS\\==================================
+//=======================================================================
 
 /obj/item/clothing/head/helmet/marine/veteran
 	flags_atom = NO_SNOW_TYPE|NO_NAME_OVERRIDE //Let's make these keep their name and icon.
@@ -1061,6 +1088,11 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	icon_state = "rmc_sniper_hat"
 	built_in_visors = list(new /obj/item/device/helmet_visor/medical/advanced/rmc/alt)
 	start_down_visor_type = /obj/item/device/helmet_visor/medical/advanced/rmc/alt
+
+/obj/item/clothing/head/helmet/marine/veteran/pmc/leader
+	name = "\improper PMC beret"
+	desc = "The pinnacle of fashion for any aspiring mercenary leader. Designed to protect the head from light impacts."
+	icon_state = "officer_hat"
 
 /obj/item/clothing/head/helmet/marine/veteran/pmc/gunner
 	name = "\improper Mk16 tactical helmet"
@@ -1217,6 +1249,20 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	clothing_traits = null
 	flags_marine_helmet = HELMET_DAMAGE_OVERLAY
 	specialty = "6B68 helmet"
+
+/obj/item/clothing/head/helmet/marine/veteran/fil
+	name = "\improper Burgonet-Ri"
+	desc = "Modeled after the burgonet pattern helmet, the new standard French armed forces helmet provides improved shrapnel protection with a splinter-proof aventail. An imported heads up display unit is integrated for battlefield awareness, and a low-profile high gain antenna complex is mounted along the top of the head. Shock impact protection is provided by gel padding which also serve to maintain comfort."
+	icon_state = "fil"
+	flags_inventory = NO_FLAGS
+	flags_inv_hide = NO_FLAGS
+	flags_marine_helmet = NO_FLAGS
+
+/obj/item/clothing/head/helmet/marine/veteran/fil/fire
+	name = "\improper Burgonet-Ri Incinerator Variant"
+	icon_state = "fil_fire"
+	min_cold_protection_temperature = ICE_PLANET_MIN_COLD_PROT
+	max_heat_protection_temperature = FIRESUIT_MAX_HEAT_PROT
 
 //==========================//UPP\\=================================\\
 //=======================================================================\\
@@ -1743,6 +1789,23 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 			desc = "A hood meant to protect the wearer from both the cold and the guise of the enemy in the tundra."
 			flags_inv_hide = HIDEEARS|HIDEALLHAIR
 
+/obj/item/clothing/head/helmet/marine/veteran/merc
+	name = "\improper DP MK60-TAC helmet"
+	desc = "A commercially available combat helmet favored by various mercenary groups. Has some decent ballistic protection, though a bit uncomfortable to wear for long periods of time. Made by Davis Proprietary."
+	icon_state = "merc"
+	item_state = "merc"
+	armor_melee = CLOTHING_ARMOR_MEDIUMLOW
+	armor_bullet = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_laser = CLOTHING_ARMOR_LOW
+	armor_energy = CLOTHING_ARMOR_LOW
+	armor_bomb = CLOTHING_ARMOR_MEDIUMLOW
+	armor_bio = CLOTHING_ARMOR_MEDIUM
+	armor_rad = CLOTHING_ARMOR_NONE
+	min_cold_protection_temperature = ICE_PLANET_MIN_COLD_PROT
+	flags_inventory = BLOCKSHARPOBJ
+	flags_inv_hide = HIDEEARS|HIDETOPHAIR
+	flags_marine_helmet = HELMET_DAMAGE_OVERLAY|HELMET_GARB_OVERLAY
+
 //===========================//HELGHAST - MERCENARY\\================================\\
 //=====================================================================\\
 
@@ -1762,7 +1825,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	flags_inv_hide = HIDEEARS|HIDEEYES|HIDEFACE|HIDEMASK|HIDEALLHAIR
 	flags_marine_helmet = HELMET_DAMAGE_OVERLAY
 
-/obj/item/clothing/head/helmet/marine/veteran/mercenary
+/obj/item/clothing/head/helmet/marine/veteran/mercenary/upgraded
 	name = "\improper Modified K12 ceramic helmet"
 	desc = "A sturdy helmet worn by an unknown mercenary group. Reinforced with extra plating."
 	armor_melee = CLOTHING_ARMOR_ULTRAHIGH
@@ -1797,6 +1860,23 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 /obj/item/clothing/head/helmet/marine/veteran/mercenary/support/engineer
 	desc = "A sturdy helmet worn by an unknown mercenary group. Features a toggleable welding screen for eye protection."
 	built_in_visors = list(new /obj/item/device/helmet_visor/welding_visor/mercenary)
+
+// freelance cell variants
+
+/obj/item/clothing/head/helmet/marine/veteran/mercenary/miner/freelancecell/beret
+	name = "\improper Freelance Cell beret"
+	desc = "A rugged helmet and armored beret rig. Extremely protective and uses prototype ceramic plates in its construction. Armor like this is favored by elite members of the Freelance Cell."
+	icon_state = "freelancecell_beret"
+
+/obj/item/clothing/head/helmet/marine/veteran/mercenary/miner/freelancecell
+	name = "\improper Freelance Cell helmet"
+	desc = "A rugged helmet and facemask. Extremely protective and uses prototype ceramic plates in its construction. Armor like this is made to-order for members of the Freelance Cell."
+	icon_state = "freelancecell_helmet"
+
+/obj/item/clothing/head/helmet/marine/veteran/mercenary/freelancecell
+	name = "\improper Freelance Cell juggernaut helmet"
+	desc = "An exceptionally heavy helmet and facemask. Made almost entirely out of prototype ceramic plates, which gives it almost impossible strength and resistance. Armor like this is even rarer than normal Freelance Cell gear, and it's only used by their most elite members."
+	icon_state = "freelancecell_helmet_heavy"
 
 //=============================//MEME\\==================================\\
 //=======================================================================\\
@@ -1965,3 +2045,41 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	)
 	item_state = "rmc_helm2"
 	desc = "A common helmet used by various blue-collar professions in the TWE."
+
+// =SCAVS & MARAUDERS= \\
+
+/obj/item/clothing/head/helmet/marine/veteran/mercenary/marauder
+	name = "\improper K6 ceramic helmet"
+	desc = "An early model of the highly sought-after K12 helmet, usually favored by mercenaries or pirates on a budget. While not nearly as protective as the modern version, it still deflects bullets easily enough."
+	icon_state = "mercenary_heavy_helmet"
+	flags_armor_protection = BODY_FLAG_HEAD|BODY_FLAG_FACE|BODY_FLAG_EYES
+	armor_melee = CLOTHING_ARMOR_MEDIUM
+	armor_bullet = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_energy = CLOTHING_ARMOR_VERYLOW
+	armor_bomb = CLOTHING_ARMOR_MEDIUM
+	armor_bio = CLOTHING_ARMOR_LOW
+	armor_rad = CLOTHING_ARMOR_LOW
+	armor_internaldamage = CLOTHING_ARMOR_LOW
+	flags_inventory = COVEREYES|COVERMOUTH|BLOCKSHARPOBJ
+	flags_inv_hide = HIDEEARS|HIDEEYES|HIDEFACE|HIDEMASK|HIDEALLHAIR
+	flags_marine_helmet = HELMET_DAMAGE_OVERLAY
+
+/obj/item/clothing/head/helmet/marine/veteran/mercenary/marauder/miner
+	name = "\improper Y4 miner helmet"
+	desc = "An early model of the Y8 mining helmet. Much like the modern version, the Y4 helmet sees more use by mercenaries and pirates rather than being used in actual mining operations -- this is primarily due to its sturdiness, while still being technically legal for a civilian to own. While not nearly as protective as the Y8 variant, it still deflects bullets easily enough."
+	icon_state = "mercenary_miner_helmet"
+	flags_armor_protection = BODY_FLAG_HEAD|BODY_FLAG_FACE|BODY_FLAG_EYES
+	armor_melee = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_bullet = CLOTHING_ARMOR_MEDIUM
+	armor_bomb = CLOTHING_ARMOR_LOW
+	armor_internaldamage = CLOTHING_ARMOR_MEDIUM
+
+/obj/item/clothing/head/helmet/marine/veteran/mercenary/marauder/support
+	name = "\improper Z3 helmet"
+	desc = "An early model of the highly sought-after Z7 support helmet, usually favored by mercenaries or pirates tasked with more technical work. While not nearly as protective as the modern version, it still deflects bullets easily enough."
+	icon_state = "mercenary_engineer_helmet"
+	flags_armor_protection = BODY_FLAG_HEAD|BODY_FLAG_FACE|BODY_FLAG_EYES
+	armor_melee = CLOTHING_ARMOR_MEDIUMLOW
+	armor_bullet = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_bomb = CLOTHING_ARMOR_VERYLOW
+	armor_internaldamage = CLOTHING_ARMOR_NONE

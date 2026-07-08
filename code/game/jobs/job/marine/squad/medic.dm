@@ -76,8 +76,14 @@
 	squad = SQUAD_MARINE_4
 
 /datum/job/marine/medic/ai
-	total_positions = 1
-	spawn_positions = 1
+	total_positions = 2
+	spawn_positions = 2
+
+/datum/job/marine/medic/ai/extraction
+	gear_preset = /datum/equipment_preset/uscm/medic/extraction
+	gear_preset_secondary = /datum/equipment_preset/uscm/medic/extraction
+	gear_preset_tertiary = /datum/equipment_preset/uscm/medic/extraction
+	gear_preset_quaternary = /datum/equipment_preset/uscm/medic/extraction
 
 /datum/job/marine/medic/ai/set_spawn_positions(count)
 	return spawn_positions
@@ -149,6 +155,18 @@
 	name = JOB_SQUAD_MEDIC_FORECON
 	squad = SQUAD_LRRP
 	job = /datum/job/marine/medic/ai/forecon
+
+/datum/job/marine/medic/ai/raider
+	title = JOB_SQUAD_MEDIC_RAIDER
+	total_positions = 1
+	spawn_positions = 1
+	gear_preset = /datum/equipment_preset/uscm/medic/raider
+	job_options = null
+
+/obj/effect/landmark/start/marine/medic/raider
+	name = JOB_SQUAD_MEDIC_RAIDER
+	squad = SQUAD_RAIDER
+	job = /datum/job/marine/medic/ai/raider
 
 //-- RMC Platoon --//
 //Medical Assistant//

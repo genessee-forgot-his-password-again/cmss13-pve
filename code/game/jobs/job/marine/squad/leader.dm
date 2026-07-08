@@ -57,6 +57,10 @@ OverrideTimelock(/datum/job/marine/leader, list(
 	spawn_positions = 1
 	prime_priority = TRUE
 
+/datum/job/marine/leader/ai/extraction
+	gear_preset = /datum/equipment_preset/uscm/leader/extraction
+	gear_preset_secondary = /datum/equipment_preset/uscm/leader/extraction
+
 /datum/job/marine/leader/ai/upp
 	title = JOB_SQUAD_LEADER_UPP
 	gear_preset = /datum/equipment_preset/uscm/leader/upp
@@ -110,6 +114,16 @@ OverrideTimelock(/datum/job/marine/leader, list(
 	name = JOB_SQUAD_LEADER_FORECON
 	squad = SQUAD_LRRP
 	job = /datum/job/marine/leader/ai/forecon
+
+/datum/job/marine/leader/ai/raider
+	title = JOB_SQUAD_LEADER_RAIDER
+	gear_preset = /datum/equipment_preset/uscm/leader/raider
+	job_options = null
+
+/obj/effect/landmark/start/marine/leader/raider
+	name = JOB_SQUAD_LEADER_RAIDER
+	squad = SQUAD_RAIDER
+	job = /datum/job/marine/leader/ai/raider
 
 //-- RMC Platoon --//
 // Second-in-command under LT, handles the mortar calls //

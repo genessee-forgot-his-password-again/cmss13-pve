@@ -235,6 +235,89 @@
 		/obj/item/storage/belt/shotgun/van_bandolier,
 	)
 
+/obj/item/clothing/suit/storage/marine/veteran/fil
+	name = "\improper QT-9 Standard armor"
+	desc = "The standard body armor system of the French Armed Forces. Composed of a shell of hard-wearing weatherproof inflammable polymer, aluminum oxide strike face, and ultra high molecular weight polyethylene backer. Integrated mounting brackets for the LBE system are included. Thermal camouflage patterns have been applied to the polymer shell, though radar absorbing properties are poor."
+	icon_state = "fil"
+	armor_bullet = CLOTHING_ARMOR_MEDIUM
+	armor_energy = CLOTHING_ARMOR_MEDIUMLOW
+	armor_bomb = CLOTHING_ARMOR_LOW
+	armor_rad = CLOTHING_ARMOR_LOW
+	storage_slots = 2
+	slowdown = SLOWDOWN_ARMOR_LIGHT
+	flags_atom = NO_SNOW_TYPE|NO_NAME_OVERRIDE
+	allowed = list(
+		/obj/item/weapon/gun,
+		/obj/item/tank/emergency_oxygen,
+		/obj/item/device/flashlight,
+		/obj/item/ammo_magazine/,
+		/obj/item/weapon/baton,
+		/obj/item/restraint/handcuffs,
+		/obj/item/storage/fancy/cigarettes,
+		/obj/item/tool/lighter,
+		/obj/item/explosive/grenade,
+		/obj/item/storage/bible,
+		/obj/item/tool/crowbar,
+		/obj/item/storage/large_holster/katana,
+		/obj/item/storage/large_holster/machete,
+		/obj/item/storage/large_holster/m39,
+		/obj/item/weapon/sword/machete,
+		/obj/item/attachable/bayonet,
+		/obj/item/device/motiondetector,
+		/obj/item/tool/crew_monitor,
+		/obj/item/storage/backpack/general_belt,
+		/obj/item/storage/belt/gun/m4a3,
+		/obj/item/storage/belt/gun/m44,
+		/obj/item/storage/belt/gun/flaregun,
+		/obj/item/device/walkman,
+		/obj/item/storage/belt/gun/m39,
+		/obj/item/storage/belt/gun/xm51,
+	)
+	item_state_slots = list(WEAR_JACKET = "fil")
+
+/obj/item/clothing/suit/storage/marine/veteran/fil/light
+	name = "\improper QT-7 Light armor"
+	icon_state = "fil_aux"
+	armor_melee = CLOTHING_ARMOR_MEDIUMLOW
+	armor_bullet = CLOTHING_ARMOR_MEDIUMLOW
+	armor_energy = CLOTHING_ARMOR_LOW
+	armor_internaldamage = CLOTHING_ARMOR_MEDIUMLOW
+	slowdown = SLOWDOWN_ARMOR_VERY_LIGHT
+	item_state_slots = list(WEAR_JACKET = "fil_aux")
+
+/obj/item/clothing/suit/storage/marine/veteran/fil/fire
+	name = "\improper QT-10-IF Heavy Incinerator armor"
+	desc = "The standard body armor system of the French Armed Forces. This one has been modded to have increased protection against most forms of damage, particularly towards fire and similar sources of heat."
+	icon_state = "fil_fire"
+	armor_melee = CLOTHING_ARMOR_HIGH
+	armor_bullet = CLOTHING_ARMOR_HIGHPLUS
+	armor_energy = CLOTHING_ARMOR_MEDIUM
+	armor_internaldamage = CLOTHING_ARMOR_MEDIUMHIGH
+	fire_intensity_resistance = BURN_LEVEL_TIER_1
+	max_heat_protection_temperature = FIRESUIT_MAX_HEAT_PROT
+	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS|BODY_FLAG_LEGS|BODY_FLAG_FEET
+	flags_cold_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS|BODY_FLAG_LEGS|BODY_FLAG_FEET
+	flags_heat_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS|BODY_FLAG_LEGS|BODY_FLAG_FEET
+	slowdown = SLOWDOWN_ARMOR_LOWHEAVY
+	item_state_slots = list(WEAR_JACKET = "fil_fire")
+
+/obj/item/clothing/suit/storage/marine/veteran/fil/fire/equipped(mob/user, slot)
+	if(slot == WEAR_JACKET)
+		RegisterSignal(user, COMSIG_LIVING_FLAMER_CROSSED, PROC_REF(flamer_fire_crossed_callback))
+	..()
+
+/obj/item/clothing/suit/storage/marine/veteran/fil/fire/dropped(mob/user)
+	UnregisterSignal(user, COMSIG_LIVING_FLAMER_CROSSED)
+	..()
+
+/obj/item/clothing/suit/storage/marine/veteran/fil/fire/proc/flamer_fire_crossed_callback(mob/living/L, datum/reagent/R)
+	SIGNAL_HANDLER
+
+	if(R.fire_penetrating)
+		return
+
+	return COMPONENT_NO_IGNITE
+
 //===========================//U.P.P\\================================\\
 //=====================================================================\\
 
@@ -351,11 +434,6 @@
 	restricted_accessory_slots = list(ACCESSORY_SLOT_DECORARMOR,ACCESSORY_SLOT_DECORBRACER, ACCESSORY_SLOT_DECORNECK, ACCESSORY_SLOT_DECORSHIN, ACCESSORY_SLOT_M3UTILITY, ACCESSORY_SLOT_PAINT, ACCESSORY_SLOT_DECORKNEE)
 	specialty = "\improper 6B72-03 pattern"
 
-/obj/item/clothing/suit/marine/faction/UPP/light/Initialize(mapload)
-	. = ..()
-	var/obj/item/clothing/accessory/upppads/legs/greaves = new()
-	src.attach_accessory(null, greaves, TRUE)
-
 /obj/item/clothing/suit/marine/faction/UPP/CANC
 	name = "\improper Type 12 CANC armor"
 	desc = "Vintage CANC armor system. Provides basic ballistic/shrapnel protection."
@@ -374,11 +452,6 @@
 	valid_accessory_slots = list(ACCESSORY_SLOT_MEDAL, ACCESSORY_SLOT_DECORARMOR,ACCESSORY_SLOT_DECORSHIN, ACCESSORY_SLOT_DECORBRACER, ACCESSORY_SLOT_DECORNECK, ACCESSORY_SLOT_PAINT, ACCESSORY_SLOT_M3UTILITY, ACCESSORY_SLOT_PONCHO, ACCESSORY_SLOT_DECORKNEE)
 	restricted_accessory_slots = list(ACCESSORY_SLOT_DECORARMOR,ACCESSORY_SLOT_DECORBRACER, ACCESSORY_SLOT_DECORNECK, ACCESSORY_SLOT_DECORSHIN, ACCESSORY_SLOT_M3UTILITY, ACCESSORY_SLOT_PAINT, ACCESSORY_SLOT_DECORKNEE)
 	specialty = "\improper Type 12"
-
-/obj/item/clothing/suit/marine/faction/UPP/CANC/Initialize(mapload)
-	. = ..()
-	var/obj/item/clothing/accessory/storage/webbing/m3/uppsmall/webbing = new()
-	src.attach_accessory(null, webbing, TRUE)
 
 /obj/item/clothing/suit/marine/smartgunner/upp/canc
 	name = "\improper Type 12 CANC harness"
@@ -671,6 +744,25 @@
 	armor_melee = CLOTHING_ARMOR_VERYHIGH
 	armor_bomb = CLOTHING_ARMOR_GIGAHIGH
 
+// freelance cell gear
+
+/obj/item/clothing/suit/storage/marine/veteran/mercenary/freelancecell
+	name = "\improper Freelance Cell juggernaut armor"
+	desc = "An exceptionally set of armor. Made almost entirely out of prototype ceramic plates, which gives it almost impossible strength and resistance. Armor like this is even rarer than normal Freelance Cell gear, and it's only used by their most elite members."
+	icon_state = "freelancecell_armor_heavy"
+	item_state_slots = list(WEAR_JACKET = "freelancecell_armor_heavy")
+
+/obj/item/clothing/suit/storage/marine/veteran/mercenary/miner/freelancecell
+	name = "\improper Freelance Cell armor"
+	desc = "A rugged hauberk. Extremely protective and uses prototype ceramic plates in its construction. Armor like this is made to-order for members of the Freelance Cell."
+	icon_state = "freelancecell_armor_1"
+	item_state_slots = list(WEAR_JACKET = "freelancecell_armor_1")
+
+/obj/item/clothing/suit/storage/marine/veteran/mercenary/miner/freelancecell/alt
+	name = "\improper Freelance Cell hauberk"
+	icon_state = "freelancecell_armor_2"
+	item_state_slots = list(WEAR_JACKET = "freelancecell_armor_2")
+
 
 //=========================//PROVOST\\================================\\
 //=======================================================================\\
@@ -798,6 +890,63 @@
 	var/obj/item/clothing/accessory/twepads/legs/greaves = new()
 	src.attach_accessory(null, greaves, TRUE)
 
+/obj/item/clothing/suit/storage/marine/veteran/royal_marine_advanced
+	name = "\improper Kestrel-II advanced armoured cuirass"
+	desc = "Improved RMC issue Kestrel Personal Armor designed by Weyland-Yutani subsidary, Lindenthal-Ehrenfeld Militärindustrie. Advanced composite ballistic armor of the latest generation, integral biomonitoring system, and brackets for a load carrying system as well as the TNR Shoulder Lamp. This particular vest has slightly better armor plates and a built-in webbing system."
+	icon_state = "rmc_light"
+	item_state = "rmc_light"
+	armor_melee = CLOTHING_ARMOR_HIGH
+	armor_bullet = CLOTHING_ARMOR_HIGH
+	armor_energy = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_bomb = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_internaldamage = CLOTHING_ARMOR_MEDIUM
+	flags_atom = NO_NAME_OVERRIDE|NO_SNOW_TYPE
+	allowed = list(
+		/obj/item/weapon/gun,
+		/obj/item/tank/emergency_oxygen,
+		/obj/item/device/flashlight,
+		/obj/item/ammo_magazine/,
+		/obj/item/weapon/baton,
+		/obj/item/restraint/handcuffs,
+		/obj/item/storage/fancy/cigarettes,
+		/obj/item/tool/lighter,
+		/obj/item/explosive/grenade,
+		/obj/item/storage/bible,
+		/obj/item/weapon/sword/machete,
+		/obj/item/attachable/bayonet,
+		/obj/item/device/motiondetector,
+		/obj/item/device/walkman,
+		/obj/item/storage/belt/marine/rmc,
+		/obj/item/storage/belt/medical/rmc,
+		/obj/item/storage/belt/gun/l905,
+		/obj/item/storage/belt/gun/mortarbelt/rmc,
+		/obj/item/storage/backpack/general_belt/rmc,
+		/obj/item/storage/belt/gun/flaregun,
+	)
+	valid_accessory_slots = list(ACCESSORY_SLOT_MEDAL, ACCESSORY_SLOT_DECORARMOR, ACCESSORY_SLOT_DECORARMOR, ACCESSORY_SLOT_DECORSHIN, ACCESSORY_SLOT_PAINT, ACCESSORY_SLOT_M3UTILITY, ACCESSORY_SLOT_PONCHO)
+	restricted_accessory_slots = list(ACCESSORY_SLOT_DECORARMOR,ACCESSORY_SLOT_DECORSHIN, ACCESSORY_SLOT_M3UTILITY, ACCESSORY_SLOT_PAINT)
+
+/obj/item/clothing/suit/storage/marine/veteran/royal_marine_advanced/cargo
+	name = "\improper Kestrel-II-C advanced carry vest"
+	desc = "Improved RMC issue Kestrel Personal Armor designed by Weyland-Yutani subsidary, Lindenthal-Ehrenfeld Militärindustrie. Advanced composite ballistic armor of the latest generation, integral biomonitoring system, and brackets for a load carrying system as well as the TNR Shoulder Lamp. This particular vest has slightly better armor plates and a built-in webbing system, alongside a set of shoulderpads and better storage capacity."
+	icon_state = "rmc_light_padded"
+	item_state = "rmc_light_padded"
+	storage_slots = 7
+	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS
+
+/obj/item/clothing/suit/storage/marine/veteran/royal_marine_advanced/breacher
+	name = "\improper Kestrel-III elite pointman cuirass"
+	desc = "Top-notch RMC issue Kestrel Personal Armor designed by Weyland-Yutani subsidary, Lindenthal-Ehrenfeld Militärindustrie. Advanced composite ballistic armor of the latest generation, integral biomonitoring system, and brackets for a load carrying system as well as the TNR Shoulder Lamp. This particular vest has vastly better armor plates and a built-in webbing system."
+	icon_state = "rmc_pointman"
+	item_state = "rmc_pointman"
+	armor_melee = CLOTHING_ARMOR_HIGHPLUS
+	armor_bullet = CLOTHING_ARMOR_HIGHPLUS
+	armor_energy = CLOTHING_ARMOR_HIGH
+	armor_bomb = CLOTHING_ARMOR_HIGH
+	armor_internaldamage = CLOTHING_ARMOR_MEDIUMHIGH
+	slowdown = SLOWDOWN_ARMOR_HEAVY
+	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS|BODY_FLAG_LEGS
+
 /obj/item/clothing/suit/marine/veteran/royal_marine/smartgun //Smartgun Spec Armor
 	name = "\improper Kestrel GPMG harness"
 	desc = "Standard RMC issue Kestrel Personal Armor designed by Weyland-Yutani subsidary, Lindenthal-Ehrenfeld Militärindustrie. This version features the support armature for the L58A3 weapons system, which significantly limits what additional storage equipment can be clipped to the armor. Advanced composite ballistic armor of the latest generation, integral biomonitoring system, and brackets for a load carrying system as well as the TNR Shoulder Lamp."
@@ -852,13 +1001,14 @@
 	icon_state = "merc_medium"
 	item_state = "merc_medium"
 	armor_melee = CLOTHING_ARMOR_MEDIUMLOW
-	armor_bullet = CLOTHING_ARMOR_MEDIUM
+	armor_bullet = CLOTHING_ARMOR_MEDIUMHIGH
 	armor_laser = CLOTHING_ARMOR_LOW
 	armor_energy = CLOTHING_ARMOR_LOW
 	armor_bomb = CLOTHING_ARMOR_MEDIUMLOW
 	armor_bio = CLOTHING_ARMOR_MEDIUM
 	armor_rad = CLOTHING_ARMOR_NONE
 	armor_internaldamage = CLOTHING_ARMOR_MEDIUM
+	slowdown = SLOWDOWN_ARMOR_LOWHEAVY
 	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_ARMS|BODY_FLAG_GROIN
 
 /obj/item/clothing/suit/storage/marine/veteran/merc/light
@@ -876,16 +1026,16 @@
 	flags_armor_protection = BODY_FLAG_CHEST
 
 /obj/item/clothing/suit/storage/marine/veteran/merc/heavy
-	name = "DP TAC-PACK Gen IV-H armored vest"
-	desc = "A much heavier armored vest built off the other two previous versions under GEN II and GEN I, sporting much heavier armor plates and better coverage of parts, allowing users to resist a lot of damage before going down. Made by Davis Proprietary."
+	name = "DP TAC-PACK Gen IV-H custom armored suit"
+	desc = "A custom piece of armor tailored for high durability in the field, rarely commissioned due to it's weight and cost, alongside limited conventional use, the Gen IV-H is one of the only open market heavy armored suits available. Made by Davis Proprietary."
 	icon = 'icons/obj/items/clothing/cm_suits.dmi'
 	item_icons = list(
 		WEAR_JACKET = 'icons/mob/humans/onmob/suit_1.dmi'
 	)
 	icon_state = "merc_heavy"
 	item_state = "merc_heavy"
-	armor_melee = CLOTHING_ARMOR_HIGH
-	armor_bullet = CLOTHING_ARMOR_HIGH
+	armor_melee = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_bullet = CLOTHING_ARMOR_HIGHPLUS
 	armor_internaldamage = CLOTHING_ARMOR_MEDIUM
 	armor_bomb = CLOTHING_ARMOR_VERYHIGH
 	flags_inventory = BLOCK_KNOCKDOWN
@@ -894,4 +1044,44 @@
 	time_to_unequip = 20
 	time_to_equip = 20
 
+// =MARAUDERS & SCAVS= \\
 
+/obj/item/clothing/suit/storage/marine/veteran/mercenary/marauder
+	name = "\improper K6 ceramic plated armor"
+	desc = "An early model of the highly sought-after K12 armor, usually favored by mercenaries or pirates on a budget. While not nearly as protective as the modern version, it still deflects bullets easily enough."
+	icon_state = "mercenary_heavy_armor"
+	flags_inventory = BLOCKSHARPOBJ|BLOCK_KNOCKDOWN
+	armor_melee = CLOTHING_ARMOR_HIGH
+	armor_bullet = CLOTHING_ARMOR_HIGH
+	armor_energy = CLOTHING_ARMOR_MEDIUMLOW
+	armor_bomb = CLOTHING_ARMOR_MEDIUM
+	armor_bio = CLOTHING_ARMOR_LOW
+	armor_rad = CLOTHING_ARMOR_LOW
+	armor_internaldamage = CLOTHING_ARMOR_MEDIUM
+	item_state_slots = list(WEAR_JACKET = "mercenary_heavy_armor")
+
+/obj/item/clothing/suit/storage/marine/veteran/mercenary/marauder/miner
+	name = "\improper Y4 armored miner vest"
+	desc = "An early model of Y8 mining armor. Much like the modern version, the Y4 armor sees more use by mercenaries and pirates rather than being used in actual mining operations -- this is primarily due to its sturdiness, while still being technically legal for a civilian to own. While not nearly as protective as the Y8 variant, it still deflects bullets easily enough."
+	icon_state = "mercenary_miner_armor"
+	armor_melee = CLOTHING_ARMOR_MEDIUMLOW
+	armor_bullet = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_energy = CLOTHING_ARMOR_MEDIUM
+	armor_bomb = CLOTHING_ARMOR_HIGH
+	armor_bio = CLOTHING_ARMOR_LOW
+	armor_rad = CLOTHING_ARMOR_LOW
+	armor_internaldamage = CLOTHING_ARMOR_MEDIUM
+	item_state_slots = list(WEAR_JACKET = "mercenary_miner_armor")
+
+/obj/item/clothing/suit/storage/marine/veteran/mercenary/marauder/support
+	name = "\improper Z3 armored vest"
+	desc = "An early model of the highly sought-after Z7 support armor, usually favored by mercenaries or pirates tasked with more technical work. While not nearly as protective as the modern version, it still deflects bullets easily enough."
+	icon_state = "mercenary_engineer_armor"
+	armor_melee = CLOTHING_ARMOR_MEDIUMLOW
+	armor_bullet = CLOTHING_ARMOR_MEDIUMLOW
+	armor_energy = CLOTHING_ARMOR_HIGH
+	armor_bomb = CLOTHING_ARMOR_MEDIUM
+	armor_bio = CLOTHING_ARMOR_HIGH
+	armor_rad = CLOTHING_ARMOR_HIGH
+	armor_internaldamage = CLOTHING_ARMOR_MEDIUMHIGH
+	item_state_slots = list(WEAR_JACKET = "mercenary_engineer_armor")

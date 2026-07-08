@@ -47,8 +47,8 @@
 	squad = SQUAD_MARINE_4
 
 /datum/job/marine/tl/ai
-	total_positions = 2
-	spawn_positions = 2
+	total_positions = 3
+	spawn_positions = 3
 
 /datum/job/marine/tl/ai/upp
 	title = JOB_SQUAD_TEAM_LEADER_UPP
@@ -106,6 +106,18 @@
 	name = JOB_SQUAD_TEAM_LEADER_FORECON
 	squad = SQUAD_LRRP
 	job = /datum/job/marine/tl/ai/forecon
+
+/datum/job/marine/tl/ai/raider
+	total_positions = 2
+	spawn_positions = 2
+	title = JOB_SQUAD_TEAM_LEADER_RAIDER
+	gear_preset = /datum/equipment_preset/uscm/tl/raider
+	job_options = null
+
+/obj/effect/landmark/start/marine/tl/raider
+	name = JOB_SQUAD_TEAM_LEADER_RAIDER
+	squad = SQUAD_RAIDER
+	job = /datum/job/marine/tl/ai/raider
 
 //-- RMC Platoon --//
 //Section/squad leader & team leader//
