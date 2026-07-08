@@ -4,7 +4,7 @@
 	if(!check_rights(R_SOUNDS))
 		return
 
-	var/sound_mode = tgui_input_list(src, "Play a sound from which source?", "Select Source", list("Upload","Web","Internal"))
+	var/sound_mode = tgui_input_list(src, "Play a sound from which source?", "Select Source", list("Upload","Web"))
 	if(!sound_mode)
 		return
 
@@ -15,23 +15,7 @@
 	var/must_send_assets = FALSE
 	var/announce_title = TRUE
 
-// Rip this code out as soon as you figure out something better
-
-	if (sound_mode == "Internal")
-
-		var/list/songs = flist("sound/Music/")
-		if(songs.len <= 0)
-			return
-		var/music = tgui_input_list(src, "Play which song?", "Select Song", songs)
-		music = "sound/Music/[music]"
-		var/Mvolume = input("Choose the volume (I suggest 1-30. 100 is painfully loud)", "Volume") as num|null
-		Mvolume = clamp(Mvolume, 0, 100)
-		world << sound(music, volume = Mvolume)
-		return
-
-// Crap code ends here
-
-	else if(sound_mode == "Web")
+	if(sound_mode == "Web")
 		var/list/datum/internet_media/media_players = list()
 
 		if(CONFIG_GET(string/invoke_youtubedl))
